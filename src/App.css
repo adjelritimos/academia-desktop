@@ -1,0 +1,48 @@
+.splash-image {
+  height: '200px';
+  width: '200px';
+}
+
+.btn-height{
+  height: 60px;
+}
+
+.btn-height-2{
+  height: 200px;
+}
+
+.btn-height-3{
+  height: 300px;
+}
+
+.lesson-list {
+  height: calc(100vh - 250px);
+}
+
+.lemma-list {
+  height: calc(100vh - 160px);
+}
+
+.image {
+  height: calc(100vh - 220px);
+}
+
+.image-demonstration {
+  height: calc(100vh - 130px);
+  width: 300px;
+  max-width: 350px;
+}
+
+.textarea-height {
+  height: calc(100vh - 148px);
+}
+
+.questionarea-height {
+  height: calc(100vh - 200px);
+}
+
+.textarea:focus {
+  border: 1px solid #fff !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
