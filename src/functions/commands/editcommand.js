@@ -14,7 +14,6 @@ const editCommand = async (commandId, setCommandSelected, name, description, dem
         formData.append('sound', sound)
 
         const edited_command = await api.put(`/edit/a/command/${commandId}`, formData, {
-
             headers: {
                 'Content-Type': 'multipart/form-data'
             }

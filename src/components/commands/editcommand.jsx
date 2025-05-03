@@ -10,12 +10,13 @@ const EditCommand = (props) => {
     const [demonstration, setDemonstration] = useState(`http://localhost:5349/admin${props.commandSelected?.demonstration}`)
     const [audioURL, setAudioURL] = useState(`http://localhost:5349/admin${props.commandSelected?.sound}`)
 
-
     useEffect(() => {
+
         setname(props.commandSelected?.name)
         setDescription(props.commandSelected?.description)
         setDemonstration(`http://localhost:5349/admin${props.commandSelected?.demonstration}`)
         setAudioURL(`http://localhost:5349/admin${props.commandSelected?.sound}`)
+
     }, [props.commandSelected])
 
     return (
