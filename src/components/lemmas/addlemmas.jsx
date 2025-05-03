@@ -1,10 +1,12 @@
 import { useState } from "react"
 import addLemma from "../../functions/lemmas/addlemmas"
+import AudioRecorder from "../recordsounds/records"
 
 const AddLemmas = (props) => {
 
     const [question, setQuestion] = useState('')
     const [answer, setAnswer] = useState('')
+    const [audioURL, setAudioURL] = useState(null)
     const [error, setError] = useState('')
 
     const IsError = () => {
@@ -26,7 +28,7 @@ const AddLemmas = (props) => {
     return (
         <div className="modal fade" id="addlemma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog w-25 modal-dialog-centered">
-                <form onSubmit={(e) => addLemma(e, question, answer, props.setLemmas, props.setLemmasCopy, props.setLemmaSelected)} className="modal-content">
+                <form onSubmit={(e) => addLemma(e, question, answer, audioURL, props.setLemmas, props.setLemmasCopy, props.setLemmaSelected)} className="modal-content">
                     <div className="modal-header bg-info p-2 pe-3 text-white fw-bold">
                         <h1 className="modal-title display-4 fs-5" id="exampleModalLabel">Novo lema</h1>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -42,11 +44,10 @@ const AddLemmas = (props) => {
                             <textarea required maxLength={500} value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder="Digite a resposta aqui" className="form-control border-info mt-1" rows="5" />
                         </div>
 
+                        <label htmlFor="answer">Carregue ou grava um audio</label>
                         <div className="mb-2 border border-info rounded p-2">
-                            <label htmlFor="answer">Carregue ou grava um audio</label>
-                            <input type="file" placeholder="carrege audio" className="form-control border-info" />
+                            <AudioRecorder question={question}  audioURL={audioURL} setAudioURL={setAudioURL}/>
                         </div>
-
                     </div>
                     <div className="modal-footer text-center border-white mt-0 pb-0 mb-0 pt-0">
                         <button onClick={IsError} type={isCheck() ? "submit" : "button"} className="btn btn-info text-white w-100 rounded-pill fw-bold" data-bs-dismiss={isCheck() ? "modal" : ""}>adicionar</button>

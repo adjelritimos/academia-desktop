@@ -1,15 +1,17 @@
 import api from "../../server/api"
 import getCommands from "./getCommands"
 
-const addCommand = async (e, name, description, demonstration, setCommands, setCommandsCopy, setCommandSelected) => {
+const addCommand = async (e, name, description, demonstration, sound, setCommands, setCommandsCopy, setCommandSelected) => {
 
     e.preventDefault()
     
     try {
+        
         const formData = new FormData()
         formData.append('name', name)
         formData.append('description', description)
         formData.append('demonstration', demonstration)
+        formData.append('sound', sound)
 
         const new_command = await api.post('/add/a/command', formData, {
             headers: {

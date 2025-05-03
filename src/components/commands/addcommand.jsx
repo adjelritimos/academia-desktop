@@ -1,11 +1,13 @@
 import { useState } from "react"
 import addcommand from "../../functions/commands/addcommand"
+import AudioRecorder from "../recordsounds/records"
 
 const AddCommand = (props) => {
 
     const [name, setname] = useState('')
     const [description, setDescription] = useState('')
     const [demontration, setDemonstration] = useState(null)
+    const [audioURL, setAudioURL] = useState(null)
     const [error, setError] = useState('')
 
     const IsError = () => {
@@ -48,6 +50,11 @@ const AddCommand = (props) => {
                         <div className="mb-0">
                             <label htmlFor="answer">Demosntração</label>
                             <input className="form-control" onChange={(e) => setDemonstration(e.target.files[0])} accept="image/*" type="file" />
+                        </div>
+
+                        <label className="mt-2" htmlFor="answer">Carregue ou grava um audio</label>
+                        <div className="mb-2 border border-info rounded p-2">
+                            <AudioRecorder question={name}  audioURL={audioURL} setAudioURL={setAudioURL}/>
                         </div>
 
                     </div>

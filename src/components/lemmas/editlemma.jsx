@@ -1,27 +1,30 @@
 import { useEffect, useState } from "react"
-import editLemma from "../../functions/lemmas/editLesson"
+import editLemma from "../../functions/lemmas/editLemma"
+import AudioRecorder from "../recordsounds/records"
 
 const EditLemmas = (props) => {
 
     const [question, setQuestion] = useState(props.lemmaSelected?.question)
     const [answer, setAnswer] = useState(props.lemmaSelected?.answer)
+    const [audioURL, setAudioURL] = useState(`http://localhost:5349/admin${props.lemmaSelected.sound}`)
 
     const isCheck = () => {
         const validQuestion = typeof question === 'string' && question.trim().length > 0
         const validAnswer = typeof answer === 'string' && answer.trim().length > 0
-        
+
         return validQuestion && validAnswer
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         setQuestion(props.lemmaSelected?.question)
         setAnswer(props.lemmaSelected?.answer)
+        setAudioURL(`http://localhost:5349/admin${props.lemmaSelected.sound}`)
     }, [props.lemmaSelected])
 
     return (
         <div className="modal fade" id="editlemma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog w-25 modal-dialog-centered">
-                <form onSubmit={(e)=> editLemma(e, props.lemmaSelected.id, props.lemmaSelected, props.setLemmaSelected, question, answer, props.setLemmas, props.setLemmasCopy)} className="modal-content">
+                <form onSubmit={(e) => editLemma(e, props.lemmaSelected.id, props.lemmaSelected, props.setLemmaSelected, question, answer, audioURL, props.setLemmas, props.setLemmasCopy)} className="modal-content">
                     <div className="modal-header bg-info p-2 pe-3 text-white fw-bold">
                         <h1 className="modal-title display-4 fs-5" id="exampleModalLabel">Editar o lema</h1>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -29,17 +32,17 @@ const EditLemmas = (props) => {
                     <div className="modal-body border-white mb-1 mt-0 pt-0">
                         <div className="mb-2">
                             <label htmlFor="question">Pergunta</label>
-                            <input required value={question} onChange={(e)=> setQuestion(e.target.value)} type="text" placeholder="Qual a pergunta do lema" className="form-control border-info mt-1" />
+                            <input required value={question} onChange={(e) => setQuestion(e.target.value)} type="text" placeholder="Qual a pergunta do lema" className="form-control border-info mt-1" />
                         </div>
 
                         <div className="mb-2">
                             <label htmlFor="answer">Resposta</label>
-                            <textarea required value={answer} onChange={(e)=> setAnswer(e.target.value)}  placeholder="Digite a resposta aqui" className="form-control border-info mt-1" rows="5" />
+                            <textarea required value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder="Digite a resposta aqui" className="form-control border-info mt-1" rows="5" />
                         </div>
 
+                        <label htmlFor="answer">Carregue ou grava um audio</label>
                         <div className="mb-2 border border-info rounded p-2">
-                            <label htmlFor="answer">Carregue ou grava um audio</label>
-                           <input type="file" placeholder="carrege audio" className="form-control border-info" />
+                            <AudioRecorder question={question} audioURL={audioURL} setAudioURL={setAudioURL} />
                         </div>
 
                     </div>

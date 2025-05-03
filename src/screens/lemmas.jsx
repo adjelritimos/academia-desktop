@@ -73,8 +73,11 @@ const Lemmas = () => {
                     {
                         lemmaSelected ?
                             (
-                                <div>
-                                    <h2>{lemmaSelected.question}</h2>
+                                <div className="mt-2">
+                                    <div className="d-flex justify-content-between">
+                                        <h2>{lemmaSelected.question}</h2>
+                                        <audio controls src={`http://localhost:5349/admin${lemmaSelected.sound}`} />
+                                    </div>
                                     <textarea className="form-control display-4 textarea lemma-list border-white" readOnly value={lemmaSelected.answer} />
                                 </div>
                             )

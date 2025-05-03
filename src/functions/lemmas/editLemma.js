@@ -2,26 +2,31 @@ import api from "../../server/api"
 import getLemmas from "./getLemmas"
 
 
-const addLemma = async (e, question, answer, sound, setLemmas, setLemmasCopy,  setLemmaSelected) => {
+
+const editLemma = async (e, lemmaId, lemmaSelected, setLemmaSelected, question, answer, sound, setLemmas, setLemmasCopy) => {
+
     e.preventDefault()
+
     try {
+
         const formData = new FormData()
         formData.append('question', question)
         formData.append('answer', answer)
         formData.append('sound', sound)
-        
-        const new_lemma = await api.post('/add/a/lemma', formData, {
+
+        const new_lemma = await api.put(`/edit/a/lemma/${lemmaId}`, formData, {
+
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         })
 
         if (new_lemma.status === 200) {
-            await getLemmas(setLemmas, setLemmasCopy)
             setLemmaSelected(new_lemma.data)
+            await getLemmas(setLemmas, setLemmasCopy)
         }
     } catch (error) {
         console.log('Um erro ocorrido, ', error)
     }
 }
-export default addLemma
+export default editLemma
