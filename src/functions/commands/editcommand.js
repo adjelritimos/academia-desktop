@@ -3,14 +3,25 @@ import getCommands from "./getCommands"
 
 
 
-const editCommand = async (commandId, commandSelected, setCommandSelected, name, description, setCommands, setCommandsCopy) => {
+const editCommand = async (commandId, setCommandSelected, name, description, demonstration, sound, setCommands, setCommandsCopy) => {
 
     try {
-        const new_lesson = await api.put(`/edit/a/command/${commandId}`, { name, description })
-        if (new_lesson.status === 200) {
-            commandSelected.name = name
-            commandSelected.description = description
-            setCommandSelected(commandSelected)
+
+        const formData = new FormData()
+        formData.append('name', name)
+        formData.append('description', description)
+        formData.append('demonstration', demonstration)
+        formData.append('sound', sound)
+
+        const edited_command = await api.put(`/edit/a/command/${commandId}`, formData, {
+
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+
+        if (edited_command.status === 200) {
+            setCommandSelected(edited_command.data)
             await getCommands(setCommands, setCommandsCopy)
         }
     } catch (error) {

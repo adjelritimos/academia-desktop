@@ -75,9 +75,10 @@ const Commands = () => {
                         commandSelected ?
                             (
                                 <div className="d-flex gap-2">
-                                    <div className="w-75">
+                                    <div className="w-75 position-relative">
                                         <h2 className="text-break">{commandSelected.name}</h2>
                                         <textarea className="form-control display-4 textarea textarea-height lemma-list border-white" readOnly value={commandSelected.description} />
+                                        <audio className="position-absolute bottom-0 start-50 translate-middle-x w-100" controls src={`http://localhost:5349/admin${commandSelected.sound}`}/>
                                     </div>
                                     <img className="w-50 mt-4 rounded-4 image-demonstration" src={`http://localhost:5349/admin${commandSelected.demonstration}`} alt="Prévia" />
                                 </div>
