@@ -9,19 +9,17 @@ const EditCommand = (props) => {
     const [description, setDescription] = useState(props.commandSelected?.description)
     const [demonstration, setDemonstration] = useState(`http://localhost:5349/admin${props.commandSelected?.demonstration}`)
     const [audioURL, setAudioURL] = useState(`http://localhost:5349/admin${props.commandSelected?.sound}`)
-    const [preview, setPreview] = useState(`http://localhost:5349/admin${props.commandSelected?.demonstration}`)
+    const [preview, setPreview] = useState(props.commandSelected.demonstration ? `http://localhost:5349/admin${props.commandSelected?.demonstration}` : '/noImage.png')
 
     const handleFileChange = (e) => {
+
         const file = e.target.files[0]
-
         if (file) {
-            // Salva o arquivo para enviar ao backend
             setDemonstration(file)
-
-            // Cria URL temporária para pré-visualização
             const objectUrl = URL.createObjectURL(file)
             setPreview(objectUrl)
         }
+
     }
 
     useEffect(() => {
@@ -29,6 +27,7 @@ const EditCommand = (props) => {
         setname(props.commandSelected?.name)
         setDescription(props.commandSelected?.description)
         setDemonstration(`http://localhost:5349/admin${props.commandSelected?.demonstration}`)
+        setPreview(props.commandSelected?.demonstration ? `http://localhost:5349/admin${props.commandSelected?.demonstration}` : '/noImage.png')
         setAudioURL(`http://localhost:5349/admin${props.commandSelected?.sound}`)
 
     }, [props.commandSelected])
@@ -56,7 +55,7 @@ const EditCommand = (props) => {
                             <label htmlFor="answer">Demosntração</label>
                             <div >
                                 {
-                                    demonstration ?
+                                    demonstration && preview ?
                                         (
                                             <div className="position-relative text-center">
                                                 <button onClick={() => {setDemonstration(null); setPreview(null)}} type="button" aria-label="Close" className='btn btn-close bg-danger rounded-circle position-absolute top-0 start-100 translate-middle'></button>
