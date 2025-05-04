@@ -8,10 +8,10 @@ import Contents from './screens/contents'
 import Lessons from './screens/lessons'
 import Question from './screens/questions'
 import QuestionManagemant from './screens/question_managemant'
+import { LoadingProvider } from './contexts/contextLoading'
 
 
-const App = () => {
-
+const Routers = () => {
   return (
     <Router>
       <Routes>
@@ -25,6 +25,16 @@ const App = () => {
         <Route path="/questions/:what/:about" element={<QuestionManagemant />} />
       </Routes>
     </Router>
+  )
+}
+
+
+const App = () => {
+
+  return (
+    <LoadingProvider>
+      <Routers />
+    </LoadingProvider>
   )
 
 }
