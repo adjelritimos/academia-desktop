@@ -12,13 +12,11 @@ const AddCommand = (props) => {
     const [preview, setPreview] = useState(null)
 
     const handleFileChange = (e) => {
+        
         const file = e.target.files[0]
 
         if (file) {
-            // Salva o arquivo para enviar ao backend
             setDemonstration(file)
-
-            // Cria URL temporária para pré-visualização
             const objectUrl = URL.createObjectURL(file)
             setPreview(objectUrl)
         }
