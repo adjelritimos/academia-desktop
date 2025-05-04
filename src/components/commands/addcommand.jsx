@@ -10,6 +10,7 @@ const AddCommand = (props) => {
     const [audioURL, setAudioURL] = useState(null)
     const [error, setError] = useState('')
     const [preview, setPreview] = useState(null)
+    const [isRecording, setIsRecording] = useState(false)
 
     const handleFileChange = (e) => {
         
@@ -80,12 +81,12 @@ const AddCommand = (props) => {
 
                         <label className="mt-2" htmlFor="answer">Carregue ou grava um audio</label>
                         <div className="mb-2 border border-info rounded p-2">
-                            <AudioRecorder question={name} audioURL={audioURL} setAudioURL={setAudioURL} />
+                            <AudioRecorder setIsRecording={setIsRecording} question={name} audioURL={audioURL} setAudioURL={setAudioURL} />
                         </div>
 
                     </div>
                     <div className="modal-footer border-white mt-0 mb-0 pb-0 pt-0">
-                        <button onClick={IsError} type={isCheck() ? "submit" : "button"} className="btn btn-info text-white w-100 rounded-pill fw-bold" data-bs-dismiss={isCheck() ? "modal" : ""}>adicionar</button>
+                        <button disabled={isRecording} onClick={IsError} type={isCheck() ? "submit" : "button"} className="btn btn-info text-white w-100 rounded-pill fw-bold" data-bs-dismiss={isCheck() ? "modal" : ""}>adicionar</button>
                     </div>
                     <small className="text-center text-danger fw-bold mb-2">{error}</small>
                 </form>

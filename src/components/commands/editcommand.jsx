@@ -10,6 +10,7 @@ const EditCommand = (props) => {
     const [demonstration, setDemonstration] = useState(`http://localhost:5349/admin${props.commandSelected?.demonstration}`)
     const [audioURL, setAudioURL] = useState(`http://localhost:5349/admin${props.commandSelected?.sound}`)
     const [preview, setPreview] = useState(props.commandSelected.demonstration ? `http://localhost:5349/admin${props.commandSelected?.demonstration}` : '/noImage.png')
+    const [isRecording, setIsRecording] = useState(false)
 
     const handleFileChange = (e) => {
 
@@ -72,12 +73,12 @@ const EditCommand = (props) => {
 
                         <label className="mt-2" htmlFor="answer">Carregue ou grava um audio</label>
                         <div className="mb-2 border border-info rounded p-2">
-                            <AudioRecorder question={name} audioURL={audioURL} setAudioURL={setAudioURL} />
+                            <AudioRecorder setIsRecording={setIsRecording} question={name} audioURL={audioURL} setAudioURL={setAudioURL} />
                         </div>
 
                     </div>
                     <div className="modal-footer border-white mt-0 pt-0">
-                        <button onClick={() => editCommand(props.commandId, props.setCommandSelected, name, description, demonstration, audioURL, props.setCommands, props.setCommandsCopy)} type="button" className="btn btn-info text-white w-100 rounded-pill fw-bold" data-bs-dismiss="modal">Salvar</button>
+                        <button disabled={isRecording} onClick={() => editCommand(props.commandId, props.setCommandSelected, name, description, demonstration, audioURL, props.setCommands, props.setCommandsCopy)} type="button" className="btn btn-info text-white w-100 rounded-pill fw-bold" data-bs-dismiss="modal">Salvar</button>
                     </div>
                 </div>
             </div>
