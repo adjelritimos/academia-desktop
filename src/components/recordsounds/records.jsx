@@ -10,8 +10,8 @@ const AudioRecorder = (props) => {
   const mediaRecorderRef = useRef(null)
   const audioChunksRef = useRef([])
 
-  // --- Funções de Gravação ---
   const startRecording = async () => {
+
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
       mediaRecorderRef.current = new MediaRecorder(stream)
@@ -33,7 +33,9 @@ const AudioRecorder = (props) => {
 
       mediaRecorderRef.current.start()
       setIsRecording(true)
+      props.setIsRecording(true)
       setMode('record')
+
     } catch (err) {
       console.error('Erro ao acessar o microfone:', err)
     }
@@ -43,6 +45,7 @@ const AudioRecorder = (props) => {
     if (mediaRecorderRef.current && isRecording) {
       mediaRecorderRef.current.stop()
       setIsRecording(false)
+      props.setIsRecording(false)
     }
   }
 
@@ -66,6 +69,7 @@ const AudioRecorder = (props) => {
     setFileName('')
     setMode(null)
     setIsRecording(false)
+    props.setIsRecording(false)
   }
 
   return (

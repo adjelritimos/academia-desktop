@@ -6,6 +6,7 @@ const EditLemmas = (props) => {
 
     const [question, setQuestion] = useState(props.lemmaSelected?.question)
     const [answer, setAnswer] = useState(props.lemmaSelected?.answer)
+    const [isRecording, setIsRecording] = useState(false)
     const [audioURL, setAudioURL] = useState(`http://localhost:5349/admin${props.lemmaSelected?.sound}`)
 
     const isCheck = () => {
@@ -44,12 +45,12 @@ const EditLemmas = (props) => {
 
                         <label htmlFor="answer">Carregue ou grava um audio</label>
                         <div className="mb-2 border border-info rounded p-2">
-                            <AudioRecorder question={question} audioURL={audioURL} setAudioURL={setAudioURL} />
+                            <AudioRecorder setIsRecording={setIsRecording} question={question} audioURL={audioURL} setAudioURL={setAudioURL} />
                         </div>
 
                     </div>
                     <div className="modal-footer border-white mt-0 pt-0">
-                        <button type="submit" className="btn btn-info text-white w-100 rounded-pill fw-bold" data-bs-dismiss={isCheck() ? "modal" : ""}>Salvar</button>
+                        <button disabled={isRecording} type="submit" className="btn btn-info text-white w-100 rounded-pill fw-bold" data-bs-dismiss={isCheck() ? "modal" : ""}>Salvar</button>
                     </div>
                 </form>
             </div>

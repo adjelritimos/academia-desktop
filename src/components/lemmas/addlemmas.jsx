@@ -7,6 +7,7 @@ const AddLemmas = (props) => {
     const [question, setQuestion] = useState('')
     const [answer, setAnswer] = useState('')
     const [audioURL, setAudioURL] = useState(null)
+    const [isRecording, setIsRecording] = useState(false)
     const [error, setError] = useState('')
 
     const IsError = () => {
@@ -46,11 +47,11 @@ const AddLemmas = (props) => {
 
                         <label htmlFor="answer">Carregue ou grava um audio</label>
                         <div className="mb-2 border border-info rounded p-2">
-                            <AudioRecorder question={question}  audioURL={audioURL} setAudioURL={setAudioURL}/>
+                            <AudioRecorder question={question} setIsRecording={setIsRecording}  audioURL={audioURL} setAudioURL={setAudioURL}/>
                         </div>
                     </div>
                     <div className="modal-footer text-center border-white mt-0 pb-0 mb-0 pt-0">
-                        <button onClick={IsError} type={isCheck() ? "submit" : "button"} className="btn btn-info text-white w-100 rounded-pill fw-bold" data-bs-dismiss={isCheck() ? "modal" : ""}>adicionar</button>
+                        <button disabled={isRecording} onClick={IsError} type={isCheck() ? "submit" : "button"} className="btn btn-info text-white w-100 rounded-pill fw-bold" data-bs-dismiss={isCheck() ? "modal" : ""}>adicionar</button>
                     </div>
                     <small className="text-center fw-bold mb-2 text-danger">{error}</small>
                 </form>
