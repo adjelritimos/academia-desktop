@@ -3,11 +3,14 @@ import getLemmas from "./getLemmas"
 
 
 
-const editLemma = async (e, lemmaId, lemmaSelected, setLemmaSelected, question, answer, sound, setLemmas, setLemmasCopy) => {
+const editLemma = async (e, lemmaId, setLemmaSelected, question, answer, sound, setLemmas, setLemmasCopy) => {
 
     e.preventDefault()
 
     try {
+        
+        if (typeof sound === 'string')
+            sound = sound.split('admin')[1]
 
         const formData = new FormData()
         formData.append('question', question)
@@ -25,6 +28,7 @@ const editLemma = async (e, lemmaId, lemmaSelected, setLemmaSelected, question, 
             setLemmaSelected(new_lemma.data)
             await getLemmas(setLemmas, setLemmasCopy)
         }
+
     } catch (error) {
         console.log('Um erro ocorrido, ', error)
     }

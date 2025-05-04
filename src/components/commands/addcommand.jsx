@@ -9,6 +9,21 @@ const AddCommand = (props) => {
     const [demontration, setDemonstration] = useState(null)
     const [audioURL, setAudioURL] = useState(null)
     const [error, setError] = useState('')
+    const [preview, setPreview] = useState(null)
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0]
+
+        if (file) {
+            // Salva o arquivo para enviar ao backend
+            setDemonstration(file)
+
+            // Cria URL temporária para pré-visualização
+            const objectUrl = URL.createObjectURL(file)
+            setPreview(objectUrl)
+        }
+    }
+
 
     const IsError = () => {
         if (!isCheck())
@@ -22,7 +37,7 @@ const AddCommand = (props) => {
     const isCheck = () => {
         const validname = typeof name === 'string' && name.trim().length > 0
         const validdescription = typeof description === 'string' && description.trim().length > 0
-       
+
 
         return validname && validdescription && demontration !== null
     }
@@ -31,7 +46,7 @@ const AddCommand = (props) => {
     return (
         <div className="modal fade" id="addcommand" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog w-25 modal-dialog-centered">
-                <form onSubmit={(e) => addcommand(e,name, description, demontration, audioURL, props.setCommands, props.setCommandsCopy, props.setCommandSelected)} className="modal-content">
+                <form onSubmit={(e) => addcommand(e, name, description, demontration, audioURL, props.setCommands, props.setCommandsCopy, props.setCommandSelected)} className="modal-content">
                     <div className="modal-header bg-info p-2 pe-3 text-white fw-bold">
                         <h1 className="modal-title display-4 fs-5" id="exampleModalLabel">Novo comandos de voz</h1>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -49,12 +64,25 @@ const AddCommand = (props) => {
 
                         <div className="mb-0">
                             <label htmlFor="answer">Demosntração</label>
-                            <input className="form-control" onChange={(e) => setDemonstration(e.target.files[0])} accept="image/*" type="file" />
+                            {
+                                preview ?
+                                    (
+                                        <div className="position-relative text-center">
+                                            <button onClick={() =>{ setDemonstration(null); setPreview(null)} } type="button" aria-label="Close" className='btn btn-close bg-danger rounded-circle position-absolute top-0 start-100 translate-middle'></button>
+                                            <img className="w-75 rounded" src={preview} alt="demonstration" />
+                                        </div>
+                                    )
+                                    :
+                                    (
+                                        <input className="form-control" onChange={handleFileChange} accept="image/*" type="file" />
+                                    )
+                            }
+
                         </div>
 
                         <label className="mt-2" htmlFor="answer">Carregue ou grava um audio</label>
                         <div className="mb-2 border border-info rounded p-2">
-                            <AudioRecorder question={name}  audioURL={audioURL} setAudioURL={setAudioURL}/>
+                            <AudioRecorder question={name} audioURL={audioURL} setAudioURL={setAudioURL} />
                         </div>
 
                     </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import AddLemmas from "../components/lemmas/addlemmas"
 import RemLemmas from "../components/lemmas/remlemmas"
@@ -11,11 +11,21 @@ const Lemmas = () => {
     const [lemmas, setLemmas] = useState([])
     const [lemmasCopy, setLemmasCopy] = useState([])
     const [lemmaSelected, setLemmaSelected] = useState(null)
+    const audioRef = useRef(null)
 
 
     useEffect(() => {
         getLemmas(setLemmas, setLemmasCopy)
     }, [])
+
+    useEffect(() => {
+
+        if (lemmaSelected && lemmaSelected.sound && audioRef.current) {
+            audioRef.current.src = `http://localhost:5349/admin${lemmaSelected.sound}`
+            audioRef.current.load()
+        }
+
+    }, [lemmaSelected])
 
     return (
         <div className="d-flex gap-1 p-4 vh-100">
@@ -61,7 +71,7 @@ const Lemmas = () => {
                         lemmaSelected && (
                             <div className="d-flex gap-2">
                                 <button className="btn btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editlemma"> <i className="fas fa-edit"></i></button>
-                                <EditLemmas lemmaId={lemmaSelected?.id} lemmaSelected={lemmaSelected} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} />
+                                <EditLemmas audio={audioRef.current} lemmaId={lemmaSelected?.id} lemmaSelected={lemmaSelected} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} />
                                 <button className="btn btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remlemma"> <i className="fas fa-trash"></i></button>
                                 <RemLemmas lemmaId={lemmaSelected?.id} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} />
                             </div>
@@ -76,7 +86,7 @@ const Lemmas = () => {
                                 <div className="mt-2">
                                     <div className="d-flex justify-content-between">
                                         <h2>{lemmaSelected.question}</h2>
-                                        <audio controls src={`http://localhost:5349/admin${lemmaSelected.sound}`} />
+                                        <audio className="border border-info rounded-pill" controls src={`http://localhost:5349/admin${lemmaSelected.sound}`} />
                                     </div>
                                     <textarea className="form-control display-4 textarea lemma-list border-white" readOnly value={lemmaSelected.answer} />
                                 </div>

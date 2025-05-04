@@ -89,7 +89,7 @@ const AudioRecorder = (props) => {
           <small>Arquivo: <strong>{fileName}</strong></small>
           <div className='mt-2 position-relative'>
           <button onClick={resetRecorder} type="button" aria-label="Close" className='btn btn-close bg-danger rounded-circle position-absolute top-0 start-100 translate-middle'></button>
-            <audio className='w-100' src={audioURLCopy} controls/>
+            <audio className='w-100 border border-info rounded-pill' src={audioURLCopy} controls/>
           </div>
         </div>
       )}

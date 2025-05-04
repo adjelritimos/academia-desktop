@@ -9,6 +9,20 @@ const EditCommand = (props) => {
     const [description, setDescription] = useState(props.commandSelected?.description)
     const [demonstration, setDemonstration] = useState(`http://localhost:5349/admin${props.commandSelected?.demonstration}`)
     const [audioURL, setAudioURL] = useState(`http://localhost:5349/admin${props.commandSelected?.sound}`)
+    const [preview, setPreview] = useState(`http://localhost:5349/admin${props.commandSelected?.demonstration}`)
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0]
+
+        if (file) {
+            // Salva o arquivo para enviar ao backend
+            setDemonstration(file)
+
+            // Cria URL temporária para pré-visualização
+            const objectUrl = URL.createObjectURL(file)
+            setPreview(objectUrl)
+        }
+    }
 
     useEffect(() => {
 
@@ -45,13 +59,13 @@ const EditCommand = (props) => {
                                     demonstration ?
                                         (
                                             <div className="position-relative text-center">
-                                                <button onClick={() => setDemonstration(null)} type="button" aria-label="Close" className='btn btn-close bg-danger rounded-circle position-absolute top-0 start-100 translate-middle'></button>
-                                                <img className="w-75 rounded" src={demonstration} alt="demonstration" />
+                                                <button onClick={() => {setDemonstration(null); setPreview(null)}} type="button" aria-label="Close" className='btn btn-close bg-danger rounded-circle position-absolute top-0 start-100 translate-middle'></button>
+                                                <img className="w-75 rounded" src={preview} alt="demonstration" />
                                             </div>
                                         )
                                         :
                                         (
-                                            <input className="form-control" onChange={(e) => setDemonstration(e.target.files[0])} accept="image/*" type="file" />
+                                            <input className="form-control" onChange={handleFileChange} accept="image/*" type="file" />
                                         )
                                 }
                             </div>
