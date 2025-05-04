@@ -18,16 +18,17 @@ const AddQuestion = (props) => {
     const handleAddOption = () => {
         setOptions([...options, ""])
     }
+    const handleRemoveOption = (index) =>  {
+        setOptions(options.filter((option, i) => i !== index))
+    }
 
     const handleOptionChange = (index, value) => {
         const newOptions = [...options]
         newOptions[index] = value
         setOptions(newOptions)
-        console.log(newOptions)
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
 
         if (!isCheck()) {
             setError('Preencha o formulário devidamente')
@@ -69,11 +70,14 @@ const AddQuestion = (props) => {
                         <div className="mb-2">
                             <div className="d-flex justify-content-between">
                                 <label className="mt-auto mb-auto">Respostas alternativas erradas</label>
-                                <button type="button" onClick={handleAddOption} className="btn btn-info p-1 text-white rounded-circle"><i className="fas fa-plus"></i></button>
+                                <button type="button" onClick={handleAddOption} className="btn btn-info mt-auto mb-auto text-white rounded-circle"><i className="fas fa-plus"></i></button>
                             </div>
-                            <div>
+                            <div className="mt-2">
                                 {options.map((opt, index) => (
-                                    <input key={index} className="form-control border-info mt-1" value={opt} onChange={(e) => handleOptionChange(index, e.target.value)} placeholder={`Opção ${index + 1}`} />
+                                    <div className="position-relative">
+                                          <button onClick={()=> handleRemoveOption(index)} type="button" className='btn btn-close bg-danger rounded-circle position-absolute top-50 start-100 translate-middle'></button>
+                                        <input key={index} className="form-control border-info mt-1" value={opt} onChange={(e) => handleOptionChange(index, e.target.value)} placeholder={`Opção ${index + 1}`} />
+                                    </div>
                                 ))}
                             </div>
                         </div>
