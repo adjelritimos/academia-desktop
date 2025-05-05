@@ -14,9 +14,8 @@ const editQuestion = async (e, question, correct_answer, questionId, options, se
     try {
         const edited_question = await api.put(`/edit/a/question/${questionId}`, { question, correct_answer, options })
         if (edited_question.status === 200) {
-            questionSelected.correct_answer = correct_answer
-            questionSelected.question = question
-            setQuestionSelected(questionSelected)
+           
+            setQuestionSelected(edited_question.data)
             
             if (what.includes('lema'))
                 await getLemmaQuestions(setQuestionsGroups,  setQuestionsGroupsCopy, setLoading)

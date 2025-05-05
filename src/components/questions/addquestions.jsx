@@ -3,6 +3,21 @@ import addLemmaQuestion from "../../functions/questions/addLemmaQuestion"
 import addCommandQuestion from "../../functions/questions/addCommandQuestion"
 import addLessonQuestion from "../../functions/questions/addLessonQuestion"
 
+const length = (options) => {
+
+    let count = 0
+    for (const answer of options) {
+        if (answer.trim().length === 0) {
+            count = 0
+            break
+        }
+        else
+            count++
+    }
+    return count
+}
+
+
 const AddQuestion = (props) => {
     const [question, setQuestion] = useState('')
     const [correct_answer, setAnswer] = useState('')
@@ -12,13 +27,13 @@ const AddQuestion = (props) => {
     const isCheck = () => {
         const validQuestion = typeof question === 'string' && question.trim().length > 0
         const validAnswer = typeof correct_answer === 'string' && correct_answer.trim().length > 0
-        return validQuestion && validAnswer
+        return validQuestion && validAnswer && length(options) >= 3
     }
 
     const handleAddOption = () => {
         setOptions([...options, ""])
     }
-    const handleRemoveOption = (index) =>  {
+    const handleRemoveOption = (index) => {
         setOptions(options.filter((option, i) => i !== index))
     }
 
@@ -30,12 +45,6 @@ const AddQuestion = (props) => {
 
     const handleSubmit = async (e) => {
 
-        if (!isCheck()) {
-            setError('Preencha o formulário devidamente')
-            setTimeout(() => setError(''), 3000)
-            return
-        }
-
         if (props.what.includes('lema'))
             await addLemmaQuestion(e, question, correct_answer, props.id, props.elementSelected, options, props.setQuestionsGroups, props.setQuestionsGroupsCopy, props.setLessonSelected, props.setQuestionSelected, props.setLoading)
         else if (props.what.includes('comandos'))
@@ -46,6 +55,19 @@ const AddQuestion = (props) => {
         setQuestion('')
         setAnswer('')
         setOptions([])
+    }
+
+    const feedback = () => {
+
+        if (!isCheck()) {
+            if (length(options) < 3)
+                setError('Deve ter 3 ou mais respostas alternativas')
+            else
+                setError('Preencha a pergunta e resposta devidamente')
+            setTimeout(() => setError(''), 3000)
+            return
+        }
+
     }
 
     return (
@@ -75,7 +97,7 @@ const AddQuestion = (props) => {
                             <div className="mt-2">
                                 {options.map((opt, index) => (
                                     <div className="position-relative">
-                                          <button onClick={()=> handleRemoveOption(index)} type="button" className='btn btn-close bg-danger rounded-circle position-absolute top-50 start-100 translate-middle'></button>
+                                        <button onClick={() => handleRemoveOption(index)} type="button" className='btn btn-close bg-danger rounded-circle position-absolute top-50 start-100 translate-middle'></button>
                                         <input key={index} className="form-control border-info mt-1" value={opt} onChange={(e) => handleOptionChange(index, e.target.value)} placeholder={`Opção ${index + 1}`} />
                                     </div>
                                 ))}
@@ -83,7 +105,7 @@ const AddQuestion = (props) => {
                         </div>
                     </div>
                     <div className="modal-footer text-center border-white mt-0 pb-0 mb-0 pt-0">
-                        <button type="submit" data-bs-dismiss={ isCheck() ? "modal" : ""} className="btn btn-info text-white w-100 rounded-pill fw-bold">Adicionar</button>
+                        <button onClick={feedback} type={isCheck() ? "submit" : "button"} data-bs-dismiss={isCheck() ? "modal" : ""} className="btn btn-info text-white w-100 rounded-pill fw-bold">Adicionar</button>
                     </div>
                     <small className="text-center fw-bold mb-2 text-danger">{error}</small>
                 </form>

@@ -1,4 +1,5 @@
 import api from "../../server/api"
+import errorMessage from "../feedbacks/errormessage"
 
 const getCommands = async (setCommands, setCommandsCopy,  setLoading) => {
 
@@ -19,6 +20,7 @@ const getCommands = async (setCommands, setCommandsCopy,  setLoading) => {
     } catch (error) {
         setLoading(false)
         setCommands([])
+        errorMessage('falha no carregamento de dados, pode ser que não tenha conexão com a internet')
         console.log('Ocorreu algum erro, ', error)
     }
 }

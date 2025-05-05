@@ -1,4 +1,5 @@
 import api from "../../server/api"
+import errorMessage from "../feedbacks/errormessage"
 
 const getModules = async (setModules, setLoading) => {
    
@@ -15,6 +16,7 @@ const getModules = async (setModules, setLoading) => {
     } catch (error) {
         setModules([])
         setLoading(false)
+        errorMessage('falha ao carregar dados, pode ser que não tenha conexão com a internet')
         console.log('Ocorreu algum erro, ', error)
     }
 }

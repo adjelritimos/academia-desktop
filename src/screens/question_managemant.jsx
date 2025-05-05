@@ -12,6 +12,7 @@ import getLessonQuestion from "../functions/questions/getLessonQuestion"
 import filterLessons from "../functions/outhers/filterlesson"
 import { LoadingContext } from "../contexts/contextLoading"
 import Loading from "../components/others/loading"
+import { ToastContainer } from "react-toastify"
 
 const QuestionManagemant = () => {
 
@@ -141,7 +142,7 @@ const QuestionManagemant = () => {
 
                 </div>
             </div>
-
+            <ToastContainer/>
         </div>
     )
 }

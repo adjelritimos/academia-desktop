@@ -1,4 +1,5 @@
 import api from "../../server/api"
+import errorMessage from "../feedbacks/errormessage"
 
 const getLemmaQuestions = async (setQuestionsGroups, setQuestionsGroupsCopy,  setLoading) => {
     
@@ -24,6 +25,7 @@ const getLemmaQuestions = async (setQuestionsGroups, setQuestionsGroupsCopy,  se
         setQuestionsGroups([])
         setQuestionsGroupsCopy([])
         setLoading(false)
+        errorMessage('falha ao carregar dados, pode ser que não tenha conexão com a internet')
         console.log('Ocorreu algum erro, ', error)
     }
 }

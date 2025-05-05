@@ -5,6 +5,7 @@ import getModules from "../functions/contents/getModules"
 import RemModule from "../components/contents/remcontent"
 import { LoadingContext } from "../contexts/contextLoading"
 import Loading from "../components/others/loading"
+import { ToastContainer } from "react-toastify"
 
 
 const Contents = () => {
@@ -53,7 +54,7 @@ const Contents = () => {
                         )
                 }
             </div>
-
+            <ToastContainer/>
         </div>
     )
 

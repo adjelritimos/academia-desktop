@@ -20,7 +20,7 @@ const getLemmas = async (setLemmas, setLemmasCopy, setLoading) => {
     } catch (error) {
         setLemmas([])
         setLemmasCopy([])
-        errorMessage('falha ao carregar lemas, pode ser que não tenha conexão com a internet')
+        errorMessage('falha ao carregar dados, pode ser que não tenha conexão com a internet')
         setLoading(false)
         console.log('Ocorreu algum erro, ', error)
     }

@@ -7,6 +7,7 @@ import EditCommand from "../components/commands/editcommand"
 import filter from "../functions/outhers/filter"
 import { LoadingContext } from "../contexts/contextLoading"
 import Loading from "../components/others/loading"
+import { ToastContainer } from "react-toastify"
 
 
 const Commands = () => {
@@ -104,7 +105,7 @@ const Commands = () => {
                             )
                     }
                 </div>
-
+                <ToastContainer/>
             </div>
         </div>
     )

@@ -20,16 +20,14 @@ const Lemmas = () => {
 
     useEffect(() => {
         getLemmas(setLemmas, setLemmasCopy, setLoading)
-    }, [setLoading])
-
-    useEffect(() => {
 
         if (lemmaSelected && lemmaSelected.sound && audioRef.current) {
             audioRef.current.src = `http://localhost:5349/admin${lemmaSelected.sound}`
             audioRef.current.load()
         }
 
-    }, [lemmaSelected])
+    }, [setLoading, lemmaSelected])
+
 
     return (
         <div className="d-flex gap-1 p-4 vh-100">
