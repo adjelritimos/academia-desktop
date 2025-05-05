@@ -14,7 +14,7 @@ const RemCommand = (props) => {
                     </div>
                     <div className="modal-footer border-white mt-0 pt-0">
                         <button type="button" className="btn btn-outline-info rounded-pill fw-bold" data-bs-dismiss="modal">cancelar</button>
-                        <button onClick={()=> remCommand(props.commandId, props.setCommandSelected, props.setCommands, props.setCommandsCopy)} type="button" className="btn btn-danger text-white rounded-pill fw-bold" data-bs-dismiss="modal">remover</button>
+                        <button onClick={()=> remCommand(props.commandId, props.setCommandSelected, props.setCommands, props.setCommandsCopy, props.setLoading)} type="button" className="btn btn-danger text-white rounded-pill fw-bold" data-bs-dismiss="modal">remover</button>
                     </div>
                 </div>
             </div>

@@ -78,7 +78,7 @@ const EditCommand = (props) => {
 
                     </div>
                     <div className="modal-footer border-white mt-0 pt-0">
-                        <button disabled={isRecording} onClick={() => editCommand(props.commandId, props.setCommandSelected, name, description, demonstration, audioURL, props.setCommands, props.setCommandsCopy)} type="button" className="btn btn-info text-white w-100 rounded-pill fw-bold" data-bs-dismiss="modal">Salvar</button>
+                        <button disabled={isRecording} onClick={() => editCommand(props.commandId, props.setCommandSelected, name, description, demonstration, audioURL, props.setCommands, props.setCommandsCopy,  props.setLoading)} type="button" className="btn btn-info text-white w-100 rounded-pill fw-bold" data-bs-dismiss="modal">Salvar</button>
                     </div>
                 </div>
             </div>

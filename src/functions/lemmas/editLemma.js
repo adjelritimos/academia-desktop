@@ -3,10 +3,11 @@ import getLemmas from "./getLemmas"
 
 
 
-const editLemma = async (e, lemmaId, setLemmaSelected, question, answer, sound, setLemmas, setLemmasCopy) => {
+const editLemma = async (e, lemmaId, setLemmaSelected, question, answer, sound, setLemmas, setLemmasCopy,  setLoading) => {
 
     e.preventDefault()
 
+    setLoading(true)
     try {
         
         if (typeof sound === 'string')
@@ -26,10 +27,12 @@ const editLemma = async (e, lemmaId, setLemmaSelected, question, answer, sound, 
 
         if (new_lemma.status === 200) {
             setLemmaSelected(new_lemma.data)
-            await getLemmas(setLemmas, setLemmasCopy)
+            await getLemmas(setLemmas, setLemmasCopy, setLoading)
         }
 
+
     } catch (error) {
+        setLoading(false)
         console.log('Um erro ocorrido, ', error)
     }
 }

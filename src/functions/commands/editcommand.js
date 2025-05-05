@@ -3,7 +3,9 @@ import getCommands from "./getCommands"
 
 
 
-const editCommand = async (commandId, setCommandSelected, name, description, demonstration, sound, setCommands, setCommandsCopy) => {
+const editCommand = async (commandId, setCommandSelected, name, description, demonstration, sound, setCommands, setCommandsCopy,  setLoading) => {
+
+    setLoading(true)
 
     try {
 
@@ -21,9 +23,10 @@ const editCommand = async (commandId, setCommandSelected, name, description, dem
 
         if (edited_command.status === 200) {
             setCommandSelected(edited_command.data)
-            await getCommands(setCommands, setCommandsCopy)
+            await getCommands(setCommands, setCommandsCopy, setLoading)
         }
     } catch (error) {
+        setLoading(false)
         console.log('Um erro ocorrido, ', error)
     }
 }

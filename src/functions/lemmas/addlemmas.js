@@ -2,8 +2,9 @@ import api from "../../server/api"
 import getLemmas from "./getLemmas"
 
 
-const addLemma = async (e, question, answer, sound, setLemmas, setLemmasCopy,  setLemmaSelected) => {
+const addLemma = async (e, question, answer, sound, setLemmas, setLemmasCopy,  setLemmaSelected, setLoading) => {
     e.preventDefault()
+    setLoading(true)
     try {
         const formData = new FormData()
         formData.append('question', question)
@@ -17,10 +18,11 @@ const addLemma = async (e, question, answer, sound, setLemmas, setLemmasCopy,  s
         })
 
         if (new_lemma.status === 200) {
-            await getLemmas(setLemmas, setLemmasCopy)
+            await getLemmas(setLemmas, setLemmasCopy, setLoading)
             setLemmaSelected(new_lemma.data)
         }
     } catch (error) {
+        setLoading(false)
         console.log('Um erro ocorrido, ', error)
     }
 }

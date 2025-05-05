@@ -27,7 +27,7 @@ const EditLemmas = (props) => {
     return (
         <div className="modal fade" id="editlemma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog w-25 modal-dialog-centered">
-                <form onSubmit={(e) => editLemma(e, props.lemmaSelected.id, props.setLemmaSelected, question, answer, audioURL, props.setLemmas, props.setLemmasCopy)} className="modal-content">
+                <form onSubmit={(e) => editLemma(e, props.lemmaSelected.id, props.setLemmaSelected, question, answer, audioURL, props.setLemmas, props.setLemmasCopy,  props.setLoading)} className="modal-content">
                     <div className="modal-header bg-info p-2 pe-3 text-white fw-bold">
                         <h1 className="modal-title display-4 fs-5" id="exampleModalLabel">Editar o lema</h1>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

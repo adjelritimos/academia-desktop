@@ -43,7 +43,7 @@ const Lemmas = () => {
                         <button className="btn btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addlemma">
                             <i className="fas fa-plus"></i>
                         </button>
-                        <AddLemmas setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} />
+                        <AddLemmas setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading} />
                     </div>
                     <input onChange={(e) => filter(e.target.value, lemmas, setLemmasCopy, true)} type="text" placeholder="busque lemas por perguntas..." className="form-control mt-2 border-info" />
                     <div className="overflow-auto mt-3 lemma-list">
@@ -74,9 +74,9 @@ const Lemmas = () => {
                         lemmaSelected && (
                             <div className="d-flex gap-2">
                                 <button className="btn btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editlemma"> <i className="fas fa-edit"></i></button>
-                                <EditLemmas audio={audioRef.current} lemmaId={lemmaSelected?.id} lemmaSelected={lemmaSelected} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} />
+                                <EditLemmas audio={audioRef.current} lemmaId={lemmaSelected?.id} lemmaSelected={lemmaSelected} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading}/>
                                 <button className="btn btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remlemma"> <i className="fas fa-trash"></i></button>
-                                <RemLemmas lemmaId={lemmaSelected?.id} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} />
+                                <RemLemmas lemmaId={lemmaSelected?.id} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading}/>
                             </div>
                         )
                     }

@@ -1,7 +1,7 @@
 const Loading = (props) => {
 
     return (
-        <div className="modal fade show" style={{ display: props.loading ? 'block' : '' }} tabIndex="-1" aria-hidden={!props.loading}>
+        <div className="modal" style={{ display: props.loading ? 'block' : '' }} tabIndex="-1" aria-hidden={!props.loading}>
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content w-25 mx-auto shadow">
                     <div className="modal-body text-center">

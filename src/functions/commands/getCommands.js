@@ -1,6 +1,8 @@
 import api from "../../server/api"
 
-const getCommands = async (setCommands, setCommandsCopy) => {
+const getCommands = async (setCommands, setCommandsCopy,  setLoading) => {
+
+    setLoading(true)
 
     try {
         
@@ -12,7 +14,10 @@ const getCommands = async (setCommands, setCommandsCopy) => {
           
         else
             setCommands([])
+
+            setLoading(false)
     } catch (error) {
+        setLoading(false)
         setCommands([])
         console.log('Ocorreu algum erro, ', error)
     }
