@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom"
 import RemLesson from "../components/lessons/remlesson"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import EditLesson from "../components/lessons/editlesson"
 import AddQuestion from "../components/questions/addquestions"
 import getLemmaQuestions from "../functions/questions/getLemmaQuestions"
@@ -10,6 +10,8 @@ import filter from "../functions/outhers/filter"
 import getCommandQuestions from "../functions/questions/getCommandQuestions"
 import getLessonQuestion from "../functions/questions/getLessonQuestion"
 import filterLessons from "../functions/outhers/filterlesson"
+import { LoadingContext } from "../contexts/contextLoading"
+import Loading from "../components/others/loading"
 
 const QuestionManagemant = () => {
 
@@ -18,15 +20,19 @@ const QuestionManagemant = () => {
     const [questionsGroupsCopy, setQuestionsGroupsCopy] = useState([])
     const [lessonSelected, setLessonSelected] = useState(null)
     const [questionSelected, setQuestionSelected] = useState(null)
+    const { loading, setLoading } = useContext(LoadingContext)
+
+
+
 
     useEffect(() => {
         if (what.includes('lema'))
-            getLemmaQuestions(setQuestionsGroups, setQuestionsGroupsCopy)
+            getLemmaQuestions(setQuestionsGroups, setQuestionsGroupsCopy, setLoading)
         else if (what.includes('comandos'))
-            getCommandQuestions(setQuestionsGroups, setQuestionsGroupsCopy)
+            getCommandQuestions(setQuestionsGroups, setQuestionsGroupsCopy, setLoading)
         else
-            getLessonQuestion(setQuestionsGroups, setQuestionsGroupsCopy)
-    }, [what])
+            getLessonQuestion(setQuestionsGroups, setQuestionsGroupsCopy, setLoading)
+    }, [what, setLoading])
 
     return (
         <div className="d-flex gap-2 flex-column p-4 vh-100" >
@@ -35,7 +41,7 @@ const QuestionManagemant = () => {
                 <Link to={'/questions'} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white" role="button"><i className="fas fa-arrow-left"></i></Link>
                 <h1>Perguntas {what}</h1>
             </div>
-
+            <Loading loading={loading} />
             <div className="d-flex gap-1">
                 <div className="rounded-2 border border-1 border-info p-2 bg-white w-25 h-100">
                     <div className="d-flex flex-column">
@@ -48,7 +54,7 @@ const QuestionManagemant = () => {
                                         <button className="btn btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addquestion">
                                             <i className="fas fa-plus"></i>
                                         </button>
-                                        <AddQuestion what={what} id={lessonSelected?.id} setLessonSelected={setLessonSelected} setQuestionsGroups={setQuestionsGroups} setQuestionsGroupsCopy={setQuestionsGroupsCopy} />
+                                        <AddQuestion setLoading={setLoading} what={what} id={lessonSelected?.id} setLessonSelected={setLessonSelected} setQuestionsGroups={setQuestionsGroups} setQuestionsGroupsCopy={setQuestionsGroupsCopy} />
 
                                     </div>
                                 )
@@ -97,9 +103,9 @@ const QuestionManagemant = () => {
                             (
                                 <div className="d-flex gap-2">
                                     <button className="btn btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editquestion"> <i className="fas fa-edit"></i></button>
-                                    <EditQuestion what={what} questionId={questionSelected?.id} questionSelected={questionSelected} setQuestionsGroups={setQuestionsGroups} setQuestionsGroupsCopy={setQuestionsGroupsCopy} setQuestionSelected={setQuestionSelected} />
+                                    <EditQuestion setLoading={setLoading} what={what} questionId={questionSelected?.id} questionSelected={questionSelected} setQuestionsGroups={setQuestionsGroups} setQuestionsGroupsCopy={setQuestionsGroupsCopy} setQuestionSelected={setQuestionSelected} />
                                     <button className="btn btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remquestion"> <i className="fas fa-trash"></i></button>
-                                    <RemQuestion what={what} questionId={questionSelected?.id} setQuestionsGroups={setQuestionsGroups} setQuestionsGroupsCopy={setQuestionsGroupsCopy} setQuestionSelected={setQuestionSelected} />
+                                    <RemQuestion setLoading={setLoading} what={what} questionId={questionSelected?.id} setQuestionsGroups={setQuestionsGroups} setQuestionsGroupsCopy={setQuestionsGroupsCopy} setQuestionSelected={setQuestionSelected} />
                                 </div>
                             )
                         }

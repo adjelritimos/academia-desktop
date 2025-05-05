@@ -6,9 +6,10 @@ import getLessonQuestion from "./getLessonQuestion"
 
 
 
-const editQuestion = async (e, question, correct_answer, questionId, options, setQuestionsGroups, setQuestionsGroupsCopy, questionSelected, setQuestionSelected, what ) => {
+const editQuestion = async (e, question, correct_answer, questionId, options, setQuestionsGroups, setQuestionsGroupsCopy, questionSelected, setQuestionSelected, what, setLoading ) => {
 
     e.preventDefault()
+    setLoading(true)
 
     try {
         const edited_question = await api.put(`/edit/a/question/${questionId}`, { question, correct_answer, options })
@@ -18,13 +19,14 @@ const editQuestion = async (e, question, correct_answer, questionId, options, se
             setQuestionSelected(questionSelected)
             
             if (what.includes('lema'))
-                await getLemmaQuestions(setQuestionsGroups, setQuestionsGroupsCopy)
+                await getLemmaQuestions(setQuestionsGroups,  setQuestionsGroupsCopy, setLoading)
             else if (what.includes('comandos'))
-                await getCommandQuestions(setQuestionsGroups, setQuestionsGroupsCopy)
+                await getCommandQuestions(setQuestionsGroups,  setQuestionsGroupsCopy, setLoading)
             else
-                await getLessonQuestion(setQuestionsGroups, setQuestionsGroupsCopy)
+                await getLessonQuestion(setQuestionsGroups,  setQuestionsGroupsCopy, setLoading)
         }
     } catch (error) {
+        setLoading(false)
         console.log('Um erro ocorrido, ', error)
     }
 }

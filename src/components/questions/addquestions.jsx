@@ -37,11 +37,11 @@ const AddQuestion = (props) => {
         }
 
         if (props.what.includes('lema'))
-            await addLemmaQuestion(e, question, correct_answer, props.id, options, props.setQuestionsGroups, props.setQuestionsGroupsCopy, props.setLessonSelected)
+            await addLemmaQuestion(e, question, correct_answer, props.id, options, props.setQuestionsGroups, props.setQuestionsGroupsCopy, props.setLessonSelected, props.setLoading)
         else if (props.what.includes('comandos'))
-            await addCommandQuestion(e, question, correct_answer, props.id, options, props.setQuestionsGroups, props.setQuestionsGroupsCopy, props.setLessonSelected)
+            await addCommandQuestion(e, question, correct_answer, props.id, options, props.setQuestionsGroups, props.setQuestionsGroupsCopy, props.setLessonSelected, props.setLoading)
         else
-            await addLessonQuestion(e, question, correct_answer, props.id, options, props.setQuestionsGroups, props.setQuestionsGroupsCopy, props.setLessonSelected)
+            await addLessonQuestion(e, question, correct_answer, props.id, options, props.setQuestionsGroups, props.setQuestionsGroupsCopy, props.setLessonSelected, props.setLoading)
 
         setQuestion('')
         setAnswer('')

@@ -1,6 +1,8 @@
 import api from "../../server/api"
 
-const getLessonQuestion = async (setQuestionsGroups, setQuestionsGroupsCopy) => {
+const getLessonQuestion = async (setQuestionsGroups, setQuestionsGroupsCopy,  setLoading) => {
+
+    setLoading(true)
 
     try {
 
@@ -16,9 +18,12 @@ const getLessonQuestion = async (setQuestionsGroups, setQuestionsGroupsCopy) => 
             setQuestionsGroupsCopy([])
         }
 
+        setLoading(false)
+
     } catch (error) {
         setQuestionsGroups([])
         setQuestionsGroupsCopy([])
+        setLoading(false)
         console.log('Ocorreu algum erro, ', error)
     }
 }

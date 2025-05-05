@@ -29,7 +29,7 @@ const EditQuestion = (props) => {
             return
         }
 
-        await editQuestion(e, question, correct_answer, props.questionId, options, props.setQuestionsGroups, props.setQuestionsGroupsCopy, props.questionSelected, props.setQuestionSelected, props.what)
+        await editQuestion(e, question, correct_answer, props.questionId, options, props.setQuestionsGroups, props.setQuestionsGroupsCopy, props.questionSelected, props.setQuestionSelected, props.what, props.setLoading)
     }
 
     useEffect(()=> {
