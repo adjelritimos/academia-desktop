@@ -1,17 +1,21 @@
 import { Link } from "react-router-dom"
 import AddContent from "../components/contents/addcontent"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import getModules from "../functions/contents/getModules"
 import RemModule from "../components/contents/remcontent"
+import { LoadingContext } from "../contexts/contextLoading"
+import Loading from "../components/others/loading"
 
 
 const Contents = () => {
-
+    
+    const { loading, setLoading } = useContext(LoadingContext)
     const [modules, setModules] = useState([])
 
+
     useEffect(() => {
-        getModules(setModules)
-    }, [])
+        getModules(setModules, setLoading)
+    }, [setLoading])
 
     return (
         <div className="p-4 d-flex flex-column justify-content-center align-items-center">
@@ -20,8 +24,9 @@ const Contents = () => {
                     <Link to={'/home'} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white"><i className="fas fa-arrow-left"></i></Link>
                     <h1 className="fs-4 display-3 mt-auto mb-auto">Os conteúdos organizados em módulos</h1>
                 </div>
+                <Loading loading={loading} />
                 <button className="btn btn-info text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addmodule"><i className="fas fa-plus"></i> Novo módulo</button>
-                <AddContent setModules={setModules} />
+                <AddContent setModules={setModules} setLoading={setLoading}/>
             </div>
 
             <div className="d-flex flex-wrap w-75 gap-2 mt-2">
@@ -34,7 +39,7 @@ const Contents = () => {
                                         {module.name}
                                     </Link>
                                     <button data-bs-toggle="modal" data-bs-target="#remcontent" className="btn mt-auto mb-auto btn-danger rounded-circle"><i className="fas fa-trash"></i></button>
-                                    <RemModule moduleId={module.id} setModules={setModules} />
+                                    <RemModule moduleId={module.id} setModules={setModules} setLoading={setLoading}/>
                                 </div>
                             ))
                         )
