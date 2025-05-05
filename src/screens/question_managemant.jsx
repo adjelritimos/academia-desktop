@@ -54,8 +54,7 @@ const QuestionManagemant = () => {
                                         <button className="btn btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addquestion">
                                             <i className="fas fa-plus"></i>
                                         </button>
-                                        <AddQuestion setLoading={setLoading} what={what} id={lessonSelected?.id} elementSelected={lessonSelected} setQuestionSelected={questionSelected} setLessonSelected={setLessonSelected} setQuestionsGroups={setQuestionsGroups} setQuestionsGroupsCopy={setQuestionsGroupsCopy} />
-
+                                        <AddQuestion setLoading={setLoading} what={what} id={lessonSelected?.id} elementSelected={lessonSelected} setQuestionSelected={setQuestionSelected} setLessonSelected={setLessonSelected} setQuestionsGroups={setQuestionsGroups} setQuestionsGroupsCopy={setQuestionsGroupsCopy} />
                                     </div>
                                 )
                             }

@@ -7,6 +7,7 @@ import EditLemmas from "../components/lemmas/editlemma"
 import filter from "../functions/outhers/filter"
 import Loading from "../components/others/loading"
 import { LoadingContext } from "../contexts/contextLoading"
+import { ToastContainer } from "react-toastify"
 
 const Lemmas = () => {
 
@@ -105,6 +106,7 @@ const Lemmas = () => {
                 </div>
 
             </div>
+            <ToastContainer/>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import getLessonQuestion from "./getLessonQuestion"
 
 
 
-const addLessonQuestion = async (e, question, correct_answer, lessonId, lesson,options,setQuestionsGroups, setQuestionsGroupsCopy,  setLessonSelected, setQuestionSelected, setLoading) => {
+const addLessonQuestion = async (e, question, correct_answer, lessonId, lesson, options,setQuestionsGroups, setQuestionsGroupsCopy, setLessonSelected, setQuestionSelected, setLoading) => {
     e.preventDefault()
     setLoading(true)
     try {
@@ -14,6 +14,7 @@ const addLessonQuestion = async (e, question, correct_answer, lessonId, lesson,o
             setLessonSelected(lesson)
         }
     } catch (error) {
+        setLoading(false)
         console.log('Um erro ocorrido, ', error)
     }
 }

@@ -83,7 +83,7 @@ const AddQuestion = (props) => {
                         </div>
                     </div>
                     <div className="modal-footer text-center border-white mt-0 pb-0 mb-0 pt-0">
-                        <button type="submit" className="btn btn-info text-white w-100 rounded-pill fw-bold">Adicionar</button>
+                        <button type="submit" data-bs-dismiss={ isCheck() ? "modal" : ""} className="btn btn-info text-white w-100 rounded-pill fw-bold">Adicionar</button>
                     </div>
                     <small className="text-center fw-bold mb-2 text-danger">{error}</small>
                 </form>
