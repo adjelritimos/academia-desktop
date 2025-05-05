@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import AddLemmas from "../components/lemmas/addlemmas"
 import RemLemmas from "../components/lemmas/remlemmas"
 import getLemmas from "../functions/lemmas/getLemmas"
 import EditLemmas from "../components/lemmas/editlemma"
 import filter from "../functions/outhers/filter"
+import Loading from "../components/others/loading"
+import { LoadingContext } from "../contexts/contextLoading"
 
 const Lemmas = () => {
 
@@ -12,11 +14,12 @@ const Lemmas = () => {
     const [lemmasCopy, setLemmasCopy] = useState([])
     const [lemmaSelected, setLemmaSelected] = useState(null)
     const audioRef = useRef(null)
+    const { loading, setLoading } = useContext(LoadingContext)
 
 
     useEffect(() => {
-        getLemmas(setLemmas, setLemmasCopy)
-    }, [])
+        getLemmas(setLemmas, setLemmasCopy, setLoading)
+    }, [setLoading])
 
     useEffect(() => {
 
@@ -36,7 +39,7 @@ const Lemmas = () => {
                             <Link to={'/home'} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white"><i className="fas fa-arrow-left"></i></Link>
                             <h1 className="fs-4 display-6 m-0 p-0 mt-auto mb-auto w-100">Lemas</h1>
                         </div>
-
+                        <Loading loading={loading} />
                         <button className="btn btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addlemma">
                             <i className="fas fa-plus"></i>
                         </button>
