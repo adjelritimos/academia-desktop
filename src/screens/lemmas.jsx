@@ -17,17 +17,9 @@ const Lemmas = () => {
     const audioRef = useRef(null)
     const { loading, setLoading } = useContext(LoadingContext)
 
-
     useEffect(() => {
         getLemmas(setLemmas, setLemmasCopy, setLoading)
-
-        if (lemmaSelected && lemmaSelected.sound && audioRef.current) {
-            audioRef.current.src = `http://localhost:5349/admin${lemmaSelected.sound}`
-            audioRef.current.load()
-        }
-
-    }, [setLoading, lemmaSelected])
-
+    }, [setLoading])
 
     return (
         <div className="d-flex gap-1 p-4 vh-100">
@@ -59,7 +51,8 @@ const Lemmas = () => {
                                 (
                                     <div className="text-center h-100 d-flex flex-column justify-content-center aliament-items-center">
                                         <i class="fas fa-inbox text-info"></i>
-                                        <h1 className="display-5 fs-5">Nada para listar</h1>
+                                        <h1 className="display-5 fs-5 m-0 p-0">Sem lema para listar</h1>
+                                        <small>adicione um lema a lista</small>
                                     </div>
                                 )
                         }

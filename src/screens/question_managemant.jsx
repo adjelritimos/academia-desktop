@@ -51,16 +51,19 @@ const QuestionManagemant = () => {
                             {
                                 questionsGroups.length > 0 &&
                                 (
-                                    <div>
-                                        <button className="btn btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addquestion">
+                                    <div className="dropdown">
+                                        <button className="btn btn-info text-white rounded-circle" data-bs-toggle={lessonSelected ? "modal" : "dropdown"} data-bs-target="#addquestion">
                                             <i className="fas fa-plus"></i>
                                         </button>
+                                        <ul className="dropdown-menu alert alert-danger p-0">
+                                            <li><p className="dropdown-item p-1 alert alert-danger fw-bold m-0">Deves selecionar { what.includes('lema') ? "um lema" : what.includes('comandos') ? 'um comando' : 'uma lição' } para assossiar uma pergunta</p></li>
+                                        </ul>
                                         <AddQuestion setLoading={setLoading} what={what} id={lessonSelected?.id} elementSelected={lessonSelected} setQuestionSelected={setQuestionSelected} setLessonSelected={setLessonSelected} setQuestionsGroups={setQuestionsGroups} setQuestionsGroupsCopy={setQuestionsGroupsCopy} />
                                     </div>
                                 )
                             }
                         </div>
-                        <input onChange={(e) => { what.includes('lema') ? filter(e.target.value, questionsGroups, setQuestionsGroupsCopy, what.includes('lema')) : what.includes('comandos') ? filter(e.target.value, questionsGroups, setQuestionsGroupsCopy, what.includes('lema')) : filterLessons(e.target.value, questionsGroups, setQuestionsGroupsCopy)}} type="text" placeholder="busque perguntas" className="form-control mt-2 border-info" />
+                        <input onChange={(e) => { what.includes('lema') ? filter(e.target.value, questionsGroups, setQuestionsGroupsCopy, what.includes('lema')) : what.includes('comandos') ? filter(e.target.value, questionsGroups, setQuestionsGroupsCopy, what.includes('lema')) : filterLessons(e.target.value, questionsGroups, setQuestionsGroupsCopy) }} type="text" placeholder="busque perguntas" className="form-control mt-2 border-info" />
                         <div className="overflow-auto accordion accordion-flush mt-3 lesson-list">
                             {
                                 questionsGroupsCopy.length > 0 ?
@@ -88,7 +91,7 @@ const QuestionManagemant = () => {
                                         <div className="text-center h-100 d-flex flex-column justify-content-center aliament-items-center">
                                             <i class="fas fa-inbox text-info"></i>
                                             <h1 className="display-5 fs-5">Nada para listar</h1>
-                                            <small> { what.includes('lema') ? "Precisas de adicionar pelo menos um lema" : what.includes('comandos') ? "Precisas de adicionar pelo menos um comando de voz" : "Precisas de adicionar pelo menos uma lição"} </small>
+                                            <small> {what.includes('lema') ? "Precisas de adicionar pelo menos um lema" : what.includes('comandos') ? "Precisas de adicionar pelo menos um comando de voz" : "Precisas de adicionar pelo menos uma lição"} </small>
                                         </div>
                                     )
                             }
@@ -142,7 +145,7 @@ const QuestionManagemant = () => {
 
                 </div>
             </div>
-            <ToastContainer/>
+            <ToastContainer />
         </div>
     )
 }

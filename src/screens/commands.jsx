@@ -51,7 +51,8 @@ const Commands = () => {
                                 (
                                     <div className="text-center h-100 d-flex flex-column justify-content-center aliament-items-center">
                                         <i class="fas fa-inbox text-info"></i>
-                                        <h1 className="display-5 fs-5">Em comandos para listar</h1>
+                                        <h1 className="display-5 fs-5 p-0 m-0">Sem comandos para listar</h1>
+                                        <small>adicione um comando a lista</small>
                                     </div>
                                 )
                         }

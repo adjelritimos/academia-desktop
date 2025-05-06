@@ -1,8 +1,9 @@
 import api from "../../server/api"
+import errorMessage from "../feedbacks/errormessage"
 import getLemmas from "./getLemmas"
 
 
-const addLemma = async (e, question, answer, sound, setLemmas, setLemmasCopy,  setLemmaSelected, setLoading) => {
+const addLemma = async (e, question, answer, sound, setLemmas, setLemmasCopy, setLemmaSelected, setLoading) => {
     e.preventDefault()
     setLoading(true)
     try {
@@ -10,7 +11,7 @@ const addLemma = async (e, question, answer, sound, setLemmas, setLemmasCopy,  s
         formData.append('question', question)
         formData.append('answer', answer)
         formData.append('sound', sound)
-        
+
         const new_lemma = await api.post('/add/a/lemma', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -23,6 +24,10 @@ const addLemma = async (e, question, answer, sound, setLemmas, setLemmasCopy,  s
         }
     } catch (error) {
         setLoading(false)
+        if (error.message.includes("Network Error"))
+            errorMessage('Sem conexão a internet, o lema não foi adicionado')
+        else
+            errorMessage('Ocorreu um erro ao tentar adicionar o lema.')
         console.log('Um erro ocorrido, ', error)
     }
 }

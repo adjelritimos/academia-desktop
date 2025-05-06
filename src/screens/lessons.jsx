@@ -55,7 +55,8 @@ const Lessons = () => {
                                     (
                                         <div className="text-center h-100 d-flex flex-column justify-content-center aliament-items-center">
                                             <i class="fas fa-inbox text-info"></i>
-                                            <h1 className="display-5 fs-5">Nada para listar</h1>
+                                            <h1 className="display-5 fs-5 m-0 p-0">Sem liçõe para listar</h1>
+                                            <small>adicione uma lição a lista</small>
                                         </div>
                                     )
                             }
