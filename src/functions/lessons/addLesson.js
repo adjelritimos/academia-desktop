@@ -1,4 +1,5 @@
 import api from "../../server/api"
+import errorMessage from "../feedbacks/errormessage"
 import getLessons from "./getLessons"
 
 
@@ -13,6 +14,10 @@ const addLesson = async (e, content, body, moduleId, setLessons, setLessonsCopy,
         }
     } catch (error) {
         setLoading(false)
+        if (error.message.includes("Network Error"))
+            errorMessage('Sem conexão a internet, a lição não foi adicionado')
+        else
+            errorMessage('Ocorreu um erro ao tentar adicionar a lição.')
         console.log('Um erro ocorrido, ', error)
     }
 }

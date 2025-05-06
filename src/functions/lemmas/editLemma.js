@@ -1,15 +1,16 @@
 import api from "../../server/api"
+import errorMessage from "../feedbacks/errormessage"
 import getLemmas from "./getLemmas"
 
 
 
-const editLemma = async (e, lemmaId, setLemmaSelected, question, answer, sound, setLemmas, setLemmasCopy,  setLoading) => {
+const editLemma = async (e, lemmaId, setLemmaSelected, question, answer, sound, setLemmas, setLemmasCopy, setLoading) => {
 
     e.preventDefault()
 
     setLoading(true)
     try {
-        
+
         if (typeof sound === 'string')
             sound = sound.split('admin')[1]
 
@@ -33,6 +34,10 @@ const editLemma = async (e, lemmaId, setLemmaSelected, question, answer, sound, 
 
     } catch (error) {
         setLoading(false)
+        if (error.message.includes("Network Error"))
+            errorMessage('Sem conexão a internet, o lema não foi editado')
+        else
+            errorMessage('Ocorreu um erro ao tentar editar o lema.')
         console.log('Um erro ocorrido, ', error)
     }
 }

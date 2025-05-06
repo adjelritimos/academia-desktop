@@ -1,4 +1,5 @@
 import api from "../../server/api"
+import errorMessage from "../feedbacks/errormessage"
 import getLessons from "./getLessons"
 
 
@@ -13,6 +14,10 @@ const editLesson = async (e, lessonId, content, body,  setLesson, setLessons, se
         }
     } catch (error) {
         setLoading(false)
+        if (error.message.includes("Network Error"))
+            errorMessage('Sem conexão a internet, a lição não foi editado')
+        else
+            errorMessage('Ocorreu um erro ao tentar edita a lição.')
         console.log('Um erro ocorrido, ', error)
     }
 }
