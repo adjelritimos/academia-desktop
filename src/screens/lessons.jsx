@@ -38,7 +38,7 @@ const Lessons = () => {
                             <button className="btn btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addlesson">
                                 <i className="fas fa-plus"></i>
                             </button>
-                            <AddLesson moduleId={moduleId} setLessons={setLessons} setLessonsCopy={setLessonsCopy} setLessonSelected={setLessonSelected} setLoading={setLoading}/>
+                            <AddLesson moduleId={moduleId} setLessons={setLessons} setLessonsCopy={setLessonsCopy} setLessonSelected={setLessonSelected} setLoading={setLoading} />
                         </div>
                         <input onChange={(e) => filterLessons(e.target.value, lessons, setLessonsCopy)} type="text" placeholder="busque lições por tema..." className="form-control mt-2 border-info" />
                         <div className="overflow-auto mt-3 lesson-list">
@@ -83,9 +83,10 @@ const Lessons = () => {
                         {
                             lessonSelected ?
                                 (
-                                    <div>
+                                    <div className="gap-2 position-relative">
                                         <h2 className="text-break">{lessonSelected.content}</h2>
                                         <textarea className="form-control display-4 textarea lesson-list border-white" readOnly value={lessonSelected.body} />
+                                        <Link to={'/questions/sobre conteúdos/conteúdos'} role="button" className="btn btn-outline-info position-absolute rounded-pill fw-bold bottom-0 end-0">Ir as perguntas</Link>
                                     </div>
                                 )
                                 :
@@ -100,7 +101,7 @@ const Lessons = () => {
 
                 </div>
             </div>
-            <ToastContainer/>
+            <ToastContainer />
         </div>
     )
 }

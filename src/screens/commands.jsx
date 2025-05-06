@@ -34,7 +34,7 @@ const Commands = () => {
                         <button className="btn btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addcommand">
                             <i className="fas fa-plus"></i>
                         </button>
-                        <AddCommand setCommandSelected={setCommandSelected} setCommands={setCommands} setCommandsCopy={setCommandsCopy} setLoading={setLoading}/>
+                        <AddCommand setCommandSelected={setCommandSelected} setCommands={setCommands} setCommandsCopy={setCommandsCopy} setLoading={setLoading} />
                     </div>
                     <input onChange={(e) => filter(e.target.value, commands, setCommandsCopy, false)} type="text" placeholder="busque comandos pelo nome..." className="form-control mt-2 border-info" />
                     <div className="overflow-auto mt-3 lesson-list">
@@ -69,7 +69,7 @@ const Commands = () => {
                                 <button className="btn btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editcommand"> <i className="fas fa-edit"></i></button>
                                 <EditCommand commandId={commandSelected?.id} commandSelected={commandSelected} setCommandSelected={setCommandSelected} setCommandsCopy={setCommandsCopy} setLoading={setLoading} setCommands={setCommands} />
                                 <button className="btn btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remcommand"> <i className="fas fa-trash"></i></button>
-                                <RemCommand commandId={commandSelected?.id} setCommandSelected={setCommandSelected} setCommandsCopy={setCommandsCopy} setCommands={setCommands} setLoading={setLoading}/>
+                                <RemCommand commandId={commandSelected?.id} setCommandSelected={setCommandSelected} setCommandsCopy={setCommandsCopy} setCommands={setCommands} setLoading={setLoading} />
                             </div>
                         )
                     }
@@ -79,11 +79,11 @@ const Commands = () => {
                     {
                         commandSelected ?
                             (
-                                <div className="d-flex gap-2">
+                                <div className="d-flex gap-2 position-relative">
                                     <div className="w-75 position-relative">
                                         <h2 className="text-break w-75">{commandSelected.name}</h2>
                                         <textarea className="form-control display-4 textarea h-75 border-white" readOnly value={commandSelected.description} />
-                                        <audio className="position-absolute bottom-0 start-50 translate-middle-x w-100" controls src={`http://localhost:5349/admin${commandSelected.sound}`} />
+                                        <audio className="position-absolute border-info border rounded-pill text-info bottom-0 start-50 translate-middle-x w-100" controls src={`http://localhost:5349/admin${commandSelected.sound}`} />
                                     </div>
                                     {
                                         commandSelected.demonstration ?
@@ -95,6 +95,7 @@ const Commands = () => {
                                                 <img className="w-50 border mt-4 rounded-4 image-demonstration" src='/noImage.png' alt="Prévia" />
                                             )
                                     }
+                                    <Link to={'/questions/sobre comandos/comandos'} role="button" className="btn btn-outline-info position-absolute rounded-pill fw-bold bottom-0 end-0">Ir as perguntas</Link>
                                 </div>
                             )
                             :
@@ -106,7 +107,7 @@ const Commands = () => {
                             )
                     }
                 </div>
-                <ToastContainer/>
+                <ToastContainer />
             </div>
         </div>
     )

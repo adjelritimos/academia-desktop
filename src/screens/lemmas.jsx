@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, Links } from "react-router-dom"
 import AddLemmas from "../components/lemmas/addlemmas"
 import RemLemmas from "../components/lemmas/remlemmas"
 import getLemmas from "../functions/lemmas/getLemmas"
@@ -78,12 +78,13 @@ const Lemmas = () => {
                     {
                         lemmaSelected ?
                             (
-                                <div className="mt-2">
+                                <div className="mt-2 position-relative">
                                     <div className="d-flex justify-content-between">
                                         <h2>{lemmaSelected.question}</h2>
                                         <audio className="border border-info rounded-pill" controls src={`http://localhost:5349/admin${lemmaSelected.sound}`} />
                                     </div>
                                     <textarea className="form-control display-4 textarea lemma-list border-white" readOnly value={lemmaSelected.answer} />
+                                    <Link to={'/questions/sobre lemas/lemas'} role="button" className="btn btn-outline-info position-absolute rounded-pill fw-bold bottom-0 end-0">Ir as perguntas</Link>
                                 </div>
                             )
                             :
