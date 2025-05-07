@@ -1,7 +1,5 @@
 import { Link, useParams } from "react-router-dom"
-import RemLesson from "../components/lessons/remlesson"
 import { useContext, useEffect, useState } from "react"
-import EditLesson from "../components/lessons/editlesson"
 import AddQuestion from "../components/questions/addquestions"
 import getLemmaQuestions from "../functions/questions/getLemmaQuestions"
 import RemQuestion from "../components/questions/remquestion"
@@ -23,9 +21,7 @@ const QuestionManagemant = () => {
     const [questionSelected, setQuestionSelected] = useState(null)
     const { loading, setLoading } = useContext(LoadingContext)
 
-
-
-
+    
     useEffect(() => {
         if (what.includes('lema'))
             getLemmaQuestions(setQuestionsGroups, setQuestionsGroupsCopy, setLoading)
@@ -55,7 +51,7 @@ const QuestionManagemant = () => {
                                         <button className="btn btn-info text-white rounded-circle" data-bs-toggle={lessonSelected ? "modal" : "dropdown"} data-bs-target="#addquestion">
                                             <i className="fas fa-plus"></i>
                                         </button>
-                                        <ul className="dropdown-menu alert alert-danger p-0">
+                                        <ul className={ lessonSelected ? "visually-hidden" : "dropdown-menu alert alert-danger p-0"}>
                                             <li><p className="dropdown-item p-1 alert alert-danger fw-bold m-0">Deves selecionar { what.includes('lema') ? "um lema" : what.includes('comandos') ? 'um comando' : 'uma lição' } para assossiar uma pergunta</p></li>
                                         </ul>
                                         <AddQuestion setLoading={setLoading} what={what} id={lessonSelected?.id} elementSelected={lessonSelected} setQuestionSelected={setQuestionSelected} setLessonSelected={setLessonSelected} setQuestionsGroups={setQuestionsGroups} setQuestionsGroupsCopy={setQuestionsGroupsCopy} />
