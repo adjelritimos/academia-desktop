@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react"
-import { Link, Links } from "react-router-dom"
+import { Link } from "react-router-dom"
 import AddLemmas from "../components/lemmas/addlemmas"
 import RemLemmas from "../components/lemmas/remlemmas"
 import getLemmas from "../functions/lemmas/getLemmas"
@@ -95,6 +95,7 @@ const Lemmas = () => {
                                 </div>
                             )
                     }
+                    
                 </div>
 
             </div>
