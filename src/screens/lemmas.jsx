@@ -37,7 +37,7 @@ const Lemmas = () => {
                         <AddLemmas setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading} />
                     </div>
                     <input onChange={(e) => filter(e.target.value, lemmas, setLemmasCopy, true)} type="text" placeholder="busque lemas por perguntas..." className="form-control mt-2 border-info" />
-                    <div className="overflow-auto mt-3 lemma-list">
+                    <div className="overflow-auto position-relative mt-3 lemma-list">
                         {
                             lemmasCopy.length > 0 ?
                                 (
@@ -56,6 +56,7 @@ const Lemmas = () => {
                                     </div>
                                 )
                         }
+                       { lemmas.length > 0 && ( <Link to={'/questions/sobre lemas/lemas'} role="button" className="btn btn-outline-info position-absolute rounded-pill fw-bold bottom-0 end-0">Ir as perguntas</Link>)}
                     </div>
                 </div>
             </div>
@@ -66,9 +67,9 @@ const Lemmas = () => {
                         lemmaSelected && (
                             <div className="d-flex gap-2">
                                 <button className="btn btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editlemma"> <i className="fas fa-edit"></i></button>
-                                <EditLemmas audio={audioRef.current} lemmaId={lemmaSelected?.id} lemmaSelected={lemmaSelected} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading}/>
+                                <EditLemmas audio={audioRef.current} lemmaId={lemmaSelected?.id} lemmaSelected={lemmaSelected} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading} />
                                 <button className="btn btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remlemma"> <i className="fas fa-trash"></i></button>
-                                <RemLemmas lemmaId={lemmaSelected?.id} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading}/>
+                                <RemLemmas lemmaId={lemmaSelected?.id} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading} />
                             </div>
                         )
                     }
@@ -78,13 +79,12 @@ const Lemmas = () => {
                     {
                         lemmaSelected ?
                             (
-                                <div className="mt-2 position-relative">
+                                <div className="mt-2">
                                     <div className="d-flex justify-content-between">
                                         <h2>{lemmaSelected.question}</h2>
                                         <audio className="border border-info rounded-pill" controls src={`http://localhost:5349/admin${lemmaSelected.sound}`} />
                                     </div>
                                     <textarea className="form-control display-4 textarea lemma-list border-white" readOnly value={lemmaSelected.answer} />
-                                    <Link to={'/questions/sobre lemas/lemas'} role="button" className="btn btn-outline-info position-absolute rounded-pill fw-bold bottom-0 end-0">Ir as perguntas</Link>
                                 </div>
                             )
                             :
@@ -95,11 +95,11 @@ const Lemmas = () => {
                                 </div>
                             )
                     }
-                    
+
                 </div>
 
             </div>
-            <ToastContainer/>
+            <ToastContainer />
         </div>
     )
 }

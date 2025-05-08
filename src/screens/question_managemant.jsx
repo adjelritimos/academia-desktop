@@ -11,6 +11,7 @@ import filterLessons from "../functions/outhers/filterlesson"
 import { LoadingContext } from "../contexts/contextLoading"
 import Loading from "../components/others/loading"
 import { ToastContainer } from "react-toastify"
+import goBack from "../functions/outhers/goBack"
 
 const QuestionManagemant = () => {
 
@@ -35,7 +36,7 @@ const QuestionManagemant = () => {
         <div className="d-flex gap-2 flex-column p-4 vh-100" >
 
             <div className="d-flex gap-2 bg-white rounded p-2">
-                <Link to={'/questions'} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white" role="button"><i className="fas fa-arrow-left"></i></Link>
+                <button onClick={goBack} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white" role="button"><i className="fas fa-arrow-left"></i></button>
                 <h1>Perguntas {what}</h1>
             </div>
             <Loading loading={loading} />
@@ -114,7 +115,7 @@ const QuestionManagemant = () => {
                         {
                             questionSelected ?
                                 (
-                                    <div className="w-75 mx-auto shadow-sm p-2 rounded">
+                                    <div className="mx-auto p-2 rounded">
                                         <h2>{questionSelected.question}</h2>
 
                                         <label htmlFor="alert">Resposta correta</label>
@@ -123,7 +124,7 @@ const QuestionManagemant = () => {
                                         </div>
 
                                         <label htmlFor="alert">Respostas alternativas erradas</label>
-                                        <div className="alert text-break alert-danger" role="alert">
+                                        <div className="alert alert-danger" role="alert">
                                             {questionSelected.answers.map((option) => (<p className="text-break" key={option.id}>{option.answer}</p>))}
                                         </div>
 
