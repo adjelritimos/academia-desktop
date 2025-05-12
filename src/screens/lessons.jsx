@@ -102,7 +102,7 @@ const Lessons = () => {
                     </div>
 
                 </div>
-                <ToastContainer position="top-center" />
+                <ToastContainer position="top-center"/>
             </div>
         </div>
     )
