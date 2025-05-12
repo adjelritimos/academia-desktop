@@ -99,7 +99,7 @@ const Lemmas = () => {
                 </div>
 
             </div>
-            <ToastContainer />
+            <ToastContainer position="top-center"/>
         </div>
     )
 }

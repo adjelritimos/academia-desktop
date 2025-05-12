@@ -37,7 +37,7 @@ const Commands = () => {
                         <AddCommand setCommandSelected={setCommandSelected} setCommands={setCommands} setCommandsCopy={setCommandsCopy} setLoading={setLoading} />
                     </div>
                     <input onChange={(e) => filter(e.target.value, commands, setCommandsCopy, false)} type="text" placeholder="busque comandos pelo nome..." className="form-control mt-2 border-info" />
-                    <div className="overflow-auto mt-3 lesson-list">
+                    <div className="overflow-auto mt-3 position-relative lemma-list">
                         {
                             commandsCopy.length > 0 ?
                                 (
@@ -56,6 +56,9 @@ const Commands = () => {
                                     </div>
                                 )
                         }
+
+                        {commands.length > 0 && (<Link to={'/questions/sobre comandos de voz/comandos'} role="button" className="btn btn-outline-info position-absolute rounded-pill fw-bold bottom-0 end-0">Ir as perguntas</Link>)}
+
                     </div>
                 </div>
             </div>
@@ -107,7 +110,7 @@ const Commands = () => {
                             )
                     }
                 </div>
-                <ToastContainer />
+                 <ToastContainer position="top-center"/>
             </div>
         </div>
     )

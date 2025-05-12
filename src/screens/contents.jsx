@@ -54,7 +54,7 @@ const Contents = () => {
                         )
                 }
             </div>
-            <ToastContainer/>
+             <ToastContainer position="top-center"/>
         </div>
     )
 

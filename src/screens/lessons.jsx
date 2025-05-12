@@ -7,7 +7,7 @@ import EditLesson from "../components/lessons/editlesson"
 import filterLessons from "../functions/outhers/filterlesson"
 import { LoadingContext } from "../contexts/contextLoading"
 import Loading from "../components/others/loading"
-import { ToastContainer } from "react-toastify"
+
 
 const Lessons = () => {
 
@@ -41,7 +41,7 @@ const Lessons = () => {
                             <AddLesson moduleId={moduleId} setLessons={setLessons} setLessonsCopy={setLessonsCopy} setLessonSelected={setLessonSelected} setLoading={setLoading} />
                         </div>
                         <input onChange={(e) => filterLessons(e.target.value, lessons, setLessonsCopy)} type="text" placeholder="busque lições por tema..." className="form-control mt-2 border-info" />
-                        <div className="overflow-auto mt-3 lesson-list">
+                        <div className="overflow-auto position-relative mt-3 lesson-list">
                             {
                                 lessonsCopy.length > 0 ?
                                     (
@@ -60,6 +60,9 @@ const Lessons = () => {
                                         </div>
                                     )
                             }
+
+                            {lessons.length > 0 && (<Link to={'/questions/sobre conteúdos/conteúdos'} role="button" className="btn btn-outline-info position-absolute rounded-pill fw-bold bottom-0 end-0">Ir as perguntas</Link>)}
+
                         </div>
                     </div>
                 </div>
@@ -86,7 +89,6 @@ const Lessons = () => {
                                     <div className="gap-2 position-relative">
                                         <h2 className="text-break">{lessonSelected.content}</h2>
                                         <textarea className="form-control display-4 textarea lesson-list border-white" readOnly value={lessonSelected.body} />
-                                        <Link to={'/questions/sobre conteúdos/conteúdos'} role="button" className="btn btn-outline-info position-absolute rounded-pill fw-bold bottom-0 end-0">Ir as perguntas</Link>
                                     </div>
                                 )
                                 :
@@ -100,10 +102,13 @@ const Lessons = () => {
                     </div>
 
                 </div>
+                <ToastContainer position="top-center" />
             </div>
-            <ToastContainer />
         </div>
     )
 }
 
 export default Lessons
+
+
+
