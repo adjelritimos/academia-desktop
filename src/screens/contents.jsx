@@ -9,7 +9,7 @@ import { ToastContainer } from "react-toastify"
 
 
 const Contents = () => {
-    
+
     const { loading, setLoading } = useContext(LoadingContext)
     const [modules, setModules] = useState([])
 
@@ -27,20 +27,20 @@ const Contents = () => {
                 </div>
                 <Loading loading={loading} />
                 <button className="btn btn-info text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addmodule"><i className="fas fa-plus"></i> Novo módulo</button>
-                <AddContent setModules={setModules} setLoading={setLoading}/>
+                <AddContent setModules={setModules} setLoading={setLoading} />
             </div>
 
             <div className="d-flex flex-wrap w-75 gap-2 mt-2">
                 {
                     modules.length > 0 ?
                         (
-                            modules.map((module) => (
+                            modules.map((modulo) => (
                                 <div className="d-flex w-25 btn btn-outline-info p-0 pe-2 border-info rounded border btn-height" role="button ">
-                                    <Link to={`/lessons/${module.name}/${module.id}`} key={module.id} role="button" className="btn fw-bold d-flex justify-content-start align-items-center text-start pt-auto pb-auto w-100">
-                                        {module.name}
+                                    <Link to={`/lessons/${modulo.name}/${modulo.id}`} key={modulo.id} role="button" className="btn fw-bold d-flex justify-content-start align-items-center text-start pt-auto pb-auto w-100">
+                                        {modulo.name}
                                     </Link>
                                     <button data-bs-toggle="modal" data-bs-target="#remcontent" className="btn mt-auto mb-auto btn-danger rounded-circle"><i className="fas fa-trash"></i></button>
-                                    <RemModule moduleId={module.id} setModules={setModules} setLoading={setLoading}/>
+                                    <RemModule moduleId={modulo.id} setModules={setModules} setLoading={setLoading} />
                                 </div>
                             ))
                         )
@@ -54,7 +54,7 @@ const Contents = () => {
                         )
                 }
             </div>
-             <ToastContainer position="top-center"/>
+            <ToastContainer position="top-center" />
         </div>
     )
 

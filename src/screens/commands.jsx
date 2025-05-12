@@ -98,7 +98,7 @@ const Commands = () => {
                                                 <img className="w-50 border mt-4 rounded-4 image-demonstration" src='/noImage.png' alt="Prévia" />
                                             )
                                     }
-                                    <Link to={'/questions/sobre comandos/comandos'} role="button" className="btn btn-outline-info position-absolute rounded-pill fw-bold bottom-0 end-0">Ir as perguntas</Link>
+                                   
                                 </div>
                             )
                             :
