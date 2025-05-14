@@ -1,7 +1,7 @@
 const generateQRCode = (setIsGenerating, setQrCode) => {
     setIsGenerating(true)
     try {
-        const link = 'http://localhost:5349/user/get/data/to/sync'
+        const link = 'http://localhost:5349/user/get/all/data/to/sync'
         const expiresAt = new Date()
         expiresAt.setHours(expiresAt.getHours() + 24)
 
@@ -11,7 +11,7 @@ const generateQRCode = (setIsGenerating, setQrCode) => {
 
         setTimeout(() => {
             setIsGenerating(false)
-        }, 2000)
+        }, 3000)
 
     } catch (error) {
         setIsGenerating(false)
