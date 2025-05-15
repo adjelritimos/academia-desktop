@@ -1,13 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ModalQrCode from '../components/others/modal_qrcode'
 import generateQRCode from '../functions/outhers/qrcode_generate'
+import checkQrCode from '../functions/outhers/checkQrCode'
 
 
 const Home = () => {
 
     const [isGenerating, setIsGenerating] = useState(false)
     const [qrCode, setQrCode] = useState(null)
+    const [hasQrcodeValid, setHasQrcodeValid] = useState(checkQrCode())
+
+    useEffect(()=> {
+        setQrCode(localStorage.getItem('qr_data'))
+        const intervalId = setInterval(setHasQrcodeValid(checkQrCode()), 2000)
+        return () => clearInterval(intervalId)
+    }, [hasQrcodeValid])
 
     return (
         <div className="d-flex justify-content-center align-items-center w-50 mx-auto vh-100">
@@ -37,7 +45,7 @@ const Home = () => {
                     </div>
 
                     <div className='mt-2'>
-                        <button onClick={()=> generateQRCode(setIsGenerating, setQrCode)} data-bs-toggle="modal" data-bs-target="#qrcode" className='btn d-flex flex-column justify-content-center align-items-center btn-outline-light w-100 border-info text-info fw-bold bg-white'>
+                        <button onClick={()=> generateQRCode(setIsGenerating, setQrCode, hasQrcodeValid)} data-bs-toggle="modal" data-bs-target="#qrcode" className='btn d-flex flex-column justify-content-center align-items-center btn-outline-light w-100 border-info text-info fw-bold bg-white'>
                            <i className='fas fa-qrcode fs-1'></i>
                            <p className='display-4 fs-6'>Gerar qrcode de sincronização</p>
                         </button>

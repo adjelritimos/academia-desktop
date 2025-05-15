@@ -1,10 +1,15 @@
 import errorMessage from "../feedbacks/errormessage"
 
-const generateQRCode = (setIsGenerating, setQrCode) => {
+const generateQRCode = (setIsGenerating, setQrCode, hasValidQrCode) => {
 
-    setIsGenerating(true)
+
+    if (hasValidQrCode) {
+        return
+    }
 
     try {
+
+        setIsGenerating(true)
 
         const link = 'http://localhost:5349/user/get/all/data/to/sync'
 
