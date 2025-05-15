@@ -30,12 +30,12 @@ const Contents = () => {
                 <AddContent setModules={setModules} setLoading={setLoading} />
             </div>
 
-            <div className="d-flex flex-wrap w-75 gap-2 mt-2">
+            <div className="d-flex flex-wrap gap-1 w-75 mt-2">
                 {
                     modules.length > 0 ?
                         (
                             modules.map((modulo) => (
-                                <div className="d-flex w-25 btn btn-outline-info p-0 pe-2 border-info rounded border btn-height" role="button ">
+                                <div className="d-flex w-24 mb-2 btn btn-outline-info p-0 pe-2 border-info rounded border btn-height" role="button ">
                                     <Link to={`/lessons/${modulo.name}/${modulo.id}`} key={modulo.id} role="button" className="btn fw-bold d-flex justify-content-start align-items-center text-start pt-auto pb-auto w-100">
                                         {modulo.name}
                                     </Link>

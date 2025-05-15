@@ -46,6 +46,10 @@
   height: calc(100vh - 200px);
 }
 
+.w-24 {
+  width: 24%;
+}
+
 .textarea:focus {
   border: 1px solid #fff !important;
   outline: none !important;

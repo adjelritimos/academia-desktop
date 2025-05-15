@@ -11,7 +11,7 @@ const generateQRCode = (setIsGenerating, setQrCode, hasValidQrCode) => {
 
         setIsGenerating(true)
 
-        const link = 'http://localhost:5349/user/get/all/data/to/sync'
+        const link = 'xkjqbztrmfapldcohwnsigyveauoxkjqbztrmfapldcohwnsigyveauoxkjqbztrmfapldcohwnsigyveauoxkjqbztrmfapldcohwnsigyveauoxkjqbztrmfapldcohwnsigyveauo'
 
         const expiresAt = new Date()
 
