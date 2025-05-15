@@ -1,11 +1,20 @@
+import errorMessage from "../feedbacks/errormessage"
+
 const generateQRCode = (setIsGenerating, setQrCode) => {
+
     setIsGenerating(true)
+
     try {
+
         const link = 'http://localhost:5349/user/get/all/data/to/sync'
+
         const expiresAt = new Date()
+
         expiresAt.setHours(expiresAt.getHours() + 24)
 
         const qr_data = JSON.stringify({ link, expiresAt })
+
+        localStorage.setItem('qr_data', qr_data)
 
         setQrCode(qr_data)
 
@@ -15,8 +24,11 @@ const generateQRCode = (setIsGenerating, setQrCode) => {
 
     } catch (error) {
         setIsGenerating(false)
-        console.error(error)
+        setQrCode(null)
+        errorMessage('Ocorreu um erro na geração do QR Code')
+        console.error("Erreur lors de la génération du QR code :", error)
     }
+
 }
 
 export default generateQRCode
