@@ -1,7 +1,7 @@
 import api from "../../server/api"
 import errorMessage from "../feedbacks/errormessage"
 
-const getCommandQuestions = async (setQuestionsGroups, setQuestionsGroupsCopy,  setLoading) => {
+const getCommandQuestions = async (setQuestionsGroups, setQuestionsGroupsCopy, setLoading) => {
 
     setLoading(true)
 
@@ -12,6 +12,7 @@ const getCommandQuestions = async (setQuestionsGroups, setQuestionsGroupsCopy,  
         if (commands.status === 200) {
             setQuestionsGroups(commands.data)
             setQuestionsGroupsCopy(commands.data)
+            localStorage.setItem ('commandsQuestions', JSON.stringify(commands.data))
         }
 
         else {
@@ -21,8 +22,17 @@ const getCommandQuestions = async (setQuestionsGroups, setQuestionsGroupsCopy,  
 
         setLoading(false)
     } catch (error) {
-        setQuestionsGroups([])
-        setQuestionsGroupsCopy([])
+
+        const questions = localStorage.getItem('commandsQuestions')
+
+        if (questions) {
+            setQuestionsGroups(JSON.parse(questions))
+            setQuestionsGroupsCopy(JSON.parse(questions))
+        }
+        else {
+            setQuestionsGroups([])
+            setQuestionsGroupsCopy([])
+        }
         setLoading(false)
         errorMessage('falha ao carregar dados, pode ser que não tenha conexão com a internet')
         console.log('Ocorreu algum erro, ', error)

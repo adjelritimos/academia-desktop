@@ -14,18 +14,21 @@ const getCommands = async (setCommands, setCommandsCopy, setLoading) => {
             localStorage.setItem('commands', JSON.stringify(commands.data))
         }
 
-        else
+        else {
             setCommands([])
+            setCommandsCopy([])
+        }
+
 
         setLoading(false)
     } catch (error) {
         setLoading(false)
         const commands = localStorage.getItem('commands')
-        if (commands){
+        if (commands) {
             setCommands(JSON.parse(commands))
             setCommandsCopy(JSON.parse(commands))
         }
-        else{
+        else {
             setCommands([])
             setCommandsCopy([])
         }
