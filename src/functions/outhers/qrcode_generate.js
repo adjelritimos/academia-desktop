@@ -1,37 +1,54 @@
+import api_qr from "../../server/api_qr"
 import errorMessage from "../feedbacks/errormessage"
 
-const generateQRCode = (setIsGenerating, setQrCode, hasValidQrCode) => {
+function generate_word() {
 
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%'
 
-    if (hasValidQrCode) {
-        return
+    let word = ''
+
+    for (let i = 0; i < 30; i++) {
+        const randomIndex = Math.floor(Math.random() * chars.length)
+        word += chars[randomIndex]
     }
 
-    try {
+    return word
+}
 
-        setIsGenerating(true)
+const generateQRCode = async (setIsGenerating, setQrCode, hasValidQrCode) => {
 
-        const link = 'xkjqbztrmfapldcohwnsigyveauoxkjqbztrmfapldcohwnsigyveauoxkjqbztrmfapldcohwnsigyveauoxkjqbztrmfapldcohwnsigyveauoxkjqbztrmfapldcohwnsigyveauo'
+    if (hasValidQrCode) {
+       
+        try {
 
-        const expiresAt = new Date()
+            setIsGenerating(true)
 
-        expiresAt.setHours(expiresAt.getHours() + 24)
+            const word = generate_word()
 
-        const qr_data = JSON.stringify({ link, expiresAt })
+            const date = new Date()
 
-        localStorage.setItem('qr_data', qr_data)
+            date.setHours(date.getHours() + 24)
 
-        setQrCode(qr_data)
+            const response = await api_qr.post('/save/a/word/and/date/for/qrcode', { word, date })
+            if (response.status === 200) {
+                const qr_data = JSON.stringify({ word, date })
+                localStorage.setItem('qr_data', qr_data)
+                setQrCode(qr_data)
+            }
 
-        setTimeout(() => {
+            setTimeout(() => {
+                setIsGenerating(false)
+            }, 3000)
+
+        } catch (error) {
             setIsGenerating(false)
-        }, 3000)
-
-    } catch (error) {
-        setIsGenerating(false)
-        setQrCode(null)
-        errorMessage('Ocorreu um erro na geração do QR Code')
-        console.error("Erreur lors de la génération du QR code :", error)
+            setQrCode(null)
+            errorMessage('Ocorreu um erro na geração do QR Code')
+            console.error("Erreur lors de la génération du QR code :", error)
+        }
+    }
+    else {
+        console.log('Já tens um qrcode...')
     }
 
 }

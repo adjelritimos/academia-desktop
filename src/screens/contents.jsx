@@ -36,7 +36,7 @@ const Contents = () => {
                         (
                             modules.map((modulo) => (
                                 <div className="d-flex w-24 mb-2 btn btn-outline-info p-0 pe-2 border-info rounded border btn-height" role="button ">
-                                    <Link to={`/lessons/${modulo.name}/${modulo.id}`} key={modulo.id} role="button" className="btn fw-bold d-flex justify-content-start align-items-center text-start pt-auto pb-auto w-100">
+                                    <Link to={`/lessons/${modulo.name}/${modulo.id}`} key={modulo.id} role="button" className="btn fw-bold d-flex justify-content-start align-items-center text-start text-break pt-auto pb-auto w-100">
                                         {modulo.name}
                                     </Link>
                                     <button data-bs-toggle="modal" data-bs-target="#remcontent" className="btn mt-auto mb-auto btn-danger rounded-circle"><i className="fas fa-trash"></i></button>
