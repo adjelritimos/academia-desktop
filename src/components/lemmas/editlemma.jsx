@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
 import editLemma from "../../functions/lemmas/editLemma"
 import AudioRecorder from "../recordsounds/records"
+import api_midia from "../../server/api_midia"
 
 const EditLemmas = (props) => {
 
     const [question, setQuestion] = useState(props.lemmaSelected?.question)
     const [answer, setAnswer] = useState(props.lemmaSelected?.answer)
     const [isRecording, setIsRecording] = useState(false)
-    const [audioURL, setAudioURL] = useState(`http://localhost:5349/admin${props.lemmaSelected?.sound}`)
+    const [audioURL, setAudioURL] = useState(api_midia(props.lemmaSelected?.sound))
 
     const isCheck = () => {
         const validQuestion = typeof question === 'string' && question.trim().length > 0
@@ -20,7 +21,7 @@ const EditLemmas = (props) => {
 
         setQuestion(props.lemmaSelected?.question)
         setAnswer(props.lemmaSelected?.answer)
-        setAudioURL(`http://localhost:5349/admin${props.lemmaSelected?.sound}`)
+        setAudioURL(api_midia(props.lemmaSelected?.sound))
 
     }, [props.lemmaSelected])
 

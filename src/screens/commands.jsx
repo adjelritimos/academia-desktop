@@ -8,6 +8,7 @@ import filter from "../functions/outhers/filter"
 import { LoadingContext } from "../contexts/contextLoading"
 import Loading from "../components/others/loading"
 import { ToastContainer } from "react-toastify"
+import api_midia from "../server/api_midia"
 
 
 const Commands = () => {
@@ -86,12 +87,12 @@ const Commands = () => {
                                     <div className="w-75 position-relative">
                                         <h2 className="text-break w-75">{commandSelected.name}</h2>
                                         <textarea className="form-control display-4 textarea h-75 border-white" readOnly value={commandSelected.description} />
-                                        <audio className="position-absolute border-info border rounded-pill text-info bottom-0 start-50 translate-middle-x w-100" controls src={`http://localhost:5349/admin${commandSelected.sound}`} />
+                                        <audio className="position-absolute border-info border rounded-pill text-info bottom-0 start-50 translate-middle-x w-100" controls src={api_midia(commandSelected.sound)} />
                                     </div>
                                     {
                                         commandSelected.demonstration ?
                                             (
-                                                <img className="w-50 border mt-4 rounded-4 image-demonstration" src={`http://localhost:5349/admin${commandSelected.demonstration}`} alt="Prévia" />
+                                                <img className="w-50 border mt-4 rounded-4 image-demonstration" src={api_midia(commandSelected.demonstration)} alt="Prévia" />
                                             )
                                             :
                                             (

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import editCommand from "../../functions/commands/editcommand"
 import AudioRecorder from "../recordsounds/records"
+import api_midia from "../../server/api_midia"
 
 
 const EditCommand = (props) => {
@@ -27,9 +28,9 @@ const EditCommand = (props) => {
 
         setname(props.commandSelected?.name)
         setDescription(props.commandSelected?.description)
-        setDemonstration(`http://localhost:5349/admin${props.commandSelected?.demonstration}`)
-        setPreview(props.commandSelected?.demonstration ? `http://localhost:5349/admin${props.commandSelected?.demonstration}` : '/noImage.png')
-        setAudioURL(`http://localhost:5349/admin${props.commandSelected?.sound}`)
+        setDemonstration(api_midia(props.commandSelected?.demonstration))
+        setPreview(props.commandSelected?.demonstration ? api_midia(props.commandSelected?.demonstration) : '/noImage.png')
+        setAudioURL(api_midia(props.commandSelected?.sound))
 
     }, [props.commandSelected])
 

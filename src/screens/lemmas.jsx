@@ -8,6 +8,7 @@ import filter from "../functions/outhers/filter"
 import Loading from "../components/others/loading"
 import { LoadingContext } from "../contexts/contextLoading"
 import { ToastContainer } from "react-toastify"
+import api_midia from "../server/api_midia"
 
 const Lemmas = () => {
 
@@ -82,7 +83,7 @@ const Lemmas = () => {
                                 <div className="mt-2">
                                     <div className="d-flex justify-content-between">
                                         <h2>{lemmaSelected.question}</h2>
-                                        <audio className="border border-info rounded-pill" controls src={`http://localhost:5349/admin${lemmaSelected.sound}`} />
+                                        <audio className="border border-info rounded-pill" controls src={api_midia(lemmaSelected.sound)} />
                                     </div>
                                     <textarea className="form-control display-4 textarea lemma-list border-white" readOnly value={lemmaSelected.answer} />
                                 </div>

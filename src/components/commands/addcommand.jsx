@@ -23,6 +23,14 @@ const AddCommand = (props) => {
         }
     }
 
+    const cleanForm = () => {
+        setname('')
+        setDescription('')
+        setDemonstration(null)
+        setAudioURL(null)
+        setError('')
+    }
+
 
     const IsError = () => {
         if (!isCheck())
@@ -45,7 +53,7 @@ const AddCommand = (props) => {
     return (
         <div className="modal fade" id="addcommand" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog w-25 modal-dialog-centered">
-                <form onSubmit={(e) => addcommand(e, name, description, demontration, audioURL, props.setCommands, props.setCommandsCopy, props.setCommandSelected, props.setLoading)} className="modal-content">
+                <form onSubmit={(e) => {addcommand(e, name, description, demontration, audioURL, props.setCommands, props.setCommandsCopy, props.setCommandSelected, props.setLoading); cleanForm()}} className="modal-content">
                     <div className="modal-header bg-info p-2 pe-3 text-white fw-bold">
                         <h1 className="modal-title display-4 fs-5" id="exampleModalLabel">Novo comandos de voz</h1>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

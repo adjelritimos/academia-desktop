@@ -49,7 +49,7 @@ const Home = () => {
                            <i className='fas fa-qrcode fs-1'></i>
                            <p className='display-4 fs-6'>Gerar qrcode de sincronização</p>
                         </button>
-                        <ModalQrCode isGenerating={isGenerating} qrcode={qrCode} />
+                        <ModalQrCode isGenerating={isGenerating} qrcode={qrCode} setIsGenerating={setIsGenerating} setQrCode={setQrCode} />
                     </div>
                 </div>
             </div>

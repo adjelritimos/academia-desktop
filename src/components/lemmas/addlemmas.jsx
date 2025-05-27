@@ -18,6 +18,12 @@ const AddLemmas = (props) => {
         }, 3000)
     }
 
+    const cleanForm = () => {
+        setQuestion('')
+        setAnswer('')
+        setAudioURL(null)
+        setIsRecording(false)
+    }
 
     const isCheck = () => {
         const validQuestion = typeof question === 'string' && question.trim().length > 0
@@ -29,7 +35,7 @@ const AddLemmas = (props) => {
     return (
         <div className="modal fade" id="addlemma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog w-25 modal-dialog-centered">
-                <form onSubmit={(e) => addLemma(e, question, answer, audioURL, props.setLemmas, props.setLemmasCopy, props.setLemmaSelected, props.setLoading)} className="modal-content">
+                <form onSubmit={(e) =>{ addLemma(e, question, answer, audioURL, props.setLemmas, props.setLemmasCopy, props.setLemmaSelected, props.setLoading); cleanForm()}} className="modal-content">
                     <div className="modal-header bg-info p-2 pe-3 text-white fw-bold">
                         <h1 className="modal-title display-4 fs-5" id="exampleModalLabel">Novo lema</h1>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
