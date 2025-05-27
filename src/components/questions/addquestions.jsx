@@ -60,8 +60,8 @@ const AddQuestion = (props) => {
     const feedback = () => {
 
         if (!isCheck()) {
-            if (length(options) < 3)
-                setError('Deve ter 3 ou mais respostas alternativas')
+            if (length(options) <= 3)
+                setError('Deve ter pelo menos 4 respostas alternativas')
             else
                 setError('Preencha a pergunta e resposta devidamente')
             setTimeout(() => setError(''), 3000)
