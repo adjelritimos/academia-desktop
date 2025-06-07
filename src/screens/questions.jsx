@@ -18,16 +18,16 @@ const Question = () => {
 
             <div className="d-flex flex-column w-75 gap-2 mt-2">
                 <div className="d-flex gap-2">
-                    <Link to={'/questions/sobre lemas/lemas'} role="button" className="w-50 p-3 btn d-flex justify-content-center align-items-center btn-height-2 btn-outline-info bg-white">
+                    <Link to={'/questions/sobre lemas/lemas'} role="button" className="w-50 module p-3 btn d-flex justify-content-center align-items-center btn-height-2 btn-outline-info bg-white">
                         <h1>Lemas</h1>
                     </Link>
 
-                    <Link to={'/questions/sobre comandos de voz/comandos'} role="button" className="w-50 p-3 btn d-flex justify-content-center align-items-center btn-height-2 btn-outline-info bg-white">
+                    <Link to={'/questions/sobre comandos de voz/comandos'} role="button" className="w-50 module p-3 btn d-flex justify-content-center align-items-center btn-height-2 btn-outline-info bg-white">
                         <h1>Comandos de voz</h1>
                     </Link>
                 </div>
 
-                <Link to={'/questions/sobre conteúdos/conteúdos'} role="button" className="w-100 btn d-flex justify-content-center align-items-center btn-height-3 btn-outline-info bg-white">
+                <Link to={'/questions/sobre conteúdos/conteúdos'} role="button" className="w-100 module btn d-flex justify-content-center align-items-center btn-height-3 btn-outline-info bg-white">
                     <h1>Sobre os conteúdos</h1>
                 </Link>
             </div>
