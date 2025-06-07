@@ -25,7 +25,6 @@ const Contents = () => {
                     <Link to={'/home'} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white"><i className="fas fa-arrow-left"></i></Link>
                     <h1 className="fs-4 display-3 mt-auto mb-auto">Os conteúdos organizados em módulos</h1>
                 </div>
-                <Loading loading={loading} />
                 <button className="btn btn-info text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addmodule"><i className="fas fa-plus"></i> Novo módulo</button>
                 <AddContent setModules={setModules} setLoading={setLoading} />
             </div>
@@ -47,9 +46,20 @@ const Contents = () => {
                         :
                         (
                             <div className="w-50 mx-auto text-center h-100 pt-5 justify-content-center">
-                                <i className="fas fa-tasks text-info pt-5 mt-5 fs-1"></i>
-                                <h1 className="display-5 fs-5">Sem módulos para as lições ainda</h1>
-                                <small>Adicione módulos</small>
+                                {
+                                    loading ?
+                                        (
+                                            <Loading loading={loading} />
+                                        )
+                                        :
+                                        (
+                                            <div>
+                                                <i className="fas fa-tasks text-info pt-5 mt-5 fs-1"></i>
+                                                <h1 className="display-5 fs-5">Sem módulos para as lições ainda</h1>
+                                                <small>Adicione módulos</small>
+                                            </div>
+                                        )
+                                }
                             </div>
                         )
                 }

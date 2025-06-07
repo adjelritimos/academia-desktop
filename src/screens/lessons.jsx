@@ -30,7 +30,6 @@ const Lessons = () => {
                 <Link to={'/contents'} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white" role="button"><i className="fas fa-arrow-left"></i></Link>
                 <h1>{module}</h1>
             </div>
-            <Loading loading={loading} />
             <div className="d-flex gap-1">
                 <div className="rounded-2 border border-1 border-info p-2 bg-white w-25 h-100">
                     <div className="d-flex flex-column">
@@ -55,9 +54,21 @@ const Lessons = () => {
                                     :
                                     (
                                         <div className="text-center h-100 d-flex flex-column justify-content-center aliament-items-center">
-                                            <i class="fas fa-inbox text-info"></i>
-                                            <h1 className="display-5 fs-5 m-0 p-0">Sem liçõe para listar</h1>
-                                            <small>adicione uma lição a lista</small>
+                                            {
+                                                loading ?
+                                                    (
+                                                        <Loading loading={loading} />
+                                                    )
+                                                    :
+                                                    (
+                                                        <div>
+                                                            <i class="fas fa-inbox text-info"></i>
+                                                            <h1 className="display-5 fs-5 m-0 p-0">Sem liçõe para listar</h1>
+                                                            <small>adicione uma lição a lista</small>
+                                                        </div>
+                                                    )
+                                            }
+
                                         </div>
                                     )
                             }

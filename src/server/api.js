@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'http://localhost:5349/admin/'
+    baseURL: 'https://academia-ev.onrender.com/admin/'
 })
 
 export default api

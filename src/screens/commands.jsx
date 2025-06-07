@@ -31,7 +31,7 @@ const Commands = () => {
                             <Link to={'/home'} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white"><i className="fas fa-arrow-left"></i></Link>
                             <h1 className="fs-4 display-6 m-0 p-0 mt-auto mb-auto w-100">Comando de voz</h1>
                         </div>
-                        <Loading loading={loading} />
+
                         <button className="btn btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addcommand">
                             <i className="fas fa-plus"></i>
                         </button>
@@ -51,9 +51,20 @@ const Commands = () => {
                                 :
                                 (
                                     <div className="text-center h-100 d-flex flex-column justify-content-center aliament-items-center">
-                                        <i class="fas fa-inbox text-info"></i>
-                                        <h1 className="display-5 fs-5 p-0 m-0">Sem comandos para listar</h1>
-                                        <small>adicione um comando a lista</small>
+                                        {
+                                            loading ?
+                                                (
+                                                    <Loading loading={loading} />
+                                                )
+                                                :
+                                                (
+                                                    <div>
+                                                        <i class="fas fa-inbox text-info"></i>
+                                                        <h1 className="display-5 fs-5 p-0 m-0">Sem comandos para listar</h1>
+                                                        <small>adicione um comando a lista</small>
+                                                    </div>
+                                                )
+                                        }
                                     </div>
                                 )
                         }
@@ -99,7 +110,7 @@ const Commands = () => {
                                                 <img className="w-50 border mt-4 rounded-4 image-demonstration" src='/noImage.png' alt="Prévia" />
                                             )
                                     }
-                                   
+
                                 </div>
                             )
                             :
@@ -111,7 +122,7 @@ const Commands = () => {
                             )
                     }
                 </div>
-                 <ToastContainer position="bottom-right"/>
+                <ToastContainer position="bottom-right" />
             </div>
         </div>
     )
