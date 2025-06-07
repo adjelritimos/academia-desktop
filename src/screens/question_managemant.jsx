@@ -22,7 +22,7 @@ const QuestionManagemant = () => {
     const [questionSelected, setQuestionSelected] = useState(null)
     const { loading, setLoading } = useContext(LoadingContext)
 
-    
+
     useEffect(() => {
         if (what.includes('lema'))
             getLemmaQuestions(setQuestionsGroups, setQuestionsGroupsCopy, setLoading)
@@ -39,7 +39,7 @@ const QuestionManagemant = () => {
                 <button onClick={goBack} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white" role="button"><i className="fas fa-arrow-left"></i></button>
                 <h1>Perguntas {what}</h1>
             </div>
-            <Loading loading={loading} />
+
             <div className="d-flex gap-1">
                 <div className="rounded-2 border border-1 border-info p-2 bg-white w-25 h-100">
                     <div className="d-flex flex-column">
@@ -52,8 +52,8 @@ const QuestionManagemant = () => {
                                         <button className="btn btn-info text-white rounded-circle" data-bs-toggle={lessonSelected ? "modal" : "dropdown"} data-bs-target="#addquestion">
                                             <i className="fas fa-plus"></i>
                                         </button>
-                                        <ul className={ lessonSelected ? "visually-hidden" : "dropdown-menu alert alert-danger p-0"}>
-                                            <li><p className="dropdown-item p-1 alert alert-danger fw-bold m-0">Deves selecionar { what.includes('lema') ? "um lema" : what.includes('comandos') ? 'um comando' : 'uma lição' } para assossiar uma pergunta</p></li>
+                                        <ul className={lessonSelected ? "visually-hidden" : "dropdown-menu alert alert-danger p-0"}>
+                                            <li><p className="dropdown-item p-1 alert alert-danger fw-bold m-0">Deves selecionar {what.includes('lema') ? "um lema" : what.includes('comandos') ? 'um comando' : 'uma lição'} para assossiar uma pergunta</p></li>
                                         </ul>
                                         <AddQuestion setLoading={setLoading} what={what} id={lessonSelected?.id} elementSelected={lessonSelected} setQuestionSelected={setQuestionSelected} setLessonSelected={setLessonSelected} setQuestionsGroups={setQuestionsGroups} setQuestionsGroupsCopy={setQuestionsGroupsCopy} />
                                     </div>
@@ -86,9 +86,19 @@ const QuestionManagemant = () => {
                                     :
                                     (
                                         <div className="text-center h-100 d-flex flex-column justify-content-center aliament-items-center">
-                                            <i class="fas fa-inbox text-info"></i>
-                                            <h1 className="display-5 fs-5">Nada para listar</h1>
-                                            <small> {what.includes('lema') ? "Precisas de adicionar pelo menos um lema" : what.includes('comandos') ? "Precisas de adicionar pelo menos um comando de voz" : "Precisas de adicionar pelo menos uma lição"} </small>
+                                            {
+                                                loading ?
+                                                    (
+                                                        <Loading loading={loading} />
+                                                    ) :
+                                                    (
+                                                        <div>
+                                                            <i class="fas fa-inbox text-info"></i>
+                                                            <h1 className="display-5 fs-5">Nada para listar</h1>
+                                                            <small> {what.includes('lema') ? "Precisas de adicionar pelo menos um lema" : what.includes('comandos') ? "Precisas de adicionar pelo menos um comando de voz" : "Precisas de adicionar pelo menos uma lição"} </small>
+                                                        </div>
+                                                    )}
+
                                         </div>
                                     )
                             }
@@ -142,7 +152,7 @@ const QuestionManagemant = () => {
 
                 </div>
             </div>
-              <ToastContainer position="bottom-right"/>
+            <ToastContainer position="bottom-right" />
         </div>
     )
 }

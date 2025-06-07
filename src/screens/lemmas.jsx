@@ -9,6 +9,7 @@ import Loading from "../components/others/loading"
 import { LoadingContext } from "../contexts/contextLoading"
 import { ToastContainer } from "react-toastify"
 import api_midia from "../server/api_midia"
+import LoadingCustom from "../components/others/loadingCustom"
 
 const Lemmas = () => {
 
@@ -16,6 +17,7 @@ const Lemmas = () => {
     const [lemmasCopy, setLemmasCopy] = useState([])
     const [lemmaSelected, setLemmaSelected] = useState(null)
     const audioRef = useRef(null)
+    const [message, setMessage] = useState("")
     const { loading, setLoading } = useContext(LoadingContext)
 
     useEffect(() => {
@@ -34,7 +36,10 @@ const Lemmas = () => {
                         <button className="btn btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addlemma">
                             <i className="fas fa-plus"></i>
                         </button>
-                        <AddLemmas setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading} />
+                        {
+                            message.length > 0 && <LoadingCustom message={message} loading={loading} />
+                        }
+                        <AddLemmas setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading} setMessage={setMessage} />
                     </div>
                     <input onChange={(e) => filter(e.target.value, lemmas, setLemmasCopy, true)} type="text" placeholder="busque lemas por perguntas..." className="form-control mt-2 border-info" />
                     <div className="overflow-auto position-relative mt-3 lemma-list">
@@ -53,7 +58,7 @@ const Lemmas = () => {
                                         {
                                             loading ?
                                                 (
-                                                   <Loading loading={loading} />
+                                                    <Loading loading={loading} />
                                                 )
                                                 :
                                                 (
@@ -78,9 +83,9 @@ const Lemmas = () => {
                         lemmaSelected && (
                             <div className="d-flex gap-2">
                                 <button className="btn btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editlemma"> <i className="fas fa-edit"></i></button>
-                                <EditLemmas audio={audioRef.current} lemmaId={lemmaSelected?.id} lemmaSelected={lemmaSelected} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading} />
+                                <EditLemmas audio={audioRef.current} lemmaId={lemmaSelected?.id} lemmaSelected={lemmaSelected} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading} setMessage={setMessage} />
                                 <button className="btn btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remlemma"> <i className="fas fa-trash"></i></button>
-                                <RemLemmas lemmaId={lemmaSelected?.id} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading} />
+                                <RemLemmas lemmaId={lemmaSelected?.id} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading} setMessage={setMessage} />
                             </div>
                         )
                     }

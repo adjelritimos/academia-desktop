@@ -9,6 +9,7 @@ import { LoadingContext } from "../contexts/contextLoading"
 import Loading from "../components/others/loading"
 import { ToastContainer } from "react-toastify"
 import api_midia from "../server/api_midia"
+import LoadingCustom from "../components/others/loadingCustom"
 
 
 const Commands = () => {
@@ -16,6 +17,7 @@ const Commands = () => {
     const [commands, setCommands] = useState([])
     const [commandsCopy, setCommandsCopy] = useState([])
     const [commandSelected, setCommandSelected] = useState(null)
+    const [message, setMessage] = useState("")
     const { loading, setLoading } = useContext(LoadingContext)
 
     useEffect(() => {
@@ -24,6 +26,9 @@ const Commands = () => {
 
     return (
         <div className="d-flex gap-1 p-4 vh-100">
+            {
+                message.length > 0 && <LoadingCustom message={message} loading={loading} />
+            }
             <div className="rounded-2 border border-1 border-info p-2 bg-white w-25">
                 <div className="d-flex flex-column">
                     <div className="d-flex">
@@ -35,7 +40,7 @@ const Commands = () => {
                         <button className="btn btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addcommand">
                             <i className="fas fa-plus"></i>
                         </button>
-                        <AddCommand setCommandSelected={setCommandSelected} setCommands={setCommands} setCommandsCopy={setCommandsCopy} setLoading={setLoading} />
+                        <AddCommand setCommandSelected={setCommandSelected} setCommands={setCommands} setCommandsCopy={setCommandsCopy} setLoading={setLoading} setMessage={setMessage} />
                     </div>
                     <input onChange={(e) => filter(e.target.value, commands, setCommandsCopy, false)} type="text" placeholder="busque comandos pelo nome..." className="form-control mt-2 border-info" />
                     <div className="overflow-auto mt-3 position-relative lemma-list">
@@ -82,9 +87,9 @@ const Commands = () => {
                         (
                             <div className="d-flex gap-2">
                                 <button className="btn btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editcommand"> <i className="fas fa-edit"></i></button>
-                                <EditCommand commandId={commandSelected?.id} commandSelected={commandSelected} setCommandSelected={setCommandSelected} setCommandsCopy={setCommandsCopy} setLoading={setLoading} setCommands={setCommands} />
+                                <EditCommand commandId={commandSelected?.id} commandSelected={commandSelected} setCommandSelected={setCommandSelected} setCommandsCopy={setCommandsCopy} setLoading={setLoading} setCommands={setCommands} setMessage={setMessage} />
                                 <button className="btn btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remcommand"> <i className="fas fa-trash"></i></button>
-                                <RemCommand commandId={commandSelected?.id} setCommandSelected={setCommandSelected} setCommandsCopy={setCommandsCopy} setCommands={setCommands} setLoading={setLoading} />
+                                <RemCommand commandId={commandSelected?.id} setCommandSelected={setCommandSelected} setCommandsCopy={setCommandsCopy} setCommands={setCommands} setLoading={setLoading} setMessage={setMessage} />
                             </div>
                         )
                     }
