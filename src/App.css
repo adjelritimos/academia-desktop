@@ -48,10 +48,33 @@
 
 .w-24 {
   width: 24%;
+  align-self: flex-start;
 }
 
 .textarea:focus {
   border: 1px solid #fff !important;
   outline: none !important;
   box-shadow: none !important;
+}
+
+.module {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.module:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.image-logo {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
