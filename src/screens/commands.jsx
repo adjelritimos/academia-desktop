@@ -20,12 +20,13 @@ const Commands = () => {
     const [message, setMessage] = useState("")
     const { loading, setLoading } = useContext(LoadingContext)
 
+
     useEffect(() => {
         getCommands(setCommands, setCommandsCopy, setLoading)
     }, [setLoading])
 
     return (
-        <div className="d-flex gap-1 p-4 vh-100">
+        <div className="d-flex gap-1 p-4 vh-100 position-relative">
             {
                 message.length > 0 && <LoadingCustom message={message} loading={loading} />
             }
@@ -40,6 +41,7 @@ const Commands = () => {
                         <button className="btn btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addcommand">
                             <i className="fas fa-plus"></i>
                         </button>
+
                         <AddCommand setCommandSelected={setCommandSelected} setCommands={setCommands} setCommandsCopy={setCommandsCopy} setLoading={setLoading} setMessage={setMessage} />
                     </div>
                     <input onChange={(e) => filter(e.target.value, commands, setCommandsCopy, false)} type="text" placeholder="busque comandos pelo nome..." className="form-control mt-2 border-info" />

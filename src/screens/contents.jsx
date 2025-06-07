@@ -6,12 +6,15 @@ import RemModule from "../components/contents/remcontent"
 import { LoadingContext } from "../contexts/contextLoading"
 import Loading from "../components/others/loading"
 import { ToastContainer } from "react-toastify"
+import LoadingCustom from "../components/others/loadingCustom"
 
 
 const Contents = () => {
 
     const { loading, setLoading } = useContext(LoadingContext)
     const [modules, setModules] = useState([])
+    const [seletedModule, setSelectedModule] = useState(null)
+    const [message, setMessage] = useState("")
 
 
     useEffect(() => {
@@ -19,14 +22,18 @@ const Contents = () => {
     }, [setLoading])
 
     return (
-        <div className="p-4 d-flex flex-column justify-content-center align-items-center">
+        <div className="p-4 d-flex flex-column justify-content-top align-items-center position-relative vh-100">
+             {
+                    message.length > 0 && <LoadingCustom message={message} loading={loading} />
+                }
             <div className="d-flex justify-content-between w-75 gap-2 bg-white p-2 rounded">
                 <div className="d-flex gap-2">
                     <Link to={'/home'} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white"><i className="fas fa-arrow-left"></i></Link>
                     <h1 className="fs-4 display-3 mt-auto mb-auto">Os conteúdos organizados em módulos</h1>
                 </div>
                 <button className="btn btn-info text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addmodule"><i className="fas fa-plus"></i> Novo módulo</button>
-                <AddContent setModules={setModules} setLoading={setLoading} />
+               
+                <AddContent setModules={setModules} setLoading={setLoading} setMessage={setMessage}/>
             </div>
 
             <div className="d-flex flex-wrap gap-1 w-75 mt-2">
@@ -38,8 +45,7 @@ const Contents = () => {
                                     <Link to={`/lessons/${modulo.name}/${modulo.id}`} key={modulo.id} role="button" className="btn fw-bold d-flex justify-content-start align-items-center text-start text-break pt-auto pb-auto w-100">
                                         {modulo.name}
                                     </Link>
-                                    <button data-bs-toggle="modal" data-bs-target="#remcontent" className="btn mt-auto mb-auto btn-danger rounded-circle"><i className="fas fa-trash"></i></button>
-                                    <RemModule moduleId={modulo.id} setModules={setModules} setLoading={setLoading} />
+                                    <button onClick={()=> setSelectedModule(modulo)} data-bs-toggle="modal" data-bs-target="#remcontent" className="btn mt-auto mb-auto btn-danger rounded-circle"><i className="fas fa-trash"></i></button>
                                 </div>
                             ))
                         )
@@ -64,6 +70,7 @@ const Contents = () => {
                         )
                 }
             </div>
+             <RemModule moduleId={seletedModule?.id} setModules={setModules} setLoading={setLoading} setMessage={setMessage}/>
             <ToastContainer position="bottom-right" />
         </div>
     )

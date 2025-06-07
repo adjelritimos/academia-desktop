@@ -15,7 +15,7 @@ const RemModule = (props) => {
                     </div>
                     <div className="modal-footer border-white mt-0 pt-0">
                         <button type="button" className="btn btn-outline-info rounded-pill fw-bold" data-bs-dismiss="modal">cancelar</button>
-                        <button type="button" onClick={() => remModule(props.moduleId, props.setModules, props.setLoading)} className="btn btn-danger text-white rounded-pill fw-bold" data-bs-dismiss="modal">remover</button>
+                        <button type="button" onClick={() => {remModule(props.moduleId, props.setModules, props.setLoading); props.setMessage("removendo o módulo...")}} className="btn btn-danger text-white rounded-pill fw-bold" data-bs-dismiss="modal">remover</button>
                     </div>
                 </div>
             </div>
