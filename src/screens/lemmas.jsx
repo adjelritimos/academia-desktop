@@ -25,7 +25,7 @@ const Lemmas = () => {
     }, [setLoading])
 
     return (
-        <div className="d-flex gap-1 p-4 vh-100">
+        <div className="d-flex gap-1 p-4 vh-100 position-relative">
             <div className="rounded-2 border border-1 border-info p-2 bg-white w-25">
                 <div className="d-flex flex-column">
                     <div className="d-flex">
@@ -58,7 +58,11 @@ const Lemmas = () => {
                                         {
                                             loading ?
                                                 (
-                                                    <Loading loading={loading} />
+                                                    <div>
+                                                        {
+                                                            message.length === 0 && <Loading loading={loading} />
+                                                        }
+                                                    </div>
                                                 )
                                                 :
                                                 (

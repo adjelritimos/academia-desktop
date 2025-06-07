@@ -27,9 +27,6 @@ const Lessons = () => {
 
     return (
         <div className="d-flex gap-2 flex-column p-4 vh-100" >
-            {
-                message.length > 0 && <LoadingCustom message={message} loading={loading} />
-            }
             <div className="d-flex gap-2 bg-white rounded p-2">
                 <Link to={'/contents'} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white" role="button"><i className="fas fa-arrow-left"></i></Link>
                 <h1>{module}</h1>
@@ -42,7 +39,7 @@ const Lessons = () => {
                             <button className="btn btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addlesson">
                                 <i className="fas fa-plus"></i>
                             </button>
-                            <AddLesson moduleId={moduleId} setLessons={setLessons} setLessonsCopy={setLessonsCopy} setLessonSelected={setLessonSelected} setLoading={setLoading} setMessage={setMessage}/>
+                            <AddLesson moduleId={moduleId} setLessons={setLessons} setLessonsCopy={setLessonsCopy} setLessonSelected={setLessonSelected} setLoading={setLoading} setMessage={setMessage} />
                         </div>
                         <input onChange={(e) => filterLessons(e.target.value, lessons, setLessonsCopy)} type="text" placeholder="busque lições por tema..." className="form-control mt-2 border-info" />
                         <div className="overflow-auto position-relative mt-3 lesson-list">
@@ -61,7 +58,11 @@ const Lessons = () => {
                                             {
                                                 loading ?
                                                     (
-                                                        <Loading loading={loading} />
+                                                        <div>
+                                                            {
+                                                                message.length === 0 && <Loading loading={loading} />
+                                                            }
+                                                        </div>
                                                     )
                                                     :
                                                     (
@@ -90,9 +91,9 @@ const Lessons = () => {
                             (
                                 <div className="d-flex gap-2">
                                     <button className="btn btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editlesson"> <i className="fas fa-edit"></i></button>
-                                    <EditLesson setLoading={setLoading} setLessons={setLessons} setLessonsCopy={setLessonsCopy} moduleId={moduleId} setLessonSelected={setLessonSelected} lesson={lessonSelected} setMessage={setMessage}/>
+                                    <EditLesson setLoading={setLoading} setLessons={setLessons} setLessonsCopy={setLessonsCopy} moduleId={moduleId} setLessonSelected={setLessonSelected} lesson={lessonSelected} setMessage={setMessage} />
                                     <button className="btn btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remlesson"> <i className="fas fa-trash"></i></button>
-                                    <RemLesson setLoading={setLoading} setLessonSelected={setLessonSelected} setLessonsCopy={setLessonsCopy} lesson={lessonSelected} setLessons={setLessons} moduleId={moduleId} setMessage={setMessage}/>
+                                    <RemLesson setLoading={setLoading} setLessonSelected={setLessonSelected} setLessonsCopy={setLessonsCopy} lesson={lessonSelected} setLessons={setLessons} moduleId={moduleId} setMessage={setMessage} />
                                 </div>
                             )
                         }
@@ -117,6 +118,9 @@ const Lessons = () => {
                         }
                     </div>
                 </div>
+                {
+                    message.length > 0 && <LoadingCustom message={message} loading={loading} />
+                }
                 <ToastContainer position="bottom-right" />
             </div>
         </div>

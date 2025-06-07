@@ -27,9 +27,6 @@ const Commands = () => {
 
     return (
         <div className="d-flex gap-1 p-4 vh-100 position-relative">
-            {
-                message.length > 0 && <LoadingCustom message={message} loading={loading} />
-            }
             <div className="rounded-2 border border-1 border-info p-2 bg-white w-25">
                 <div className="d-flex flex-column">
                     <div className="d-flex">
@@ -61,7 +58,11 @@ const Commands = () => {
                                         {
                                             loading ?
                                                 (
-                                                    <Loading loading={loading} />
+                                                    <div>
+                                                        {
+                                                            message.length === 0 && <Loading loading={loading} />
+                                                        }
+                                                    </div>
                                                 )
                                                 :
                                                 (
@@ -129,6 +130,9 @@ const Commands = () => {
                             )
                     }
                 </div>
+                {
+                    message.length > 0 && <LoadingCustom message={message} loading={loading} />
+                }
                 <ToastContainer position="bottom-right" />
             </div>
         </div>
