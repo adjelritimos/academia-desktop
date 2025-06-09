@@ -49,7 +49,7 @@ const QuestionManagemant = () => {
                                 questionsGroups.length > 0 &&
                                 (
                                     <div className="dropdown">
-                                        <button className="btn btn-info text-white rounded-circle" data-bs-toggle={lessonSelected ? "modal" : "dropdown"} data-bs-target="#addquestion">
+                                        <button className="btn btn-shadow btn-info text-white rounded-circle" data-bs-toggle={lessonSelected ? "modal" : "dropdown"} data-bs-target="#addquestion">
                                             <i className="fas fa-plus"></i>
                                         </button>
                                         <ul className={lessonSelected ? "visually-hidden" : "dropdown-menu alert alert-danger p-0"}>
@@ -112,9 +112,9 @@ const QuestionManagemant = () => {
                             questionSelected &&
                             (
                                 <div className="d-flex gap-2">
-                                    <button className="btn btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editquestion"> <i className="fas fa-edit"></i></button>
+                                    <button className="btn btn-shadow btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editquestion"> <i className="fas fa-edit"></i></button>
                                     <EditQuestion setLoading={setLoading} what={what} questionId={questionSelected?.id} questionSelected={questionSelected} setQuestionsGroups={setQuestionsGroups} setQuestionsGroupsCopy={setQuestionsGroupsCopy} setQuestionSelected={setQuestionSelected} />
-                                    <button className="btn btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remquestion"> <i className="fas fa-trash"></i></button>
+                                    <button className="btn btn-shadow btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remquestion"> <i className="fas fa-trash"></i></button>
                                     <RemQuestion setLoading={setLoading} what={what} questionId={questionSelected?.id} setQuestionsGroups={setQuestionsGroups} setQuestionsGroupsCopy={setQuestionsGroupsCopy} setQuestionSelected={setQuestionSelected} />
                                 </div>
                             )

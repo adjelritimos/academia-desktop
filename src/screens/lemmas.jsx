@@ -33,7 +33,7 @@ const Lemmas = () => {
                             <Link to={'/home'} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white"><i className="fas fa-arrow-left"></i></Link>
                             <h1 className="fs-4 display-6 m-0 p-0 mt-auto mb-auto w-100">Lemas</h1>
                         </div>
-                        <button className="btn btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addlemma">
+                        <button className="btn btn-shadow btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addlemma">
                             <i className="fas fa-plus"></i>
                         </button>
                         {
@@ -86,9 +86,9 @@ const Lemmas = () => {
                     {
                         lemmaSelected && (
                             <div className="d-flex gap-2">
-                                <button className="btn btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editlemma"> <i className="fas fa-edit"></i></button>
+                                <button className="btn btn-shadow btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editlemma"> <i className="fas fa-edit"></i></button>
                                 <EditLemmas audio={audioRef.current} lemmaId={lemmaSelected?.id} lemmaSelected={lemmaSelected} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading} setMessage={setMessage} />
-                                <button className="btn btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remlemma"> <i className="fas fa-trash"></i></button>
+                                <button className="btn btn-shadow btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remlemma"> <i className="fas fa-trash"></i></button>
                                 <RemLemmas lemmaId={lemmaSelected?.id} setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading} setMessage={setMessage} />
                             </div>
                         )

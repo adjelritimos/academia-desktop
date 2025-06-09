@@ -36,7 +36,7 @@ const Lessons = () => {
                     <div className="d-flex flex-column">
                         <div className="d-flex">
                             <h1 className="fs-4 display-6 m-0 p-0 w-100">Lissões</h1>
-                            <button className="btn btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addlesson">
+                            <button className="btn btn-shadow btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addlesson">
                                 <i className="fas fa-plus"></i>
                             </button>
                             <AddLesson moduleId={moduleId} setLessons={setLessons} setLessonsCopy={setLessonsCopy} setLessonSelected={setLessonSelected} setLoading={setLoading} setMessage={setMessage} />
@@ -90,9 +90,9 @@ const Lessons = () => {
                             lessonSelected &&
                             (
                                 <div className="d-flex gap-2">
-                                    <button className="btn btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editlesson"> <i className="fas fa-edit"></i></button>
+                                    <button className="btn btn-shadow btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editlesson"> <i className="fas fa-edit"></i></button>
                                     <EditLesson setLoading={setLoading} setLessons={setLessons} setLessonsCopy={setLessonsCopy} moduleId={moduleId} setLessonSelected={setLessonSelected} lesson={lessonSelected} setMessage={setMessage} />
-                                    <button className="btn btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remlesson"> <i className="fas fa-trash"></i></button>
+                                    <button className="btn btn-shadow btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remlesson"> <i className="fas fa-trash"></i></button>
                                     <RemLesson setLoading={setLoading} setLessonSelected={setLessonSelected} setLessonsCopy={setLessonsCopy} lesson={lessonSelected} setLessons={setLessons} moduleId={moduleId} setMessage={setMessage} />
                                 </div>
                             )
