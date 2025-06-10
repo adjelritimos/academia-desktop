@@ -35,7 +35,7 @@ const Lessons = () => {
                 <div className="rounded-2 border border-1 border-info p-2 bg-white w-25 h-100">
                     <div className="d-flex flex-column">
                         <div className="d-flex">
-                            <h1 className="fs-4 display-6 m-0 p-0 w-100">Lissões</h1>
+                            <h1 className="fs-4 display-6 m-0 p-0 w-100">Lições</h1>
                             <button className="btn btn-shadow btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addlesson">
                                 <i className="fas fa-plus"></i>
                             </button>
@@ -85,7 +85,7 @@ const Lessons = () => {
                 </div>
                 <div className="rounded-2 border border-1 border-info p-2 bg-white w-75">
                     <div className="d-flex gap-2">
-                        <h2 className="w-100 p-0 m-0 mt-auto mb-auto fs-4 display-4">Lissão selecionada</h2>
+                        <h2 className="w-100 p-0 m-0 mt-auto mb-auto fs-4 display-4">Lição selecionada</h2>
                         {
                             lessonSelected &&
                             (

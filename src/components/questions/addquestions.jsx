@@ -21,7 +21,7 @@ const length = (options) => {
 const AddQuestion = (props) => {
     const [question, setQuestion] = useState('')
     const [correct_answer, setAnswer] = useState('')
-    const [options, setOptions] = useState([])
+    const [options, setOptions] = useState(['', '', '', ''])
     const [error, setError] = useState('')
 
     const isCheck = () => {
