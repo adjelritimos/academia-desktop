@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import ModalQrCode from '../components/others/modal_qrcode'
 import generateQRCode from '../functions/outhers/qrcode_generate'
 import checkQrCode from '../functions/outhers/checkQrCode'
+import styles from '../style/splash'
 
 
 const Home = () => {
@@ -18,7 +19,7 @@ const Home = () => {
     }, [hasQrcodeValid])
 
     return (
-        <div className="d-flex justify-content-center align-items-center w-50 mx-auto vh-100">
+        <div className="d-flex justify-content-center align-items-center w-50 mx-auto vh-100" style={styles.container}>
             <div className="text-center">
                 <div className=''>
                     <img className="text-light splash-image m-0" role="status" src="/logo.png" alt="Logo" />
