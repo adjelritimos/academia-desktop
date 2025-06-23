@@ -12,8 +12,12 @@
   height: 60px;
 }
 
+.btn-height-1 {
+  height: 100px;
+}
+
 .btn-height-2 {
-  height: 200px;
+  height: 100%;
 }
 
 .btn-height-3 {
@@ -63,6 +67,15 @@
 
 .module:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.question {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.question:hover {
+  transform: scale(1.01);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
