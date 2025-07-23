@@ -26,16 +26,17 @@ const Lessons = () => {
     }, [moduleId, setLoading])
 
     return (
-        <div className="d-flex gap-2 flex-column p-4 vh-100" >
-            <div className="d-flex gap-2 bg-white rounded p-2">
-                <Link to={'/contents'} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white" role="button"><i className="fas fa-arrow-left"></i></Link>
-                <h1>{module}</h1>
-            </div>
+        <div className="d-flex gap-2 flex-column vh-100" >
+
             <div className="d-flex gap-1">
-                <div className="rounded-2 border border-1 border-info p-2 bg-white w-25 h-100">
+                <div className="border-end rounded-start-4 border-1 border-info p-2 bg-white w-25 h-100">
                     <div className="d-flex flex-column">
-                        <div className="d-flex">
-                            <h1 className="fs-4 display-6 m-0 p-0 w-100">Lições</h1>
+                        <div className="d-flex justify-content-between align-items-center">
+                            <div className="d-flex gap-2 bg-white rounded p-2">
+                                <Link to={'/home/contents'} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white" role="button"><i className="fas fa-arrow-left"></i></Link>
+                                <h1 className="fs-4 display-6 m-0 p-0 w-100 mt-auto mb-auto">Lições do {module}</h1>
+                            </div>
+
                             <button className="btn btn-shadow btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addlesson">
                                 <i className="fas fa-plus"></i>
                             </button>
@@ -83,7 +84,7 @@ const Lessons = () => {
                         </div>
                     </div>
                 </div>
-                <div className="rounded-2 border border-1 border-info p-2 bg-white w-75">
+                <div className="p-2 bg-white w-75">
                     <div className="d-flex gap-2">
                         <h2 className="w-100 p-0 m-0 mt-auto mb-auto fs-4 display-4">Lição selecionada</h2>
                         {

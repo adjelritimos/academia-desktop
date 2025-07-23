@@ -18,21 +18,21 @@ const Commands = () => {
     const [commandsCopy, setCommandsCopy] = useState([])
     const [commandSelected, setCommandSelected] = useState(null)
     const [message, setMessage] = useState("")
-    const { loading, setLoading } = useContext(LoadingContext)
+    const { loading, setLoading, setTabNumber } = useContext(LoadingContext)
 
 
     useEffect(() => {
         getCommands(setCommands, setCommandsCopy, setLoading)
-    }, [setLoading])
+        setTabNumber(3)
+    }, [setLoading, setTabNumber])
 
     return (
-        <div className="d-flex gap-1 p-4 vh-100 position-relative">
-            <div className="rounded-2 border border-1 border-info p-2 bg-white w-25">
+        <div className="d-flex vh-100 position-relative">
+            <div className="border-end rounded-start-4 border-1 border-info p-2 bg-white w-25">
                 <div className="d-flex flex-column">
                     <div className="d-flex">
                         <div className="d-flex gap-2 w-100">
-                            <Link to={'/home'} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white"><i className="fas fa-arrow-left"></i></Link>
-                            <h1 className="fs-4 display-6 m-0 p-0 mt-auto mb-auto w-100">Comando de voz</h1>
+                            <h1 className="fs-4 display-6 m-0 fw-bold p-0 mt-auto mb-auto w-100">Comando de voz</h1>
                         </div>
 
                         <button className="btn btn-info btn-shadow text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addcommand">
@@ -40,6 +40,7 @@ const Commands = () => {
                         </button>
 
                         <AddCommand setCommandSelected={setCommandSelected} setCommands={setCommands} setCommandsCopy={setCommandsCopy} setLoading={setLoading} setMessage={setMessage} />
+                   
                     </div>
                     <input onChange={(e) => filter(e.target.value, commands, setCommandsCopy, false)} type="text" placeholder="busque comandos pelo nome..." className="form-control mt-2 border-info" />
                     <div className="overflow-auto mt-3 position-relative lemma-list">
@@ -82,7 +83,7 @@ const Commands = () => {
                     </div>
                 </div>
             </div>
-            <div className="rounded-2 border border-1 border-info p-2 bg-white w-75">
+            <div className="p-2 bg-white w-75">
                 <div className="d-flex gap-2">
                     <h2 className="w-100 p-0 m-0 mt-auto mb-auto fs-4 display-4">Comando de voz selecionado</h2>
                     {

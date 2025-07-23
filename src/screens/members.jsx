@@ -11,7 +11,7 @@ import { ToastContainer } from "react-toastify"
 import api_midia from "../server/api_midia"
 import LoadingCustom from "../components/others/loadingCustom"
 
-const Lemmas = () => {
+const Members = () => {
 
     const [lemmas, setLemmas] = useState([])
     const [lemmasCopy, setLemmasCopy] = useState([])
@@ -22,7 +22,7 @@ const Lemmas = () => {
 
     useEffect(() => {
         getLemmas(setLemmas, setLemmasCopy, setLoading)
-        setTabNumber(4)
+        setTabNumber(2)
     }, [setLoading, setTabNumber])
 
     return (
@@ -31,7 +31,7 @@ const Lemmas = () => {
                 <div className="d-flex flex-column">
                     <div className="d-flex">
                         <div className="d-flex gap-2 w-100">
-                            <h1 className="fs-4 display-6 fw-bold m-0 p-0 mt-auto mb-auto w-100">Lemas</h1>
+                            <h1 className="fs-4 display-6 fw-bold m-0 p-0 mt-auto mb-auto w-100">Membros</h1>
                         </div>
                         <button className="btn btn-shadow btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addlemma">
                             <i className="fas fa-plus"></i>
@@ -41,7 +41,7 @@ const Lemmas = () => {
                         }
                         <AddLemmas setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading} setMessage={setMessage} />
                     </div>
-                    <input onChange={(e) => filter(e.target.value, lemmas, setLemmasCopy, true)} type="text" placeholder="busque lemas por perguntas..." className="form-control mt-2 border-info" />
+                    <input onChange={(e) => filter(e.target.value, lemmas, setLemmasCopy, true)} type="text" placeholder="busque membros polo nome" className="form-control mt-2 border-info" />
                     <div className="overflow-auto position-relative mt-3 lemma-list">
                         {
                             lemmasCopy.length > 0 ?
@@ -124,4 +124,4 @@ const Lemmas = () => {
     )
 }
 
-export default Lemmas
+export default Members

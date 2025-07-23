@@ -33,18 +33,18 @@ const QuestionManagemant = () => {
     }, [what, setLoading])
 
     return (
-        <div className="d-flex gap-2 flex-column p-4 vh-100" >
+        <div className="d-flex flex-column vh-100" >
 
-            <div className="d-flex gap-2 bg-white rounded p-2">
-                <button onClick={goBack} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white" role="button"><i className="fas fa-arrow-left"></i></button>
-                <h1>Perguntas {what}</h1>
-            </div>
+
 
             <div className="d-flex gap-1">
-                <div className="rounded-2 border border-1 border-info p-2 bg-white w-25 h-100">
+                <div className="rounded-start-4 border-end border-1 border-info p-2 bg-white w-25 h-100">
                     <div className="d-flex flex-column">
-                        <div className="d-flex">
-                            <h1 className="fs-4 display-6 m-0 p-0 w-100">Perguntas</h1>
+                        <div className="d-flex justify-content-between align-items-center">
+                            <div className="d-flex gap-2 w-100">
+                                <button onClick={goBack} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white" role="button"><i className="fas fa-arrow-left"></i></button>
+                                <h1 className="display-4 fs-5 fw-bold mt-auto mb-auto text-break">Perguntas {what}</h1>
+                            </div>
                             {
                                 questionsGroups.length > 0 &&
                                 (
@@ -105,7 +105,7 @@ const QuestionManagemant = () => {
                         </div>
                     </div>
                 </div>
-                <div className="rounded-2 border border-1 border-info p-2 bg-white w-75">
+                <div className="p-2 bg-white w-75">
                     <div className="d-flex gap-2">
                         <h2 className="w-100 p-0 m-0 mt-auto mb-auto fs-4 display-4">Pergunta selecionada</h2>
                         {

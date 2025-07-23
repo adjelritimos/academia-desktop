@@ -29,7 +29,7 @@ const AddLesson = (props) => {
             <div className="modal-dialog modal-xl modal-dialog-centered">
                 <form onSubmit={(e) => {addLesson(e, content, body, props.moduleId, props.setLessons, props.setLessonsCopy, props.setLessonSelected, props.setLoading); props.setMessage("adicionando a lissão"); setContet(''); setBody('')}} className="modal-content">
                     <div className="modal-header bg-info p-2 pe-3 text-white fw-bold">
-                        <h1 className="modal-title display-4 fs-5" id="exampleModalLabel">Nova lissão</h1>
+                        <h1 className="modal-title display-4 fs-5" id="exampleModalLabel">Nova lição</h1>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <small className="text-center text-danger fw-bold fs-3"> {error} </small>
