@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Calendar, Badge, ConfigProvider } from 'rsuite'
+import { Calendar, Badge } from 'rsuite'
 
 
 function getTodoList(date) {
@@ -56,16 +56,14 @@ const Calendary = () => {
   }
 
   return (
-    <ConfigProvider locale={'pt'}>
-      <div className="d-flex flex-column gap-1">
-        <div className="w-100 rounded-4 border">
-          <Calendar compact renderCell={renderCell} onSelect={handleSelect} />
-        </div>
-        <div className="w-100">
-          <TodoList date={selectedDate} />
-        </div>
+    <div className="d-flex flex-column gap-1">
+      <div className="w-100 rounded-4 border">
+        <Calendar compact renderCell={renderCell} onSelect={handleSelect} />
       </div>
-    </ConfigProvider>
+      <div className="w-100">
+        <TodoList date={selectedDate} />
+      </div>
+    </div>
   )
 }
 
