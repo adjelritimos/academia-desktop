@@ -9,11 +9,11 @@ const HomeIndex = () => {
     const { tabNumber } = useContext(LoadingContext)
 
     return (
-        <div className="vh-100">
+        <div className="h-100" data-bs-dismiss="offcanvas">
             <Header />
             <div className="d-flex h-100">
                 <SideBars tab={tabNumber} />
-                <div className="border rounded-start-4 w-100 bg-white">
+                <div className="border rounded-start-4 w-100 bg-white altura">
                     <Outlet />
                 </div>
             </div>

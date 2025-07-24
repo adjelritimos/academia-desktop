@@ -1,9 +1,12 @@
+@import "rsuite/dist/rsuite.css";
+
+
 .splash-image {
   height: '200px';
   width: '200px';
 }
 
-.logo{
+.logo {
   height: 40px;
   width: 40px;
 }
@@ -33,8 +36,20 @@
   height: calc(100vh - 250px);
 }
 
+.lesson-list-1 {
+  height: calc(100vh - 190px);
+}
+
 .lemma-list {
-  height: calc(100vh - 160px);
+  height: calc(100vh - 165px);
+}
+
+.lemma-list-1 {
+  height: calc(100vh - 175px);
+}
+
+.lemma-list-2 {
+  height: calc(100vh - 175px);
 }
 
 .image {
@@ -84,7 +99,87 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
+.slideBar {
+  width: 285px;
+  background-color: #ECF2F5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+  background-color: transparent !important;
+}
+
+.altura {
+  height: calc(100vh - 58px);
+}
+
+.altura-main {
+  height: calc(100vh - 58px);
+}
 
 .image-logo {
   animation: pulse 2s ease-in-out infinite;
+}
+
+.ativity-height {
+  height: 400px;
+}
+
+.ativity-height:hover {
+  transform: scale(1.01);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.class-height {
+  height: 300px;
+}
+
+.class-height:hover {
+  transform: scale(1.01);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.react-calendar {
+  width: 100%;
+  border: none;
+  /* remove a borda se quiser */
+  border-radius: 8px;
+  /* cantos arredondados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* pequena sombra para elevação */
+}
+
+.calendar-todo-list {
+  text-align: left;
+  padding: 0;
+  list-style: none;
+}
+
+.calendar-todo-list li {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.calendar-todo-item-badge {
+  vertical-align: top;
+  margin-top: 8px;
+  width: 6px;
+  height: 6px;
+}
+
+.card-altura {
+  height: 250px;
+}
+
+.message-altura {
+  height: 150px;
+}
+
+.div-home {
+  height: calc(100vh - 165px);
+}
+
+.list-altura {
+  height: 35vh;
 }

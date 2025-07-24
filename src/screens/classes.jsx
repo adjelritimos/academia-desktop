@@ -10,7 +10,7 @@ import LoadingCustom from "../components/others/loadingCustom"
 import EditContent from "../components/contents/editecontent"
 
 
-const Contents = () => {
+const Classes = () => {
 
     const { loading, setLoading, setTabNumber } = useContext(LoadingContext)
     const [modules, setModules] = useState([])
@@ -20,7 +20,7 @@ const Contents = () => {
 
     useEffect(() => {
         getModules(setModules, setLoading)
-        setTabNumber(6)
+        setTabNumber(7)
     }, [setLoading, setTabNumber])
 
     return (
@@ -30,9 +30,9 @@ const Contents = () => {
             }
             <div className="d-flex justify-content-between w-100 gap-2 bg-white p-2 rounded">
                 <div className="d-flex gap-2">
-                    <h1 className="fs-4 display-3 mt-auto mb-auto fw-bold">Os conteúdos organizados em módulos</h1>
+                    <h1 className="fs-4 display-3 mt-auto mb-auto fw-bold">Aulas</h1>
                 </div>
-                <button className="btn btn-shadow btn-info text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addmodule"><i className="fas fa-plus"></i> Novo módulo</button>
+                <button className="btn btn-shadow btn-info text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addmodule"><i className="fas fa-plus"></i> Nova aula</button>
 
                 <AddContent setModules={setModules} setLoading={setLoading} setMessage={setMessage} />
             </div>
@@ -42,8 +42,8 @@ const Contents = () => {
                     modules.length > 0 ?
                         (
                             modules.map((modulo) => (
-                                <div className="col col-3">
-                                    <div className="d-flex module w-100 btn btn-outline-info bg-white p-0 pe-2 border-info rounded border btn-height-1" role="button">
+                                <div className="col">
+                                    <div className="d-flex class-height w-100 btn btn-outline-info bg-white p-0 pe-2 border-info rounded border btn-height-1" role="button">
                                         <Link to={`/home/lessons/${modulo.name}/${modulo.id}`} key={modulo.id} role="button" className="btn border fs-3 border-white bg-white fw-bold d-flex justify-content-start align-items-center text-start text-break pt-auto pb-auto w-100">
                                             {modulo.name}
                                         </Link>
@@ -88,4 +88,4 @@ const Contents = () => {
 
 }
 
-export default Contents
+export default Classes

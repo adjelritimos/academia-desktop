@@ -13,7 +13,7 @@ const Question = () => {
     }, [setTabNumber])
 
     return (
-        <div className="p-2 d-flex flex-column justify-content-center align-items-center vh-100">
+        <div className="p-2 d-flex flex-column justify-content-center align-items-center h-100">
             <div className="d-flex justify-content-between w-100 gap-2 bg-white p-2 rounded">
                 <div className="d-flex gap-2">
                     <h1 className="fs-4 display-3 mt-auto mb-auto fw-bold">As perguntas organizadas em categorias</h1>

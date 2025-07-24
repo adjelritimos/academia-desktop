@@ -11,6 +11,8 @@ import QuestionManagemant from './screens/question_managemant'
 import { LoadingProvider } from './contexts/contextLoading'
 import HomeIndex from './screens/homeIndex'
 import Members from './screens/members'
+import Classes from './screens/classes'
+import Ativities from './screens/ativities'
 
 
 
@@ -25,6 +27,8 @@ const Routers = () => {
           <Route path="lemmas" element={<Lemmas />} />
           <Route path="commands" element={<Commands />} />
           <Route path="contents" element={<Contents />} />
+          <Route path="classes" element={<Classes />} />
+          <Route path="ativities" element={<Ativities />} />
           <Route path="lessons/:module/:moduleId" element={<Lessons />} />
           <Route path="questions" element={<Question />} />
           <Route path="questions/:what/:about" element={<QuestionManagemant />} />

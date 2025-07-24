@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 import AddQuestion from "../components/questions/addquestions"
 import getLemmaQuestions from "../functions/questions/getLemmaQuestions"
@@ -33,17 +33,14 @@ const QuestionManagemant = () => {
     }, [what, setLoading])
 
     return (
-        <div className="d-flex flex-column vh-100" >
-
-
-
+        <div className="d-flex flex-column h-100" >
             <div className="d-flex gap-1">
                 <div className="rounded-start-4 border-end border-1 border-info p-2 bg-white w-25 h-100">
                     <div className="d-flex flex-column">
                         <div className="d-flex justify-content-between align-items-center">
                             <div className="d-flex gap-2 w-100">
                                 <button onClick={goBack} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white" role="button"><i className="fas fa-arrow-left"></i></button>
-                                <h1 className="display-4 fs-5 fw-bold mt-auto mb-auto text-break">Perguntas {what}</h1>
+                                <h1 className="display-4 fs-6 fw-bold mt-auto mb-auto text-break">Perguntas {what}</h1>
                             </div>
                             {
                                 questionsGroups.length > 0 &&
@@ -61,7 +58,7 @@ const QuestionManagemant = () => {
                             }
                         </div>
                         <input onChange={(e) => { what.includes('lema') ? filter(e.target.value, questionsGroups, setQuestionsGroupsCopy, what.includes('lema')) : what.includes('comandos') ? filter(e.target.value, questionsGroups, setQuestionsGroupsCopy, what.includes('lema')) : filterLessons(e.target.value, questionsGroups, setQuestionsGroupsCopy) }} type="text" placeholder="busque perguntas" className="form-control mt-2 border-info" />
-                        <div className="overflow-auto accordion accordion-flush mt-3 lesson-list">
+                        <div className="overflow-auto accordion accordion-flush mt-3 lemma-list-1">
                             {
                                 questionsGroupsCopy.length > 0 ?
                                     (
@@ -77,7 +74,6 @@ const QuestionManagemant = () => {
                                                             <div onClick={() => setQuestionSelected(question)} className={questionSelected?.id === question.id ? "btn p-1 rounded btn-info text-white fw-bold text-start mb-1 w-100" : "btn p-1 btn-outline-info text-start mb-1 w-100"}> {question.question} </div>
                                                         ))
                                                     }
-
                                                 </div>
 
                                             </div>
@@ -98,7 +94,6 @@ const QuestionManagemant = () => {
                                                             <small> {what.includes('lema') ? "Precisas de adicionar pelo menos um lema" : what.includes('comandos') ? "Precisas de adicionar pelo menos um comando de voz" : "Precisas de adicionar pelo menos uma lição"} </small>
                                                         </div>
                                                     )}
-
                                         </div>
                                     )
                             }
@@ -126,14 +121,17 @@ const QuestionManagemant = () => {
                             questionSelected ?
                                 (
                                     <div className="mx-auto p-2 rounded">
+
                                         <h2>{questionSelected.question}</h2>
 
                                         <label htmlFor="alert">Resposta correta</label>
+
                                         <div className="alert text-break alert-success" role="alert">
                                             {questionSelected.correct_answer}
                                         </div>
 
                                         <label htmlFor="alert">Respostas alternativas erradas</label>
+                                        
                                         <div className="alert alert-danger" role="alert">
                                             {questionSelected.answers.map((option) => (<p className="text-break" key={option.id}>{option.answer}</p>))}
                                         </div>

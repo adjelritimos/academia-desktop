@@ -27,7 +27,7 @@ const Commands = () => {
     }, [setLoading, setTabNumber])
 
     return (
-        <div className="d-flex vh-100 position-relative">
+        <div className="d-flex h-100 position-relative">
             <div className="border-end rounded-start-4 border-1 border-info p-2 bg-white w-25">
                 <div className="d-flex flex-column">
                     <div className="d-flex">

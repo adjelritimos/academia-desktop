@@ -26,8 +26,8 @@ const Lemmas = () => {
     }, [setLoading, setTabNumber])
 
     return (
-        <div className="d-flex vh-100 position-relative">
-            <div className="border-end rounded-start-4 border-1 border-info p-2 bg-white w-25">
+        <div className="d-flex position-relative">
+            <div className="border-end rounded-start-4 altura-main border-1 border-info p-2 bg-white w-25">
                 <div className="d-flex flex-column">
                     <div className="d-flex">
                         <div className="d-flex gap-2 w-100">
@@ -80,7 +80,7 @@ const Lemmas = () => {
                     </div>
                 </div>
             </div>
-            <div className="p-2 bg-white w-75">
+            <div className="p-2 bg-white w-75 altura-main">
                 <div className="d-flex gap-2">
                     <h2 className="w-100 p-0 m-0 mt-auto mb-auto fs-4 display-4">Lema selecionado</h2>
                     {

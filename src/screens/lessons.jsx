@@ -26,10 +26,10 @@ const Lessons = () => {
     }, [moduleId, setLoading])
 
     return (
-        <div className="d-flex gap-2 flex-column vh-100" >
+        <div className="d-flex gap-2 flex-column h-100" >
 
             <div className="d-flex gap-1">
-                <div className="border-end rounded-start-4 border-1 border-info p-2 bg-white w-25 h-100">
+                <div className="border-end rounded-start-4 border-1 border-info p-2 bg-white lemma-list-2 w-25 h-100">
                     <div className="d-flex flex-column">
                         <div className="d-flex justify-content-between align-items-center">
                             <div className="d-flex gap-2 bg-white rounded p-2">
@@ -43,7 +43,7 @@ const Lessons = () => {
                             <AddLesson moduleId={moduleId} setLessons={setLessons} setLessonsCopy={setLessonsCopy} setLessonSelected={setLessonSelected} setLoading={setLoading} setMessage={setMessage} />
                         </div>
                         <input onChange={(e) => filterLessons(e.target.value, lessons, setLessonsCopy)} type="text" placeholder="busque lições por tema..." className="form-control mt-2 border-info" />
-                        <div className="overflow-auto position-relative mt-3 lesson-list">
+                        <div className="overflow-auto position-relative mt-3 lesson-list-1">
                             {
                                 lessonsCopy.length > 0 ?
                                     (
@@ -84,7 +84,7 @@ const Lessons = () => {
                         </div>
                     </div>
                 </div>
-                <div className="p-2 bg-white w-75">
+                <div className="p-2 bg-white w-75 lemma-list">
                     <div className="d-flex gap-2">
                         <h2 className="w-100 p-0 m-0 mt-auto mb-auto fs-4 display-4">Lição selecionada</h2>
                         {
