@@ -125,6 +125,10 @@
   height: 400px;
 }
 
+.ativity-altura{
+  height: calc(100vh - 100px);
+}
+
 .ativity-height:hover {
   transform: scale(1.01);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
@@ -182,4 +186,7 @@
 
 .list-altura {
   height: 35vh;
+}
+.w-20 {
+  width: 350px;
 }

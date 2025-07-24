@@ -45,7 +45,7 @@ const ModalQrCode = (props) => {
 
         <div className="modal fade" id="conteudo" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-            <div className="modal-dialog modal-dialog-centered w-25">
+            <div className="modal-dialog modal-dialog-centered w-20">
 
                 <div className="modal-content">
 
@@ -80,17 +80,17 @@ const ModalQrCode = (props) => {
                                 (
                                     <div>
                                         
-                                        <div className='p-3' ref={qrPhoto}>
+                                        <div className='p-3 mx-auto w-100 text-center' ref={qrPhoto}>
                                            
                                             <QRCode value={props.qrcode || 'Esse é um texte de qrcode'} />
                                        
                                         </div>
                                        
-                                        <div className='d-flex gap-1 p-2 justify-content-end'>
+                                        <div className='d-flex gap-1 p-2 justify-content-center'>
                                             
-                                            <button onClick={() => generateQRCode(props.setIsGenerating, props.setQrCode, true)} className='btn btn-outline-info rounded-pill p-1'>Atualizar</button>
+                                            <button onClick={() => generateQRCode(props.setIsGenerating, props.setQrCode, true)} className='btn w-50 btn-outline-info rounded-pill p-1'>Atualizar</button>
                                            
-                                            <button onClick={handleDownloadQRCode} type="button" className="btn btn-info text-white rounded-pill" data-bs-dismiss="modal">
+                                            <button onClick={handleDownloadQRCode} type="button" className="btn btn-info w-50 text-white rounded-pill" data-bs-dismiss="modal">
                                                
                                                 salvar
 

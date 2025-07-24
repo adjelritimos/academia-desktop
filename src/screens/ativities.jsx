@@ -37,13 +37,13 @@ const Ativities = () => {
                 <AddContent setModules={setModules} setLoading={setLoading} setMessage={setMessage} />
             </div>
 
-            <div className="row row-cols-4 g-2 w-100 mt-2 overflow-auto">
+            <div className="row row-cols-4 g-2 w-100 mt-2 overflow-auto ativity-altura">
                 {
                     modules.length > 0 ?
                         (
                             modules.map((modulo) => (
                                 <div className="col">
-                                    <div className="ativity-height d-flex w-100 btn btn-outline-info bg-white p-0 pe-2 border-info rounded border" role="button">
+                                    <div className="ativity-height d-flex w-100 btn btn-outline-info bg-white p-2 border-info rounded border" role="button">
                                         <Link to={`/home/lessons/${modulo.name}/${modulo.id}`} key={modulo.id} role="button" className="btn border fs-3 border-white bg-white fw-bold d-flex justify-content-start align-items-center text-start text-break pt-auto pb-auto w-100">
                                             {modulo.name}
                                         </Link>

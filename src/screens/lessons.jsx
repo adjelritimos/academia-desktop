@@ -14,69 +14,119 @@ import LoadingCustom from "../components/others/loadingCustom"
 const Lessons = () => {
 
     const { module, moduleId } = useParams()
+
     const [lessons, setLessons] = useState([])
+
     const [lessonsCopy, setLessonsCopy] = useState([])
+
     const [lessonSelected, setLessonSelected] = useState(null)
+
     const [message, setMessage] = useState("")
+
     const { loading, setLoading } = useContext(LoadingContext)
 
 
     useEffect(() => {
+
         getLessons(moduleId, setLessons, setLessonsCopy, setLoading)
+
     }, [moduleId, setLoading])
 
     return (
+
         <div className="d-flex gap-2 flex-column h-100" >
 
             <div className="d-flex gap-1">
+
                 <div className="border-end rounded-start-4 border-1 border-info p-2 bg-white lemma-list-2 w-25 h-100">
+
                     <div className="d-flex flex-column">
+
                         <div className="d-flex justify-content-between align-items-center">
+
                             <div className="d-flex gap-2 bg-white rounded p-2">
+
                                 <Link to={'/home/contents'} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white" role="button"><i className="fas fa-arrow-left"></i></Link>
+
                                 <h1 className="fs-4 display-6 m-0 p-0 w-100 mt-auto mb-auto">Lições do {module}</h1>
+
                             </div>
 
                             <button className="btn btn-shadow btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addlesson">
+
                                 <i className="fas fa-plus"></i>
+
                             </button>
+
                             <AddLesson moduleId={moduleId} setLessons={setLessons} setLessonsCopy={setLessonsCopy} setLessonSelected={setLessonSelected} setLoading={setLoading} setMessage={setMessage} />
+
                         </div>
+
                         <input onChange={(e) => filterLessons(e.target.value, lessons, setLessonsCopy)} type="text" placeholder="busque lições por tema..." className="form-control mt-2 border-info" />
+
                         <div className="overflow-auto position-relative mt-3 lesson-list-1">
                             {
                                 lessonsCopy.length > 0 ?
+
                                     (
+
                                         lessonsCopy.map((lesson) => (
-                                            <div onClick={() => setLessonSelected(lesson)} key={lesson.id} className={lessonSelected?.id === lesson.id ? "btn btn-info text-white text-start mb-1 w-100" : "btn btn-outline-info text-start mb-1 w-100"}>
+
+                                            <div onClick={() => setLessonSelected(lesson)} key={lesson.id} className={lessonSelected?.id === lesson.id ? "btn btn-info text-white text-start mb-1 w-100 pt-3 pb-3" : "btn btn-outline-info text-start mb-1 w-100 pt-3 pb-3"}>
+
                                                 <h1 className="display-4 fs-4 mt-auto mb-auto text-break">{lesson.content}</h1>
+
                                             </div>
+
                                         ))
+
                                     )
+
                                     :
+
                                     (
+
                                         <div className="text-center h-100 d-flex flex-column justify-content-center aliament-items-center">
+
                                             {
+
                                                 loading ?
+
                                                     (
+
                                                         <div>
+
                                                             {
                                                                 message.length === 0 && <Loading loading={loading} />
                                                             }
+
                                                         </div>
+
                                                     )
+
                                                     :
+
                                                     (
+
                                                         <div>
+
                                                             <i class="fas fa-inbox text-info"></i>
+
                                                             <h1 className="display-5 fs-5 m-0 p-0">Sem liçõe para listar</h1>
+
                                                             <small>adicione uma lição a lista</small>
+
                                                         </div>
+
                                                     )
+
                                             }
 
+
                                         </div>
+
                                     )
+
                             }
 
                             {lessons.length > 0 && (<Link to={'/questions/sobre conteúdos/conteúdos'} role="button" className="btn btn-outline-info position-absolute rounded-pill fw-bold bottom-0 end-0">Ir as perguntas</Link>)}
