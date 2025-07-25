@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import AddContent from "../components/contents/addcontent"
 import { useContext, useEffect, useState } from "react"
-import getModules from "../functions/contents/getModules"
 import RemModule from "../components/contents/remcontent"
 import { AppContext } from "../contexts/app_context"
 import Loading from "../components/others/loading"
@@ -12,16 +11,14 @@ import EditContent from "../components/contents/editecontent"
 
 const Contents = () => {
 
-    const { loading, setLoading, setTabNumber } = useContext(AppContext)
-    const [modules, setModules] = useState([])
+    const { loading, setLoading, setTabNumber, modules, setModules } = useContext(AppContext)
     const [seletedModule, setSelectedModule] = useState(null)
     const [message, setMessage] = useState("")
 
 
     useEffect(() => {
-        getModules(setModules, setLoading)
         setTabNumber(6)
-    }, [setLoading, setTabNumber])
+    }, [setLoading, setTabNumber, modules, setModules])
 
     return (
         <div className="p-2 d-flex flex-column justify-content-top align-items-center position-relative h-100">

@@ -1,27 +1,23 @@
 import { Link } from "react-router-dom"
-import AddContent from "../components/contents/addcontent"
 import { useContext, useEffect, useState } from "react"
-import getModules from "../functions/contents/getModules"
-import RemModule from "../components/contents/remcontent"
 import { AppContext } from "../contexts/app_context"
 import Loading from "../components/others/loading"
 import { ToastContainer } from "react-toastify"
 import LoadingCustom from "../components/others/loadingCustom"
-import EditContent from "../components/contents/editecontent"
 
 
 const Ativities = () => {
 
-    const { loading, setLoading, setTabNumber } = useContext(AppContext)
-    const [modules, setModules] = useState([])
-    const [seletedModule, setSelectedModule] = useState(null)
+    const { loading, setLoading, setTabNumber, ativities, setAtivities } = useContext(AppContext)
+    const [ativitiesCopy, setAtivitiesCopy] = useState([])
+    const [seletedAtivity, setSeletedAtivity] = useState(null)
     const [message, setMessage] = useState("")
 
 
     useEffect(() => {
-        getModules(setModules, setLoading)
+        setAtivitiesCopy(ativities)
         setTabNumber(5)
-    }, [setLoading, setTabNumber])
+    }, [setLoading, setTabNumber, ativities, setAtivities])
 
     return (
         <div className="p-2 d-flex flex-column justify-content-top align-items-center position-relative h-100">
@@ -33,23 +29,22 @@ const Ativities = () => {
                     <h1 className="fs-4 display-3 mt-auto mb-auto fw-bold">Atividades</h1>
                 </div>
                 <button className="btn btn-shadow btn-info text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addmodule"><i className="fas fa-plus"></i> Nova atividade</button>
-
-                <AddContent setModules={setModules} setLoading={setLoading} setMessage={setMessage} />
+           
             </div>
 
             <div className="row row-cols-4 g-2 w-100 mt-2 overflow-auto ativity-altura">
                 {
-                    modules.length > 0 ?
+                    ativitiesCopy.length > 0 ?
                         (
-                            modules.map((modulo) => (
+                            ativitiesCopy.map((ativity) => (
                                 <div className="col">
                                     <div className="ativity-height d-flex w-100 btn btn-outline-info bg-white p-2 border-info rounded border" role="button">
-                                        <Link to={`/home/lessons/${modulo.name}/${modulo.id}`} key={modulo.id} role="button" className="btn border fs-3 border-white bg-white fw-bold d-flex justify-content-start align-items-center text-start text-break pt-auto pb-auto w-100">
-                                            {modulo.name}
+                                        <Link to={`/home/lessons/${ativity.name}/${ativity.id}`} key={ativity.id} role="button" className="btn border fs-3 border-white bg-white fw-bold d-flex justify-content-start align-items-center text-start text-break pt-auto pb-auto w-100">
+                                            {ativity.name}
                                         </Link>
                                         <div className="d-flex gap-1">
-                                            <button onClick={() => setSelectedModule(modulo)} data-bs-toggle="modal" data-bs-target="#editcontent" className="btn mt-auto mb-auto btn-outline-light text-dark p-1 rounded-circle"><i className="fas fa-edit"></i></button>
-                                            <button onClick={() => setSelectedModule(modulo)} data-bs-toggle="modal" data-bs-target="#remcontent" className="btn mt-auto mb-auto btn-danger p-1 rounded-circle"><i className="fas fa-trash"></i></button>
+                                            <button onClick={() => setSeletedAtivity(ativity)} data-bs-toggle="modal" data-bs-target="#editcontent" className="btn mt-auto mb-auto btn-outline-light text-dark p-1 rounded-circle"><i className="fas fa-edit"></i></button>
+                                            <button onClick={() => setSeletedAtivity(ativity)} data-bs-toggle="modal" data-bs-target="#remcontent" className="btn mt-auto mb-auto btn-danger p-1 rounded-circle"><i className="fas fa-trash"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -71,8 +66,8 @@ const Ativities = () => {
                                         (
                                             <div>
                                                 <i className="fas fa-tasks text-info pt-5 mt-5 fs-1"></i>
-                                                <h1 className="display-5 fs-5">Sem módulos para as lições ainda</h1>
-                                                <small>Adicione módulos</small>
+                                                <h1 className="display-5 fs-5">Sem atividades ainda</h1>
+                                                <small>Adicione uma atividade</small>
                                             </div>
                                         )
                                 }
@@ -80,8 +75,7 @@ const Ativities = () => {
                         )
                 }
             </div>
-            <EditContent setModules={setModules} setLoading={setLoading} setMessage={setMessage} moduleId={seletedModule?.id} moduleName={seletedModule?.name} />
-            <RemModule moduleId={seletedModule?.id} setModules={setModules} setLoading={setLoading} setMessage={setMessage} />
+          
             <ToastContainer position="bottom-right" />
         </div>
     )

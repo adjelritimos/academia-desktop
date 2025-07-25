@@ -68,8 +68,8 @@ const Members = () => {
                                                 (
                                                     <div>
                                                         <i class="fas fa-inbox text-info"></i>
-                                                        <h1 className="display-5 fs-5 m-0 p-0">Sem lema para listar</h1>
-                                                        <small>adicione um lema a lista</small>
+                                                        <h1 className="display-5 fs-5 m-0 p-0">Sem mombros para listar</h1>
+                                                        <small>adicione um membro a lista</small>
                                                     </div>
                                                 )
                                         }
@@ -82,7 +82,7 @@ const Members = () => {
             </div>
             <div className="p-2 bg-white w-75">
                 <div className="d-flex gap-2">
-                    <h2 className="w-100 p-0 m-0 mt-auto mb-auto fs-4 display-4">Lema selecionado</h2>
+                    <h2 className="w-100 p-0 m-0 mt-auto mb-auto fs-4 display-4">Membro selecionado</h2>
                     {
                         lemmaSelected && (
                             <div className="d-flex gap-2">

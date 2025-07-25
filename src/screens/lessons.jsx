@@ -16,13 +16,13 @@ const Lessons = () => {
 
     const { module, moduleId } = useParams()
 
-    const [ lessons, setLessons ] = useState([])
+    const [lessons, setLessons] = useState([])
 
-    const [ lessonsCopy, setLessonsCopy ] = useState([])
+    const [lessonsCopy, setLessonsCopy] = useState([])
 
-    const [ lessonSelected, setLessonSelected ] = useState(null)
+    const [lessonSelected, setLessonSelected] = useState(null)
 
-    const [ message, setMessage ] = useState("")
+    const [message, setMessage] = useState("")
 
     const { loading, setLoading } = useContext(AppContext)
 

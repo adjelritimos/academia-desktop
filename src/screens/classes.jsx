@@ -1,33 +1,30 @@
 import { Link } from "react-router-dom"
-import AddContent from "../components/contents/addcontent"
 import { useContext, useEffect, useState } from "react"
-import getModules from "../functions/contents/getModules"
-import RemModule from "../components/contents/remcontent"
 import { AppContext } from "../contexts/app_context"
 import Loading from "../components/others/loading"
 import { ToastContainer } from "react-toastify"
 import LoadingCustom from "../components/others/loadingCustom"
-import EditContent from "../components/contents/editecontent"
+
 
 
 const Classes = () => {
 
-    const { loading, setLoading, setTabNumber } = useContext(AppContext)
+    const { loading, setLoading, setTabNumber, classes, setClasses } = useContext(AppContext)
 
-    const [modules, setModules] = useState([])
+    const [classesCopy, setClasseCopy] = useState([])
 
-    const [seletedModule, setSelectedModule] = useState(null)
+    const [seletedClass, setSeletedClass] = useState(null)
 
     const [message, setMessage] = useState("")
 
 
     useEffect(() => {
 
-        getModules(setModules, setLoading)
+        setClasseCopy(classes)
 
         setTabNumber(7)
 
-    }, [setLoading, setTabNumber])
+    }, [setLoading, setTabNumber, classes, setClasses])
 
     return (
 
@@ -47,33 +44,31 @@ const Classes = () => {
 
                 <button className="btn btn-shadow btn-info text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addmodule"><i className="fas fa-plus"></i> Nova aula</button>
 
-                <AddContent setModules={setModules} setLoading={setLoading} setMessage={setMessage} />
-           
             </div>
 
             <div className="row row-cols-4 w-100 mt-2 overflow-auto ativity-altura">
                 {
-                    modules.length > 0 ?
+                    classesCopy.length > 0 ?
 
                         (
 
-                            modules.map((modulo) => (
+                            classesCopy.map((classe) => (
 
                                 <div className="col p-1">
 
                                     <div className="d-flex class-height w-100 h-100 btn btn-outline-info bg-white border-info rounded border btn-height-1" role="button">
 
-                                        <Link to={`/home/lessons/${modulo.name}/${modulo.id}`} key={modulo.id} role="button" className="btn border fs-3 border-white bg-white fw-bold d-flex justify-content-start align-items-center text-start text-break pt-auto pb-auto w-100">
+                                        <Link to={`/home/lessons/${classe.name}/${classe.id}`} key={classe.id} role="button" className="btn border fs-3 border-white bg-white fw-bold d-flex justify-content-start align-items-center text-start text-break pt-auto pb-auto w-100">
 
-                                            {modulo.name}
+                                            {classe.name}
 
                                         </Link>
 
                                         <div className="d-flex gap-1">
 
-                                            <button onClick={() => setSelectedModule(modulo)} data-bs-toggle="modal" data-bs-target="#editcontent" className="btn mt-auto mb-auto btn-outline-light text-dark p-1 rounded-circle"><i className="fas fa-edit"></i></button>
+                                            <button onClick={() => setSeletedClass(classe)} data-bs-toggle="modal" data-bs-target="#editcontent" className="btn mt-auto mb-auto btn-outline-light text-dark p-1 rounded-circle"><i className="fas fa-edit"></i></button>
 
-                                            <button onClick={() => setSelectedModule(modulo)} data-bs-toggle="modal" data-bs-target="#remcontent" className="btn mt-auto mb-auto btn-danger p-1 rounded-circle"><i className="fas fa-trash"></i></button>
+                                            <button onClick={() => setSeletedClass(classe)} data-bs-toggle="modal" data-bs-target="#remcontent" className="btn mt-auto mb-auto btn-danger p-1 rounded-circle"><i className="fas fa-trash"></i></button>
 
                                         </div>
 
@@ -99,9 +94,9 @@ const Classes = () => {
 
                                                 <i className="fas fa-tasks text-info pt-5 mt-5 fs-1"></i>
 
-                                                <h1 className="display-5 fs-5">Sem módulos para as lições ainda</h1>
+                                                <h1 className="display-5 fs-5">Sem aulas ainda</h1>
 
-                                                <small>Adicione módulos</small>
+                                                <small>Adicione uma aula</small>
 
                                             </div>
 
@@ -111,15 +106,10 @@ const Classes = () => {
                             </div>
 
                         )
-
                 }
 
             </div>
 
-            <EditContent setModules={setModules} setLoading={setLoading} setMessage={setMessage} moduleId={seletedModule?.id} moduleName={seletedModule?.name} />
-           
-            <RemModule moduleId={seletedModule?.id} setModules={setModules} setLoading={setLoading} setMessage={setMessage} />
-           
             <ToastContainer position="bottom-right" />
 
         </div>

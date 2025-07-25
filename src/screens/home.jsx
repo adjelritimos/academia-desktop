@@ -6,8 +6,13 @@ import { Avatar, Text } from 'rsuite'
 import { RiBookShelfLine } from "react-icons/ri"
 import { LuUsers, LuFileMinus } from "react-icons/lu"
 import { MdOutlineRecordVoiceOver, MdOutlineClass } from "react-icons/md"
+import { useContext } from 'react'
+import { AppContext } from '../contexts/app_context'
 
 const DashBoard = () => {
+
+  const { classes, lemmas, commands, modules, members, } = useContext(AppContext)
+
   return (
     <div className="">
       <div className="p-4 rounded-4 mb-4 d-flex align-items-center justify-content-between" style={{ background: '#ECF2F5' }}>
@@ -27,21 +32,21 @@ const DashBoard = () => {
               <Avatar className='rounded-circle border me-2'><LuUsers /></Avatar>
               <p className='fw-bold mt-auto mb-auto fs-5'>Membros</p>
             </div>
-            <button className='rounded-circle bg-white text-dark w-50 h-50 mx-auto mt-3 d-flex justify-content-between align-items-center'>
-              100
-            </button>
+            <Avatar className='bg-white text-dark mt-3' circle size="xxl">
+              {members.length + ""}
+            </Avatar>
           </div>
         </div>
 
         <div className="col card-altura">
-          <div className="p-2 rounded-4 text-white fw-bold h-100 w-100" style={{ backgroundColor: '#6c5ce7' }}>
+          <div className="p-2 rounded-4 text-white fw-bold h-100 w-100 bg-info">
             <div className="border border-white rounded-pill d-flex">
               <Avatar className='rounded-circle border me-2'><RiBookShelfLine /></Avatar>
               <p className='fw-bold mt-auto mb-auto fs-5'>Conteúdos</p>
             </div>
-            <div className='rounded-circle bg-white w-50 h-50 mx-auto mt-3 d-flex justify-content-between align-items-center'>
-              <Text align="right" className='text-dark fs-5'>100</Text>
-            </div>
+            <Avatar className='bg-white text-dark mt-3' circle size="xxl">
+              {modules.length + ""}
+            </Avatar>
           </div>
         </div>
 
@@ -51,38 +56,36 @@ const DashBoard = () => {
               <Avatar className='rounded-circle border me-2'><LuFileMinus /></Avatar>
               <p className='fw-bold mt-auto mb-auto fs-5'>Lemas</p>
             </div>
-            <div className='rounded-circle bg-white w-50 h-50 mx-auto mt-3 d-flex justify-content-between align-items-center'>
-              <Text align="right" className='text-dark fs-5'>165</Text>
-            </div>
+            <Avatar className='bg-white text-dark mt-3' circle size="xxl">
+              {lemmas.length + ""}
+            </Avatar>
           </div>
         </div>
 
         <div className="col card-altura">
-          <div className="p-2 rounded-4 text-white fw-bold h-100 w-100" style={{ backgroundColor: '#a29bfe' }}>
+          <div className="p-2 rounded-4 text-white fw-bold h-100 w-100 bg-info">
             <div className="border border-white rounded-pill d-flex">
               <Avatar className='rounded-circle p-2 border me-1'><MdOutlineRecordVoiceOver /></Avatar>
               <p className='fw-bold mt-auto mb-auto fs-5'>Comandos</p>
             </div>
-            <div className='rounded-circle bg-white w-50 h-50 mx-auto mt-3 d-flex justify-content-between align-items-center'>
-              <Text align="right" className='text-dark fs-5'>155</Text>
-            </div>
+            <Avatar className='bg-white text-dark mt-3' circle size="xxl">
+              {commands.length + ""}
+            </Avatar>
           </div>
         </div>
 
         <div className="col card-altura">
-          <div className="p-2 rounded-4 text-white fw-bold h-100 w-100" style={{ backgroundColor: '#a29bfe' }}>
+          <div className="p-2 rounded-4 text-white fw-bold h-100 w-100" style={{ backgroundColor: '#f1c40f' }}>
             <div className="border border-white rounded-pill d-flex">
               <Avatar className='rounded-circle border me-1'><MdOutlineClass /></Avatar>
               <p className='fw-bold mt-auto mb-auto fs-5'>Aulas</p>
             </div>
-            <div className='rounded-circle bg-white w-50 h-50 mx-auto mt-3 d-flex justify-content-between align-items-center'>
-              <Text align="right" className='text-dark fs-5'>123</Text>
-            </div>
+            <Avatar className='bg-white text-dark mt-3' circle size="xxl">
+              {classes.length + ""}
+            </Avatar>
           </div>
         </div>
       </div>
-
-      {/* Slides List */}
       <div className="mb-3 p-3 bg-white rounded-4 shadow-sm border border-info message-altura">
         <MessageRotator messages={getMessages()} />
       </div>
