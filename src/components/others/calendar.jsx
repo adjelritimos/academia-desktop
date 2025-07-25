@@ -2,6 +2,29 @@ import { useState } from 'react'
 
 import { Calendar, Badge } from 'rsuite'
 
+const pt_formats = {
+  sunday: "Domingo",
+  monday: "Segunda",
+  tuesday: "Terça",
+  wednesday: "Quarta",
+  thursday: "Quinta",
+  friday: "Sexta",
+  saturday: "Sábado",
+  ok: "OK",
+  today: "Hoje",
+  yesterday: "Ontem",
+  hours: "Horas",
+  minutes: "Minutos",
+  seconds: "Segundos",
+  formattedMonthPattern: "MMMM yyyy",
+  formattedDayPattern: "dd MMM yyyy",
+  shortDateFormat: "dd/MM/yyyy",
+  shortTimeFormat: "HH:mm",
+  last7Days: "Últimos 7 dias",
+  now: "Agora"
+}
+
+
 
 function getTodoList(date) {
 
@@ -58,7 +81,7 @@ const Calendary = () => {
   return (
     <div className="d-flex flex-column gap-1">
       <div className="w-100 rounded-4 border">
-        <Calendar compact renderCell={renderCell} onSelect={handleSelect} />
+        <Calendar compact renderCell={renderCell} onSelect={handleSelect} locale={pt_formats} />
       </div>
       <div className="w-100">
         <TodoList date={selectedDate} />

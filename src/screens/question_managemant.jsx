@@ -11,6 +11,7 @@ import filterLessons from "../functions/outhers/filterlesson"
 import { LoadingContext } from "../contexts/contextLoading"
 import Loading from "../components/others/loading"
 import { ToastContainer } from "react-toastify"
+import { FaArrowLeft } from "react-icons/fa"
 import goBack from "../functions/outhers/goBack"
 
 const QuestionManagemant = () => {
@@ -39,7 +40,7 @@ const QuestionManagemant = () => {
                     <div className="d-flex flex-column">
                         <div className="d-flex justify-content-between align-items-center">
                             <div className="d-flex gap-2 w-100">
-                                <button onClick={goBack} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white" role="button"><i className="fas fa-arrow-left"></i></button>
+                                <button onClick={goBack} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white" role="button"><FaArrowLeft /></button>
                                 <h1 className="display-4 fs-6 fw-bold mt-auto mb-auto text-break">Perguntas {what}</h1>
                             </div>
                             {

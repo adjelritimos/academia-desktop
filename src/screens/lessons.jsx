@@ -7,6 +7,7 @@ import getLessons from "../functions/lessons/getLessons"
 import EditLesson from "../components/lessons/editlesson"
 import filterLessons from "../functions/outhers/filterlesson"
 import { LoadingContext } from "../contexts/contextLoading"
+import { FaArrowLeft } from "react-icons/fa"
 import Loading from "../components/others/loading"
 import LoadingCustom from "../components/others/loadingCustom"
 
@@ -15,13 +16,13 @@ const Lessons = () => {
 
     const { module, moduleId } = useParams()
 
-    const [lessons, setLessons] = useState([])
+    const [ lessons, setLessons ] = useState([])
 
-    const [lessonsCopy, setLessonsCopy] = useState([])
+    const [ lessonsCopy, setLessonsCopy ] = useState([])
 
-    const [lessonSelected, setLessonSelected] = useState(null)
+    const [ lessonSelected, setLessonSelected ] = useState(null)
 
-    const [message, setMessage] = useState("")
+    const [ message, setMessage ] = useState("")
 
     const { loading, setLoading } = useContext(LoadingContext)
 
@@ -46,7 +47,7 @@ const Lessons = () => {
 
                             <div className="d-flex gap-2 bg-white rounded p-2">
 
-                                <Link to={'/home/contents'} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white" role="button"><i className="fas fa-arrow-left"></i></Link>
+                                <Link to={'/home/contents'} className="btn btn-outline-info mt-auto mb-auto rounded-circle border-white" role="button"><FaArrowLeft /></Link>
 
                                 <h1 className="fs-4 display-6 m-0 p-0 w-100 mt-auto mb-auto">Lições do {module}</h1>
 
