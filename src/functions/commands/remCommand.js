@@ -3,7 +3,7 @@ import getCommands from "./getCommands"
 
 
 
-const remCommand = async (commandId, setCommandSelected, setCommands, setCommandsCopy,  setLoading) => {
+const remCommand = async (commandId, setCommandSelected, setCommands, setLoading) => {
    
     setLoading(true)
 
@@ -12,7 +12,7 @@ const remCommand = async (commandId, setCommandSelected, setCommands, setCommand
         const removed_command = await api.delete(`/delete/a/command/${commandId}`)
         
         if (removed_command.status === 200){
-            await getCommands(setCommands, setCommandsCopy, setLoading)
+            await getCommands(setCommands, setLoading)
             setCommandSelected(null)
         }
 

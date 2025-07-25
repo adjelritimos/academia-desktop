@@ -1,7 +1,7 @@
 import api from "../../server/api"
 import errorMessage from "../feedbacks/errormessage"
 
-const getCommands = async (setCommands, setCommandsCopy, setLoading) => {
+const getCommands = async (setCommands, setLoading) => {
 
     setLoading(true)
 
@@ -10,13 +10,11 @@ const getCommands = async (setCommands, setCommandsCopy, setLoading) => {
         const commands = await api.get('/get/all/commands')
         if (commands.status === 200) {
             setCommands(commands.data)
-            setCommandsCopy(commands.data)
             localStorage.setItem('commands', JSON.stringify(commands.data))
         }
 
         else {
             setCommands([])
-            setCommandsCopy([])
         }
 
 
@@ -26,11 +24,9 @@ const getCommands = async (setCommands, setCommandsCopy, setLoading) => {
         const commands = localStorage.getItem('commands')
         if (commands) {
             setCommands(JSON.parse(commands))
-            setCommandsCopy(JSON.parse(commands))
         }
         else {
             setCommands([])
-            setCommandsCopy([])
         }
         errorMessage('falha no carregamento de dados, pode ser que não tenha conexão com a internet')
         console.log('Ocorreu algum erro, ', error)

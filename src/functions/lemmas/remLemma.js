@@ -3,7 +3,7 @@ import errorMessage from "../feedbacks/errormessage"
 import getLemmas from "./getLemmas"
 
 
-const remLemma = async (lemmaId, setLemmaSelected, setLemmas, setLemmasCopy, setLoading) => {
+const remLemma = async (lemmaId, setLemmaSelected, setLemmas, setLoading) => {
 
     setLoading(true)
 
@@ -12,7 +12,7 @@ const remLemma = async (lemmaId, setLemmaSelected, setLemmas, setLemmasCopy, set
         const removed_lemma = await api.delete(`/delete/a/lemma/${lemmaId}`)
         
         if (removed_lemma.status === 200){
-            await getLemmas(setLemmas, setLemmasCopy, setLoading)
+            await getLemmas(setLemmas, setLoading)
             setLemmaSelected(null)
         }
 

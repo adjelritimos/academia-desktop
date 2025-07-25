@@ -2,11 +2,11 @@ import { Outlet } from "react-router-dom"
 import Header from "../components/others/header"
 import SideBars from "../components/others/sidebars"
 import { useContext } from "react"
-import { LoadingContext } from "../contexts/contextLoading"
+import { AppContext } from "../contexts/app_context"
 
 const HomeIndex = () => {
 
-    const { tabNumber } = useContext(LoadingContext)
+    const { tabNumber } = useContext(AppContext)
 
     return (
         <div className="h-100" data-bs-dismiss="offcanvas">

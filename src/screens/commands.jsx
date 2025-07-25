@@ -2,10 +2,9 @@ import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import AddCommand from "../components/commands/addcommand"
 import RemCommand from "../components/commands/remcommand"
-import getCommands from "../functions/commands/getCommands"
 import EditCommand from "../components/commands/editcommand"
 import filter from "../functions/outhers/filter"
-import { LoadingContext } from "../contexts/contextLoading"
+import { AppContext } from "../contexts/app_context"
 import Loading from "../components/others/loading"
 import { ToastContainer } from "react-toastify"
 import api_midia from "../server/api_midia"
@@ -14,17 +13,16 @@ import LoadingCustom from "../components/others/loadingCustom"
 
 const Commands = () => {
 
-    const [commands, setCommands] = useState([])
     const [commandsCopy, setCommandsCopy] = useState([])
     const [commandSelected, setCommandSelected] = useState(null)
     const [message, setMessage] = useState("")
-    const { loading, setLoading, setTabNumber } = useContext(LoadingContext)
+    const { loading, setLoading, setTabNumber, commands, setCommands } = useContext(AppContext)
 
 
     useEffect(() => {
-        getCommands(setCommands, setCommandsCopy, setLoading)
+        setCommandsCopy(commands)
         setTabNumber(3)
-    }, [setLoading, setTabNumber])
+    }, [setLoading, setTabNumber, commands, setCommands])
 
     return (
         <div className="d-flex h-100 position-relative">

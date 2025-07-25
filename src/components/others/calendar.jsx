@@ -83,7 +83,7 @@ const Calendary = () => {
       <div className="w-100 rounded-4 border">
         <Calendar compact renderCell={renderCell} onSelect={handleSelect} locale={pt_formats} />
       </div>
-      <div className="w-100">
+      <div className="w-100 p-2 border rounded">
         <TodoList date={selectedDate} />
       </div>
     </div>
@@ -96,14 +96,18 @@ const TodoList = ({ date }) => {
 
   if (!list.length) {
 
-    return null
+    return (
+      <div className='text-center'>
+        <small className='text-center w-100'>Nada para listar</small>
+      </div>
+    )
 
   }
 
   return (
-    <div className="list-altura overflow-auto">
+    <div className="list-altura overflow-auto ssh">
       {list.map(item => (
-        <div className="rounded border p-2 mb-1" key={item.time} index={item.time}>
+        <div className="rounded border bg-custom p-2 mb-1" key={item.time} index={item.time}>
           <div>{item.time}</div>
           <div>{item.title}</div>
         </div>

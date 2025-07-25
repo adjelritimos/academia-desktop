@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { BsQrCodeScan } from "react-icons/bs"
-import { LoadingContext } from "../../contexts/contextLoading"
+import { AppContext } from "../../contexts/app_context"
 import checkQrCode from "../../functions/outhers/checkQrCode"
 import ModalQrCode from "./modal_qrcode"
 
@@ -12,7 +12,7 @@ const HeaderDashBoard = () => {
 
     const [hasQrcodeValid, setHasQrcodeValid] = useState(checkQrCode())
 
-    const { setTabNumber } = useContext(LoadingContext)
+    const { setTabNumber } = useContext(AppContext)
 
     useEffect(() => {
 
@@ -40,7 +40,7 @@ const HeaderDashBoard = () => {
 
                 <h3 className="fw-bold text-info">Painel Administrativo</h3>
 
-                <p className="text-muted">{ getDate() }</p>
+                <p className="text-muted">{getDate()}</p>
 
             </div>
 

@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from "react"
 import getLessons from "../functions/lessons/getLessons"
 import EditLesson from "../components/lessons/editlesson"
 import filterLessons from "../functions/outhers/filterlesson"
-import { LoadingContext } from "../contexts/contextLoading"
+import { AppContext } from "../contexts/app_context"
 import { FaArrowLeft } from "react-icons/fa"
 import Loading from "../components/others/loading"
 import LoadingCustom from "../components/others/loadingCustom"
@@ -24,7 +24,7 @@ const Lessons = () => {
 
     const [ message, setMessage ] = useState("")
 
-    const { loading, setLoading } = useContext(LoadingContext)
+    const { loading, setLoading } = useContext(AppContext)
 
 
     useEffect(() => {

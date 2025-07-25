@@ -1,12 +1,12 @@
 import { useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { LoadingContext } from "../contexts/contextLoading"
+import { AppContext} from "../contexts/app_context"
 
 
 
 const Question = () => {
 
-    const { setTabNumber } = useContext(LoadingContext)
+    const { setTabNumber } = useContext(AppContext)
 
     useEffect(() => {
         setTabNumber(8)

@@ -8,7 +8,7 @@ import filter from "../functions/outhers/filter"
 import getCommandQuestions from "../functions/questions/getCommandQuestions"
 import getLessonQuestion from "../functions/questions/getLessonQuestion"
 import filterLessons from "../functions/outhers/filterlesson"
-import { LoadingContext } from "../contexts/contextLoading"
+import { AppContext } from "../contexts/app_context"
 import Loading from "../components/others/loading"
 import { ToastContainer } from "react-toastify"
 import { FaArrowLeft } from "react-icons/fa"
@@ -21,7 +21,7 @@ const QuestionManagemant = () => {
     const [questionsGroupsCopy, setQuestionsGroupsCopy] = useState([])
     const [lessonSelected, setLessonSelected] = useState(null)
     const [questionSelected, setQuestionSelected] = useState(null)
-    const { loading, setLoading } = useContext(LoadingContext)
+    const { loading, setLoading } = useContext(AppContext)
 
 
     useEffect(() => {

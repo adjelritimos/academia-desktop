@@ -3,7 +3,7 @@ import AddContent from "../components/contents/addcontent"
 import { useContext, useEffect, useState } from "react"
 import getModules from "../functions/contents/getModules"
 import RemModule from "../components/contents/remcontent"
-import { LoadingContext } from "../contexts/contextLoading"
+import { AppContext } from "../contexts/app_context"
 import Loading from "../components/others/loading"
 import { ToastContainer } from "react-toastify"
 import LoadingCustom from "../components/others/loadingCustom"
@@ -12,7 +12,7 @@ import EditContent from "../components/contents/editecontent"
 
 const Contents = () => {
 
-    const { loading, setLoading, setTabNumber } = useContext(LoadingContext)
+    const { loading, setLoading, setTabNumber } = useContext(AppContext)
     const [modules, setModules] = useState([])
     const [seletedModule, setSelectedModule] = useState(null)
     const [message, setMessage] = useState("")

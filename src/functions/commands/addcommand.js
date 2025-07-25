@@ -1,7 +1,7 @@
 import api from "../../server/api"
 import getCommands from "./getCommands"
 
-const addCommand = async (e, name, description, demonstration, sound, setCommands, setCommandsCopy, setCommandSelected,  setLoading) => {
+const addCommand = async (e, name, description, demonstration, sound, setCommands, setCommandSelected,  setLoading) => {
 
     e.preventDefault()
     setLoading(true)
@@ -21,7 +21,7 @@ const addCommand = async (e, name, description, demonstration, sound, setCommand
         })
 
         if (new_command.status === 200) {
-            await getCommands(setCommands, setCommandsCopy,  setLoading)
+            await getCommands(setCommands,  setLoading)
             setCommandSelected(new_command.data)
         }
 

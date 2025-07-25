@@ -2,47 +2,67 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import AddLemmas from "../components/lemmas/addlemmas"
 import RemLemmas from "../components/lemmas/remlemmas"
-import getLemmas from "../functions/lemmas/getLemmas"
 import EditLemmas from "../components/lemmas/editlemma"
 import filter from "../functions/outhers/filter"
 import Loading from "../components/others/loading"
-import { LoadingContext } from "../contexts/contextLoading"
 import { ToastContainer } from "react-toastify"
 import api_midia from "../server/api_midia"
 import LoadingCustom from "../components/others/loadingCustom"
+import { AppContext } from "../contexts/app_context"
 
 const Lemmas = () => {
 
-    const [lemmas, setLemmas] = useState([])
     const [lemmasCopy, setLemmasCopy] = useState([])
+
     const [lemmaSelected, setLemmaSelected] = useState(null)
+
     const audioRef = useRef(null)
+
     const [message, setMessage] = useState("")
-    const { loading, setLoading, setTabNumber } = useContext(LoadingContext)
+
+    const { loading, setLoading, setTabNumber, lemmas, setLemmas } = useContext(AppContext)
 
     useEffect(() => {
-        getLemmas(setLemmas, setLemmasCopy, setLoading)
+
+        setLemmasCopy(lemmas)
+
         setTabNumber(4)
-    }, [setLoading, setTabNumber])
+
+    }, [setLoading, setTabNumber, lemmas, setLemmas])
 
     return (
+
         <div className="d-flex position-relative">
+
             <div className="border-end rounded-start-4 altura-main border-1 border-info p-2 bg-white w-25">
+
                 <div className="d-flex flex-column">
+
                     <div className="d-flex">
+
                         <div className="d-flex gap-2 w-100">
+
                             <h1 className="fs-4 display-6 fw-bold m-0 p-0 mt-auto mb-auto w-100">Lemas</h1>
+
                         </div>
+
                         <button className="btn btn-shadow btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addlemma">
+
                             <i className="fas fa-plus"></i>
+
                         </button>
                         {
                             message.length > 0 && <LoadingCustom message={message} loading={loading} />
                         }
+
                         <AddLemmas setLemmaSelected={setLemmaSelected} setLemmasCopy={setLemmasCopy} setLemmas={setLemmas} setLoading={setLoading} setMessage={setMessage} />
+
                     </div>
+
                     <input onChange={(e) => filter(e.target.value, lemmas, setLemmasCopy, true)} type="text" placeholder="busque lemas por perguntas..." className="form-control mt-2 border-info" />
+
                     <div className="overflow-auto position-relative mt-3 lemma-list">
+
                         {
                             lemmasCopy.length > 0 ?
                                 (
@@ -60,7 +80,7 @@ const Lemmas = () => {
                                                 (
                                                     <div>
                                                         {
-                                                            message.length === 0 && <Loading loading={loading} />
+                                                            message.length === 0 &&  <Loading loading={loading} />
                                                         }
                                                     </div>
                                                 )
@@ -76,7 +96,9 @@ const Lemmas = () => {
                                     </div>
                                 )
                         }
+
                         {lemmas.length > 0 && (<Link to={'/questions/sobre lemas/lemas'} role="button" className="btn btn-outline-info position-absolute rounded-pill fw-bold bottom-0 end-0">Ir as perguntas</Link>)}
+                   
                     </div>
                 </div>
             </div>

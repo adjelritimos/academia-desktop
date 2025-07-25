@@ -6,7 +6,7 @@ import getLemmas from "../functions/lemmas/getLemmas"
 import EditLemmas from "../components/lemmas/editlemma"
 import filter from "../functions/outhers/filter"
 import Loading from "../components/others/loading"
-import { LoadingContext } from "../contexts/contextLoading"
+import { AppContext } from "../contexts/app_context"
 import { ToastContainer } from "react-toastify"
 import api_midia from "../server/api_midia"
 import LoadingCustom from "../components/others/loadingCustom"
@@ -18,7 +18,7 @@ const Members = () => {
     const [lemmaSelected, setLemmaSelected] = useState(null)
     const audioRef = useRef(null)
     const [message, setMessage] = useState("")
-    const { loading, setLoading, setTabNumber } = useContext(LoadingContext)
+    const { loading, setLoading, setTabNumber } = useContext(AppContext)
 
     useEffect(() => {
         getLemmas(setLemmas, setLemmasCopy, setLoading)

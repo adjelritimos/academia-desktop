@@ -3,7 +3,7 @@ import errorMessage from "../feedbacks/errormessage"
 import getLemmas from "./getLemmas"
 
 
-const addLemma = async (e, question, answer, sound, setLemmas, setLemmasCopy, setLemmaSelected, setLoading) => {
+const addLemma = async (e, question, answer, sound, setLemmas, setLemmaSelected, setLoading) => {
     e.preventDefault()
     setLoading(true)
     try {
@@ -19,7 +19,7 @@ const addLemma = async (e, question, answer, sound, setLemmas, setLemmasCopy, se
         })
 
         if (new_lemma.status === 200) {
-            await getLemmas(setLemmas, setLemmasCopy, setLoading)
+            await getLemmas(setLemmas, setLoading)
             setLemmaSelected(new_lemma.data)
         }
     } catch (error) {

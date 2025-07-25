@@ -8,11 +8,11 @@ import Contents from './screens/contents'
 import Lessons from './screens/lessons'
 import Question from './screens/questions'
 import QuestionManagemant from './screens/question_managemant'
-import { LoadingProvider } from './contexts/contextLoading'
 import HomeIndex from './screens/homeIndex'
 import Members from './screens/members'
 import Classes from './screens/classes'
 import Ativities from './screens/ativities'
+import { AppProvider } from './contexts/app_context'
 
 
 
@@ -42,9 +42,9 @@ const Routers = () => {
 const App = () => {
 
   return (
-    <LoadingProvider>
+    <AppProvider>
       <Routers />
-    </LoadingProvider>
+    </AppProvider>
   )
 
 }

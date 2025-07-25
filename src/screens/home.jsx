@@ -7,7 +7,7 @@ import { RiBookShelfLine } from "react-icons/ri"
 import { LuUsers, LuFileMinus } from "react-icons/lu"
 import { MdOutlineRecordVoiceOver, MdOutlineClass } from "react-icons/md"
 
-const DashboardAlyssa = () => {
+const DashBoard = () => {
   return (
     <div className="">
       <div className="p-4 rounded-4 mb-4 d-flex align-items-center justify-content-between" style={{ background: '#ECF2F5' }}>
@@ -40,7 +40,7 @@ const DashboardAlyssa = () => {
               <p className='fw-bold mt-auto mb-auto fs-5'>Conteúdos</p>
             </div>
             <div className='rounded-circle bg-white w-50 h-50 mx-auto mt-3 d-flex justify-content-between align-items-center'>
-              <Text  align="right" className='text-dark fs-5'>100</Text>
+              <Text align="right" className='text-dark fs-5'>100</Text>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@ const DashboardAlyssa = () => {
               <p className='fw-bold mt-auto mb-auto fs-5'>Lemas</p>
             </div>
             <div className='rounded-circle bg-white w-50 h-50 mx-auto mt-3 d-flex justify-content-between align-items-center'>
-              <Text  align="right" className='text-dark fs-5'>165</Text>
+              <Text align="right" className='text-dark fs-5'>165</Text>
             </div>
           </div>
         </div>
@@ -64,19 +64,19 @@ const DashboardAlyssa = () => {
               <p className='fw-bold mt-auto mb-auto fs-5'>Comandos</p>
             </div>
             <div className='rounded-circle bg-white w-50 h-50 mx-auto mt-3 d-flex justify-content-between align-items-center'>
-              <Text  align="right" className='text-dark fs-5'>155</Text>
+              <Text align="right" className='text-dark fs-5'>155</Text>
             </div>
           </div>
         </div>
 
         <div className="col card-altura">
           <div className="p-2 rounded-4 text-white fw-bold h-100 w-100" style={{ backgroundColor: '#a29bfe' }}>
-           <div className="border border-white rounded-pill d-flex">
+            <div className="border border-white rounded-pill d-flex">
               <Avatar className='rounded-circle border me-1'><MdOutlineClass /></Avatar>
               <p className='fw-bold mt-auto mb-auto fs-5'>Aulas</p>
             </div>
             <div className='rounded-circle bg-white w-50 h-50 mx-auto mt-3 d-flex justify-content-between align-items-center'>
-              <Text  align="right" className='text-dark fs-5'>123</Text>
+              <Text align="right" className='text-dark fs-5'>123</Text>
             </div>
           </div>
         </div>
@@ -97,9 +97,9 @@ const Home = () => {
   return (
     <div className="container-fluid rounded-start-4 bg-white">
       <HeaderDashBoard />
-      <div className='d-flex gap-2 overflow-auto div-home'>
+      <div className='d-flex gap-2 overflow-auto ssh div-home'>
         <div className='w-75 h-100'>
-          <DashboardAlyssa />
+          <DashBoard />
         </div>
         <div className='w-25 h-100'>
           <Calendary />

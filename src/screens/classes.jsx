@@ -3,7 +3,7 @@ import AddContent from "../components/contents/addcontent"
 import { useContext, useEffect, useState } from "react"
 import getModules from "../functions/contents/getModules"
 import RemModule from "../components/contents/remcontent"
-import { LoadingContext } from "../contexts/contextLoading"
+import { AppContext } from "../contexts/app_context"
 import Loading from "../components/others/loading"
 import { ToastContainer } from "react-toastify"
 import LoadingCustom from "../components/others/loadingCustom"
@@ -12,7 +12,7 @@ import EditContent from "../components/contents/editecontent"
 
 const Classes = () => {
 
-    const { loading, setLoading, setTabNumber } = useContext(LoadingContext)
+    const { loading, setLoading, setTabNumber } = useContext(AppContext)
 
     const [modules, setModules] = useState([])
 
@@ -51,7 +51,7 @@ const Classes = () => {
            
             </div>
 
-            <div className="row row-cols-4 g-2 w-100 mt-2 overflow-auto ativity-altura">
+            <div className="row row-cols-4 w-100 mt-2 overflow-auto ativity-altura">
                 {
                     modules.length > 0 ?
 
@@ -59,9 +59,9 @@ const Classes = () => {
 
                             modules.map((modulo) => (
 
-                                <div className="col">
+                                <div className="col p-1">
 
-                                    <div className="d-flex class-height w-100 btn btn-outline-info bg-white p-2 border-info rounded border btn-height-1" role="button">
+                                    <div className="d-flex class-height w-100 h-100 btn btn-outline-info bg-white border-info rounded border btn-height-1" role="button">
 
                                         <Link to={`/home/lessons/${modulo.name}/${modulo.id}`} key={modulo.id} role="button" className="btn border fs-3 border-white bg-white fw-bold d-flex justify-content-start align-items-center text-start text-break pt-auto pb-auto w-100">
 
