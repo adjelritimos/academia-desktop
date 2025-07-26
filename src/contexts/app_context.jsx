@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from 'react'
 import getLemmas from '../functions/lemmas/getLemmas'
 import getCommands from '../functions/commands/getCommands'
 import getModules from '../functions/contents/getModules'
+import getMembers from '../functions/members/getMembers'
 
 export const AppContext = createContext()
 
@@ -21,6 +22,7 @@ export function AppProvider({ children }) {
     const load_data = async ()=> {
         await getLemmas(setLemmas, setLoading)
         await getCommands(setCommands, setLoading)
+        await getMembers(setMembers, setLoading)
         await getModules(setModules, setLoading)
     }
 
