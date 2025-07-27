@@ -31,22 +31,19 @@ function getTodoList(date, classes, ativities) {
 
   const classList = Array.isArray(classes)
     ? classes
-        .filter(c => c.data?.startsWith(selectedDate))
-        .map(c => ({
-          time: '',
-          title: `${c.title} (aula ${c.tytpes})`,
-          type: 'class'
-        }))
+      .filter(c => c.data?.startsWith(selectedDate))
+      .map(c => ({
+        time: '',
+        title: `${c.title} (aula ${c.tytpes})`,
+        type: 'class'
+      }))
     : []
 
-  const ativityList = Array.isArray(ativities)
-    ? ativities
-        .filter(a => a.data?.startsWith(selectedDate))
-        .map(a => ({
-          time: '',
-          title: `${a.title} - ${a.descricao}`,
-          type: 'ativity'
-        }))
+  const ativityList = Array.isArray(ativities) ? ativities.filter(a => a.data?.startsWith(selectedDate)).map(a => ({
+    time: '',
+    title: `${a.title}`,
+    type: 'ativity'
+  }))
     : []
 
   return [...classList, ...ativityList]
@@ -101,7 +98,8 @@ const TodoList = ({ date, classes, ativities }) => {
   return (
     <div className="list-altura overflow-auto ssh">
       {list.map((item, index) => (
-        <div key={index} className={`rounded bg-custom p-2 mb-1 ${item.type === 'class' ? 'border border-start-warning border-start-4' : 'border border-start-danger border-start-4'}`}>
+        <div key={index} className={`rounded p-3 mb-1 position-relative border-start-4 ${item.type === 'class' ? 'alert alert-warning' : 'alert alert-danger'}`}>
+          <span className={`${item.type === 'class' ? 'position-absolute top-50 end-0 translate-middle-y badge rounded-pill bg-danger me-1' : 'position-absolute top-50 end-0 translate-middle-y badge rounded-pill bg-warning me-1'}`}>{`${item.type === 'class' ? 'aula' : 'atividade'}`}</span>
           <div>{item.time}</div>
           <div>{item.title}</div>
         </div>

@@ -23,12 +23,12 @@ const AtivityCard = ({ setSeletedAtivity, ativity, seletedAtivity, setAtivities,
                         </div>
                     </div>
                 </Card.Header>
-                <div className='w-100 h-100' onClick={() => setOpen(true)}></div>
+                <div className='w-100 h-100' onClick={() => {setOpen(true); setSeletedAtivity(ativity)}}></div>
                 <Card.Footer className='m-0 mt-auto' onClick={() => setOpen(true)}>
                     <Text muted>{ativity.data.split('T')[0]}</Text>
                 </Card.Footer>
             </Card>
-            <DrawerAtivity open={open} setOpen={setOpen} openWithHeader={openWithHeader} setOpenWithHeader={setOpenWithHeader} />
+            <DrawerAtivity open={open} setOpen={setOpen} ativity={seletedAtivity} openWithHeader={openWithHeader} setOpenWithHeader={setOpenWithHeader} />
             <EditAtivity seletedAtivity={seletedAtivity} setAtivities={setAtivities} setLoading={setLoading} setMessage={setMessage} />
             <RemAtivity ativityId={seletedAtivity?.id} setAtivities={setAtivities} setLoading={setLoading} setMessage={setMessage} />
         </div>

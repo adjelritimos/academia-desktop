@@ -5,15 +5,16 @@
 
   /* Firefox */
   scrollbar-width: thin;
-  scrollbar-color: rgba(0,0,0,0.3) transparent;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
 }
 
 .ssh::-webkit-scrollbar {
-  width: 1px; /* largura da scrollbar */
+  width: 1px;
+  /* largura da scrollbar */
 }
 
 .ssh::-webkit-scrollbar-thumb {
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 6px;
 }
 
@@ -147,7 +148,7 @@
   height: 400px;
 }
 
-.ativity-altura{
+.ativity-altura {
   height: calc(100vh - 100px);
 }
 
@@ -206,6 +207,7 @@
 .list-altura {
   height: 33vh;
 }
+
 .w-20 {
   width: 350px;
 }
@@ -225,4 +227,15 @@
 
 .fs-30 {
   font-size: 80px;
+}
+
+.item-class {
+  
+  border-left-color: #ffc107;
+  /* equivalente a Bootstrap 'warning' */
+}
+
+.item-ativity {
+  border-left-color: #dc3545;
+  /* equivalente a Bootstrap 'danger' */
 }

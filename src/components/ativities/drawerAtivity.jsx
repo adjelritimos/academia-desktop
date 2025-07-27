@@ -1,29 +1,21 @@
 import { Drawer, Button, Placeholder } from 'rsuite'
 
-const DrawerAtivity = ({ open, setOpen, openWithHeader, setOpenWithHeader }) => {
+const DrawerAtivity = ({ open, setOpen, ativity }) => {
 
 
     return (
         <>
             <Drawer size='xs' open={open} onClose={() => setOpen(false)}>
-                <Drawer.Body>
-                    <Placeholder.Paragraph />
-                </Drawer.Body>
-            </Drawer>
-
-            <Drawer open={openWithHeader} onClose={() => setOpenWithHeader(false)}>
                 <Drawer.Header>
-                    <Drawer.Title>Drawer Title</Drawer.Title>
-                    <Drawer.Actions>
-                        <Button onClick={() => setOpenWithHeader(false)}>Cancel</Button>
-                        <Button onClick={() => setOpenWithHeader(false)} appearance="primary">
-                            Confirm
-                        </Button>
-                    </Drawer.Actions>
+                    <Drawer.Title>{ativity?.title} </Drawer.Title>
                 </Drawer.Header>
                 <Drawer.Body>
-                    <Placeholder.Paragraph rows={20} />
+                    {ativity?.descricao}
+                    <div>
+                          {ativity?.data.split('T')[0]}
+                    </div>
                 </Drawer.Body>
+               
             </Drawer>
         </>
     )

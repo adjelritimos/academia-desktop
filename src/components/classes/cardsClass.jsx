@@ -28,7 +28,7 @@ const CardClass = ({ setSeletedClass, classe, seletedClass, setClasses, setLoadi
                     <Text onClick={() => setOpen(true)} muted> {classe.data.split('T')[0]} </Text>
                 </Card.Footer>
             </Card>
-            <DrawerClass open={open} setOpen={setOpen} openWithHeader={openWithHeader} setOpenWithHeader={setOpenWithHeader} />
+            <DrawerClass classe={classe} open={open} setOpen={setOpen} openWithHeader={openWithHeader} setOpenWithHeader={setOpenWithHeader} />
             <EditClasse classe={seletedClass} setClasses={setClasses} setLoading={setLoading} setMessage={setMessage} />
             <RemClasse classeId={seletedClass?.id} setClasses={setClasses} setLoading={setLoading} setMessage={setMessage} />
         </div>
