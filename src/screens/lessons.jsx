@@ -3,20 +3,20 @@ import { ToastContainer } from "react-toastify"
 import AddLesson from "../components/lessons/addlesson"
 import RemLesson from "../components/lessons/remlesson"
 import { useContext, useEffect, useState } from "react"
-import getLessons from "../functions/lessons/getLessons"
 import EditLesson from "../components/lessons/editlesson"
 import filterLessons from "../functions/outhers/filterlesson"
 import { AppContext } from "../contexts/app_context"
 import { FaArrowLeft } from "react-icons/fa"
 import Loading from "../components/others/loading"
 import LoadingCustom from "../components/others/loadingCustom"
+import getLessonsInModule from "../functions/lessons/getLessonsInModule"
 
 
 const Lessons = () => {
 
     const { module, moduleId } = useParams()
 
-    const [lessons, setLessons] = useState([])
+    const [_lessons, _setLessons] = useState([])
 
     const [lessonsCopy, setLessonsCopy] = useState([])
 
@@ -24,14 +24,14 @@ const Lessons = () => {
 
     const [message, setMessage] = useState("")
 
-    const { loading, setLoading } = useContext(AppContext)
+    const { loading, setLoading, setLessons, lessons } = useContext(AppContext)
 
 
     useEffect(() => {
 
-        getLessons(moduleId, setLessons, setLessonsCopy, setLoading)
+        getLessonsInModule(moduleId, lessons, _setLessons, setLessonsCopy)
 
-    }, [moduleId, setLoading])
+    }, [moduleId, setLoading, setLessons, lessons])
 
     return (
 
@@ -63,7 +63,7 @@ const Lessons = () => {
 
                         </div>
 
-                        <input onChange={(e) => filterLessons(e.target.value, lessons, setLessonsCopy)} type="text" placeholder="busque lições por tema..." className="form-control mt-2 border-info" />
+                        <input onChange={(e) => filterLessons(e.target.value, _lessons, setLessonsCopy)} type="text" placeholder="busque lições por tema..." className="form-control mt-2 border-info" />
 
                         <div className="overflow-auto position-relative mt-3 lesson-list-1">
                             {

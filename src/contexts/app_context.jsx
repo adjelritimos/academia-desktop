@@ -4,6 +4,8 @@ import getCommands from '../functions/commands/getCommands'
 import getModules from '../functions/contents/getModules'
 import getMembers from '../functions/members/getMembers'
 import getClasses from '../functions/classes/getClass'
+import getActivities from '../functions/ativities/getativity'
+import getLessons from '../functions/lessons/getLessons'
 
 export const AppContext = createContext()
 
@@ -26,6 +28,8 @@ export function AppProvider({ children }) {
         await getMembers(setMembers, setLoading)
         await getModules(setModules, setLoading)
         await getClasses(setClasses, setLoading)
+        await getActivities(setAtivities, setLoading)
+        await getLessons(setLessons, setLoading)
     }
 
     useEffect(()=> {

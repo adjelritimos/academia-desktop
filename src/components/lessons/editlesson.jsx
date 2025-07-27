@@ -33,7 +33,7 @@ const EditLesson = (props) => {
     return (
         <div className="modal fade" id="editlesson" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-xl modal-dialog-centered">
-                <form onSubmit={(e)=> {editLesson(e, props.lesson.id, content, body,  props.setLessonSelected, props.setLessons, props.setLessonsCopy, props.moduleId, props.setLoading); props.setMessage("editando a lissão")}} className="modal-content">
+                <form onSubmit={(e)=> {editLesson(e, props.lesson.id, content, body,  props.setLessonSelected, props.setLessons, props.setLoading); props.setMessage("editando a lissão")}} className="modal-content">
                     <div className="modal-header bg-info p-2 pe-3 text-white fw-bold">
                         <h1 className="modal-title display-4 fs-5" id="exampleModalLabel">Editar a lição</h1>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

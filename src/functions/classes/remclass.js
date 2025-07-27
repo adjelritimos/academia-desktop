@@ -3,7 +3,7 @@ import errorMessage from "../feedbacks/errormessage"
 import getClasses from "./getClass"
 
 const remClasse = async (classeId, setClasses, setLoading) => {
-    
+
     setLoading(true)
 
     try {
@@ -12,7 +12,7 @@ const remClasse = async (classeId, setClasses, setLoading) => {
         if (removed_classe.status === 200) {
             await getClasses(setClasses, setLoading)
         }
-
+        setLoading(false)
     } catch (error) {
         setLoading(false)
         if (error.message.includes("Network Error"))

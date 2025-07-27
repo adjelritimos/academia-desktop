@@ -3,13 +3,13 @@ import errorMessage from "../feedbacks/errormessage"
 import getLessons from "./getLessons"
 
 
-const editLesson = async (e, lessonId, content, body,  setLesson, setLessons, setLessonsCopy, moduleId,  setLoading) => {
+const editLesson = async (e, lessonId, content, body,  setLesson, setLessons, setLoading) => {
     setLoading(true)
     e.preventDefault()
     try {
         const lesson_edited = await api.put(`/edit/a/lesson/${lessonId}`, { content, body })
         if (lesson_edited.status === 200) {
-            await getLessons(moduleId, setLessons, setLessonsCopy, setLoading)
+            await getLessons(setLessons, setLoading)
             setLesson(lesson_edited.data)
         }
     } catch (error) {

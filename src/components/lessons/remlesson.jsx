@@ -14,7 +14,7 @@ const RemLesson = (props) => {
                     </div>
                     <div className="modal-footer border-white mt-0 pt-0">
                         <button type="button" className="btn btn-outline-info rounded-pill fw-bold" data-bs-dismiss="modal">cancelar</button>
-                        <button onClick={()=> {remLesson(props.lesson.id, props.setLessonSelected, props.setLessons, props.setLessonsCopy, props.moduleId, props.setLoading); props.setMessage("a remover a lissão...")}} type="button" className="btn btn-danger text-white rounded-pill fw-bold" data-bs-dismiss="modal">remover</button>
+                        <button onClick={()=> {remLesson(props.lesson.id, props.setLessonSelected, props.setLessons, props.setLoading); props.setMessage("a remover a lissão...")}} type="button" className="btn btn-danger text-white rounded-pill fw-bold" data-bs-dismiss="modal">remover</button>
                     </div>
                 </div>
             </div>

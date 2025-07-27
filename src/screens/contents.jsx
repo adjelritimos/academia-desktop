@@ -3,6 +3,8 @@ import AddContent from "../components/contents/addcontent"
 import { useContext, useEffect, useState } from "react"
 import RemModule from "../components/contents/remcontent"
 import { AppContext } from "../contexts/app_context"
+import { CiEdit } from "react-icons/ci"
+import { AiOutlineDelete } from "react-icons/ai"
 import Loading from "../components/others/loading"
 import { ToastContainer } from "react-toastify"
 import LoadingCustom from "../components/others/loadingCustom"
@@ -45,8 +47,8 @@ const Contents = () => {
                                             {modulo.name}
                                         </Link>
                                         <div className="d-flex gap-1">
-                                            <button onClick={() => setSelectedModule(modulo)} data-bs-toggle="modal" data-bs-target="#editcontent" className="btn mt-auto mb-auto btn-outline-light text-dark p-1 rounded-circle"><i className="fas fa-edit"></i></button>
-                                            <button onClick={() => setSelectedModule(modulo)} data-bs-toggle="modal" data-bs-target="#remcontent" className="btn mt-auto mb-auto btn-danger p-1 rounded-circle"><i className="fas fa-trash"></i></button>
+                                            <button onClick={() => setSelectedModule(modulo)} data-bs-toggle="modal" data-bs-target="#editcontent" className="btn mt-auto mb-auto btn-outline-light text-dark p-1 rounded-circle"><CiEdit className='fs-2' /></button>
+                                            <button onClick={() => setSelectedModule(modulo)} data-bs-toggle="modal" data-bs-target="#remcontent" className="btn mt-auto mb-auto btn-danger p-1 rounded-circle"><AiOutlineDelete className='fs-2' /></button>
                                         </div>
                                     </div>
                                 </div>

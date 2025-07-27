@@ -24,28 +24,55 @@ const pt_formats = {
   now: "Agora"
 }
 
-function getTodoList(date, classes) {
+function getTodoList(date, classes, ativities) {
+  if (!date) return []
 
-  if (!date || !classes || !Array.isArray(classes)) return []
+  const selectedDate = date.toLocaleDateString('en-CA')
 
-  const selectedDate = date.toISOString().split("T")[0]
+  const classList = Array.isArray(classes)
+    ? classes
+        .filter(c => c.data?.startsWith(selectedDate))
+        .map(c => ({
+          time: '',
+          title: `${c.title} (aula ${c.tytpes})`,
+          type: 'class'
+        }))
+    : []
 
-  return classes.filter(classe => classe.data?.startsWith(selectedDate)).map(classe => ({ time: "", title: `${classe.title} (aula ${classe.tytpes})` }))
+  const ativityList = Array.isArray(ativities)
+    ? ativities
+        .filter(a => a.data?.startsWith(selectedDate))
+        .map(a => ({
+          time: '',
+          title: `${a.title} - ${a.descricao}`,
+          type: 'ativity'
+        }))
+    : []
 
+  return [...classList, ...ativityList]
 }
 
 const Calendary = () => {
-
-  const { classes } = useContext(AppContext)
+  const { classes, ativities } = useContext(AppContext)
   const [selectedDate, setSelectedDate] = useState(null)
 
   const handleSelect = date => {
     setSelectedDate(date)
   }
 
-  const renderCell = (date) => {
-    const list = getTodoList(date, classes)
-    return list.length ? <Badge color='yellow' className="calendar-todo-item-badge" /> : null
+  const renderCell = date => {
+
+    const list = getTodoList(date, classes, ativities)
+
+    const hasClass = list.some(item => item.type === 'class')
+    const hasAtivity = list.some(item => item.type === 'ativity')
+
+    return (
+      <div className="d-flex gap-1 justify-content-center">
+        {hasClass && <Badge color="yellow" />}
+        {hasAtivity && <Badge color="red" />}
+      </div>
+    )
   }
 
   return (
@@ -54,19 +81,19 @@ const Calendary = () => {
         <Calendar compact renderCell={renderCell} onSelect={handleSelect} locale={pt_formats} />
       </div>
       <div className="w-100 p-2 border rounded">
-        <TodoList classes={classes} date={selectedDate} />
+        <TodoList date={selectedDate} classes={classes} ativities={ativities} />
       </div>
     </div>
   )
 }
 
-const TodoList = ({ date, classes }) => {
-  const list = getTodoList(date, classes)
+const TodoList = ({ date, classes, ativities }) => {
+  const list = getTodoList(date, classes, ativities)
 
   if (!list.length) {
     return (
-      <div className='text-center'>
-        <small className='text-center w-100'>Nada para listar</small>
+      <div className="text-center">
+        <small className="text-center w-100">Nada para listar</small>
       </div>
     )
   }
@@ -74,7 +101,7 @@ const TodoList = ({ date, classes }) => {
   return (
     <div className="list-altura overflow-auto ssh">
       {list.map((item, index) => (
-        <div className="rounded border bg-custom p-2 mb-1" key={index}>
+        <div key={index} className={`rounded bg-custom p-2 mb-1 ${item.type === 'class' ? 'border border-start-warning border-start-4' : 'border border-start-danger border-start-4'}`}>
           <div>{item.time}</div>
           <div>{item.title}</div>
         </div>

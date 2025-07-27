@@ -2,8 +2,9 @@ import api from "../../server/api"
 import errorMessage from "../feedbacks/errormessage"
 
 const getClasses = async (setClasses, setLoading) => {
+    setLoading(true)
     try {
-        setLoading(true)
+
         const response = await api.get('/get/all/classes')
 
         if (response.status === 200) {
