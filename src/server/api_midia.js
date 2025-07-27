@@ -1,5 +1,5 @@
 const api_midia = (imageOrAudio) => {
-    return 'http://localhost:5349/admin' + imageOrAudio
+    return 'https://academia-ev.onrender.com/admin' + imageOrAudio
 }
 
 export default api_midia

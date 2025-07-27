@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import addMember from '../../functions/members/addMembers'
 
-const AddMembers = ({ setMembers, setLoading }) => {
+const AddMembers = ({ setMembers, setLoading, setMessage }) => {
 
     const [form, setForm] = useState({
         name: '',
@@ -37,6 +37,7 @@ const AddMembers = ({ setMembers, setLoading }) => {
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
+            setMessage("Adicionando o membro...")
             await addMember(form, setMembers, setLoading)
             setForm({
                 bi: '',

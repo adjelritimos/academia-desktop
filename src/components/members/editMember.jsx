@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import editMember from '../../functions/members/editMembers'
 
-const EditMembers = ({ setMembers, setLoading, memberSeleted, setSeletedMember }) => {
+const EditMembers = ({ setMembers, setLoading, memberSeleted, setSeletedMember, setMessage }) => {
 
     const [form, setForm] = useState({
         nbi: '',
@@ -41,6 +41,7 @@ const EditMembers = ({ setMembers, setLoading, memberSeleted, setSeletedMember }
         try {
             e.preventDefault()
             await editMember(form, setSeletedMember, setMembers, setLoading)
+            setMessage('Editando dados do membro...')
             const modal = document.getElementById('editmember')
             if (modal) modal.hide()
 
