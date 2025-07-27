@@ -34,10 +34,6 @@ const Ativities = () => {
             </div>
 
             <div className="row row-cols-4 g-2 w-100 mt-2 overflow-auto ativity-altura">
-                <div className="col">
-                    <AtivityCard />
-                </div>
-
                 {
                     ativitiesCopy.length > 0 ?
                         (

@@ -3,6 +3,7 @@ import getLemmas from '../functions/lemmas/getLemmas'
 import getCommands from '../functions/commands/getCommands'
 import getModules from '../functions/contents/getModules'
 import getMembers from '../functions/members/getMembers'
+import getClasses from '../functions/classes/getClass'
 
 export const AppContext = createContext()
 
@@ -24,6 +25,7 @@ export function AppProvider({ children }) {
         await getCommands(setCommands, setLoading)
         await getMembers(setMembers, setLoading)
         await getModules(setModules, setLoading)
+        await getClasses(setClasses, setLoading)
     }
 
     useEffect(()=> {

@@ -4,6 +4,8 @@ import { AppContext } from "../contexts/app_context"
 import Loading from "../components/others/loading"
 import { ToastContainer } from "react-toastify"
 import LoadingCustom from "../components/others/loadingCustom"
+import CardClass from "../components/classes/cardsClass"
+import AddClasse from "../components/classes/addclass"
 
 
 
@@ -42,37 +44,20 @@ const Classes = () => {
 
                 </div>
 
-                <button className="btn btn-shadow btn-info text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addmodule"><i className="fas fa-plus"></i> Nova aula</button>
-
+                <button className="btn btn-shadow btn-info text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addclasse"><i className="fas fa-plus"></i> Nova aula</button>
+                <AddClasse setClasses={setClasses} setLoading={setLoading} />
             </div>
 
             <div className="row row-cols-4 w-100 mt-2 overflow-auto ativity-altura">
+
                 {
                     classesCopy.length > 0 ?
 
                         (
 
                             classesCopy.map((classe) => (
-
                                 <div className="col p-1">
-
-                                    <div className="d-flex class-height w-100 h-100 btn btn-outline-info bg-white border-info rounded border btn-height-1" role="button">
-
-                                        <Link to={`/home/lessons/${classe.name}/${classe.id}`} key={classe.id} role="button" className="btn border fs-3 border-white bg-white fw-bold d-flex justify-content-start align-items-center text-start text-break pt-auto pb-auto w-100">
-
-                                            {classe.name}
-
-                                        </Link>
-
-                                        <div className="d-flex gap-1">
-
-                                            <button onClick={() => setSeletedClass(classe)} data-bs-toggle="modal" data-bs-target="#editcontent" className="btn mt-auto mb-auto btn-outline-light text-dark p-1 rounded-circle"><i className="fas fa-edit"></i></button>
-
-                                            <button onClick={() => setSeletedClass(classe)} data-bs-toggle="modal" data-bs-target="#remcontent" className="btn mt-auto mb-auto btn-danger p-1 rounded-circle"><i className="fas fa-trash"></i></button>
-
-                                        </div>
-
-                                    </div>
+                                    <CardClass setMessage={setMessage} setClasses={setClasses} setLoading={setLoading} setSeletedClass={setSeletedClass} classe={classe} seletedClass={seletedClass}/>
                                 </div>
                             ))
                         )
@@ -100,7 +85,7 @@ const Classes = () => {
 
                                                 <br />
 
-                                                <button className="btn btn-shadow btn-info mt-4 text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addmodule"><i className="fas fa-plus"></i> Nova aula</button>
+                                                <button className="btn btn-shadow btn-info mt-4 text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addclasse"><i className="fas fa-plus"></i> Nova aula</button>
 
                                             </div>
 
@@ -114,6 +99,7 @@ const Classes = () => {
 
             </div>
 
+           
             <ToastContainer position="bottom-right" />
 
         </div>

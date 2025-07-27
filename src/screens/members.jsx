@@ -31,8 +31,8 @@ const Members = () => {
                         <div className="d-flex gap-2 w-100">
                             <h1 className="fs-4 display-6 fw-bold m-0 p-0 mt-auto mb-auto w-100">Membros</h1>
                         </div>
-                        <button className="btn btn-shadow btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addmember">
-                           <FaPlus />
+                        <button className="btn btn-shadow btn-info text-white p-1 rounded-circle" data-bs-toggle="modal" data-bs-target="#addmember">
+                           <FaPlus className="fs-4"/>
                         </button>
                         {
                             message.length > 0 && <LoadingCustom message={message} loading={loading} />
@@ -91,9 +91,9 @@ const Members = () => {
                                             {
                                                 memberSeleted && (
                                                     <div className="d-flex gap-2">
-                                                        <button className="btn btn-shadow mt-auto mb-auto btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editmember"><CiEdit className='fs-5'/></button>
+                                                        <button className="btn btn-shadow mt-auto mb-auto p-1 btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editmember"><CiEdit className='fs-2'/></button>
                                                         <EditMembers memberId={memberSeleted?.id} setMessage={setMessage} memberSeleted={memberSeleted} setSeletedMember={setMemberSeleted} setLoading={setLoading} setMembers={setMembers} />
-                                                        <button className="btn btn-shadow mt-auto mb-auto btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remmember"><AiOutlineDelete className='fs-5'/></button>
+                                                        <button className="btn btn-shadow mt-auto mb-auto p-1 btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remmember"><AiOutlineDelete className='fs-2'/></button>
                                                         <RemMember memberId={memberSeleted?.id} setMessage={setMessage} setMemberSeleted={setMemberSeleted} setLoading={setLoading} setMembers={setMembers} />
                                                     </div>
                                                 )
