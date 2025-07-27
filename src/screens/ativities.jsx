@@ -4,6 +4,7 @@ import { AppContext } from "../contexts/app_context"
 import Loading from "../components/others/loading"
 import { ToastContainer } from "react-toastify"
 import LoadingCustom from "../components/others/loadingCustom"
+import AtivityCard from "../components/ativities/cardsAtivity"
 
 
 const Ativities = () => {
@@ -29,10 +30,14 @@ const Ativities = () => {
                     <h1 className="fs-4 display-3 mt-auto mb-auto fw-bold">Atividades</h1>
                 </div>
                 <button className="btn btn-shadow btn-info text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addmodule"><i className="fas fa-plus"></i> Nova atividade</button>
-           
+
             </div>
 
             <div className="row row-cols-4 g-2 w-100 mt-2 overflow-auto ativity-altura">
+                <div className="col">
+                    <AtivityCard />
+                </div>
+
                 {
                     ativitiesCopy.length > 0 ?
                         (
@@ -68,6 +73,8 @@ const Ativities = () => {
                                                 <i className="fas fa-tasks text-info pt-5 mt-5 fs-1"></i>
                                                 <h1 className="display-5 fs-5">Sem atividades ainda</h1>
                                                 <small>Adicione uma atividade</small>
+                                                <br />
+                                                <button className="btn btn-shadow btn-info text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addmodule"><i className="fas fa-plus"></i> Nova atividade</button>
                                             </div>
                                         )
                                 }
@@ -75,7 +82,7 @@ const Ativities = () => {
                         )
                 }
             </div>
-          
+
             <ToastContainer position="bottom-right" />
         </div>
     )

@@ -98,6 +98,10 @@ const Classes = () => {
 
                                                 <small>Adicione uma aula</small>
 
+                                                <br />
+
+                                                <button className="btn btn-shadow btn-info mt-4 text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addmodule"><i className="fas fa-plus"></i> Nova aula</button>
+
                                             </div>
 
                                         )

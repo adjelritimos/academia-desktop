@@ -3,8 +3,13 @@ import filter from "../functions/outhers/filter"
 import Loading from "../components/others/loading"
 import { AppContext } from "../contexts/app_context"
 import { ToastContainer } from "react-toastify"
+import { CiEdit } from "react-icons/ci"
+import { AiOutlineDelete } from "react-icons/ai"
+import { FaPlus } from "react-icons/fa6"
 import LoadingCustom from "../components/others/loadingCustom"
 import AddMembers from "../components/members/addMembers"
+import RemMember from "../components/members/remMember"
+import EditMembers from "../components/members/editMember"
 
 const Members = () => {
 
@@ -27,7 +32,7 @@ const Members = () => {
                             <h1 className="fs-4 display-6 fw-bold m-0 p-0 mt-auto mb-auto w-100">Membros</h1>
                         </div>
                         <button className="btn btn-shadow btn-info text-white rounded-circle" data-bs-toggle="modal" data-bs-target="#addmember">
-                            <i className="fas fa-plus"></i>
+                           <FaPlus />
                         </button>
                         {
                             message.length > 0 && <LoadingCustom message={message} loading={loading} />
@@ -73,29 +78,73 @@ const Members = () => {
                 </div>
             </div>
             <div className="p-2 bg-white w-75">
-                <div className="d-flex gap-2">
-                    <h2 className="w-100 p-0 m-0 mt-auto mb-auto fs-4 display-4">Membro selecionado</h2>
-                    {
-                        memberSeleted && (
-                            <div className="d-flex gap-2">
-                                <button className="btn btn-shadow btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editlemma"> <i className="fas fa-edit"></i></button>
-                               
-                                <button className="btn btn-shadow btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remlemma"> <i className="fas fa-trash"></i></button>
-                               
-                            </div>
-                        )
-                    }
-                </div>
 
                 <div>
                     {
                         memberSeleted ?
                             (
-                                <div className="mt-2">
-                                    <div className="d-flex justify-content-between">
-                                        <h2>{memberSeleted.name}</h2>
+                                <div className="mt-2 w-75 mx-auto">
+                                    <div className="container">
+                                        <h2 className="p-0 m-0 mt-auto mb-auto fs-4 display-4">Membro selecionado</h2>
+                                        <div className="d-flex justify-content-between">
+                                            <h2 className="mt-auto mb-auto ">Dados</h2>
+                                            {
+                                                memberSeleted && (
+                                                    <div className="d-flex gap-2">
+                                                        <button className="btn btn-shadow mt-auto mb-auto btn-outline-info rounded-circle" data-bs-toggle="modal" data-bs-target="#editmember"><CiEdit className='fs-5'/></button>
+                                                        <EditMembers memberId={memberSeleted?.id} setMessage={setMessage} memberSeleted={memberSeleted} setSeletedMember={setMemberSeleted} setLoading={setLoading} setMembers={setMembers} />
+                                                        <button className="btn btn-shadow mt-auto mb-auto btn-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#remmember"><AiOutlineDelete className='fs-5'/></button>
+                                                        <RemMember memberId={memberSeleted?.id} setMessage={setMessage} setMemberSeleted={setMemberSeleted} setLoading={setLoading} setMembers={setMembers} />
+                                                    </div>
+                                                )
+                                            }
+                                        </div>
+
+                                        <div className="d-flex gap-2">
+                                            <div className="bg-danger d-flex justify-content-center align-items-center rounded foto p-2">
+                                                <h1 className="fs-30 text-white">{memberSeleted?.name[0]}</h1>
+                                            </div>
+                                            <div className="w-100">
+                                                <label htmlFor="">Nome</label>
+                                                <input type="text" className="form-control mb-2 p-3" disabled readOnly value={memberSeleted?.name} />
+                                                <div className="d-flex gap-2">
+                                                    <div className="w-50">
+                                                        <label htmlFor="">Nº BI</label>
+                                                        <input type="text" className="form-control p-3" disabled value={memberSeleted?.nbi} />
+                                                    </div>
+                                                    <div className="w-50">
+                                                        <label htmlFor="">Data de nascimento</label>
+                                                        <input type="text" className="form-control p-3" disabled value={memberSeleted?.brithDate.split('T')[0]} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="w-100 mt-2">
+                                            <label htmlFor="">Nome do encarregado</label>
+                                            <input type="text" className="form-control mb-2 p-3" disabled value={memberSeleted?.guardianName} />
+                                            <label htmlFor="">Escolaridade</label>
+                                            <input type="text" className="form-control mb-2 p-3" disabled value={memberSeleted?.school} />
+                                            <label htmlFor="">Contacto</label>
+                                            <input type="text" className="form-control mb-2 p-3" disabled value={memberSeleted?.contact} />
+                                            <div className="d-flex gap-2">
+                                                <div className="w-100">
+                                                    <label htmlFor="">Batizado?</label>
+                                                    <input type="text" className="form-control mb-2 p-3" disabled value={memberSeleted?.isBatizado} />
+                                                </div>
+                                                {
+                                                    memberSeleted?.isBatizado === "Batizado" && (
+                                                        <div className="w-50">
+                                                            <label htmlFor="">Data do batismo</label>
+                                                            <input type="text" className="form-control mb-2 p-3" disabled value={memberSeleted?.batData?.split('T')[0]} />
+                                                        </div>
+                                                    )
+                                                }
+                                            </div>
+                                            <label htmlFor="">Congrega em</label>
+                                            <input type="text" className="form-control mb-2 p-3" disabled value={memberSeleted?.churchName} />
+                                        </div>
                                     </div>
-                                    
+
                                 </div>
                             )
                             :

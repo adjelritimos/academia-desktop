@@ -217,3 +217,12 @@
 .bg-custom {
   background-color: #ECF2F5;
 }
+
+.foto {
+  height: 165px;
+  width: 200px;
+}
+
+.fs-30 {
+  font-size: 80px;
+}

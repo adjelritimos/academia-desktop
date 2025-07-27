@@ -9,7 +9,7 @@ const HomeIndex = () => {
     const { tabNumber } = useContext(AppContext)
 
     return (
-        <div className="h-100" data-bs-dismiss="offcanvas">
+        <div className="h-100">
             <Header />
             <div className="d-flex h-100">
                 <SideBars tab={tabNumber} />

@@ -70,6 +70,8 @@ const Contents = () => {
                                                 <i className="fas fa-tasks text-info pt-5 mt-5 fs-1"></i>
                                                 <h1 className="display-5 fs-5">Sem módulos para as lições ainda</h1>
                                                 <small>Adicione módulos</small>
+                                                <br />
+                                                <button className="btn btn-shadow btn-info text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addmodule"><i className="fas fa-plus"></i> Novo módulo</button>
                                             </div>
                                         )
                                 }
