@@ -45,7 +45,7 @@ const Classes = () => {
                 </div>
 
                 <button className="btn btn-shadow btn-info text-white mt-auto mb-auto rounded-pill" data-bs-toggle="modal" data-bs-target="#addclasse"><i className="fas fa-plus"></i> Nova aula</button>
-                <AddClasse setClasses={setClasses} setLoading={setLoading} />
+                <AddClasse setMessage={setMessage} setClasses={setClasses} setLoading={setLoading} />
             </div>
 
             <div className="row row-cols-4 w-100 mt-2 overflow-auto ativity-altura">

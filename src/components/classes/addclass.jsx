@@ -22,17 +22,18 @@ const AddClasse = (props) => {
         setData("")
     }
 
-    const submitAdd = async(e) => {
+    const submitAdd = async (e) => {
         e.preventDefault()
+        props.setMessage("Adicionando aula...")
         await addClasse(title, tytpes, data, props.setClasses, props.setLoading)
         cleanForm()
-        props.setMessage("Adicionando aula...")
+
     }
 
     return (
         <div className="modal fade" id="addclasse" tabIndex="-1">
             <div className="modal-dialog w-25 modal-dialog-centered">
-                <form onSubmit={(e) => submitAdd(e) } className="modal-content">
+                <form onSubmit={(e) => submitAdd(e)} className="modal-content">
                     <div className="modal-header bg-info text-white">
                         <h5 className="modal-title">Nova aula</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal"></button>

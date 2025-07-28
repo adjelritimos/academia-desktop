@@ -20,8 +20,8 @@ const EditClasse = (props) => {
 
     const submitEdit = async (e) => {
         e.preventDefault()
-        await editClasse(props.classe.id, title, tytpes, data, props.setClasses, props.setLoading)
         props.setMessage("Editando aula...")
+        await editClasse(props.classe.id, title, tytpes, data, props.setClasses, props.setLoading)
     }
 
     return (

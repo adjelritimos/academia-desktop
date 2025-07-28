@@ -1,7 +1,8 @@
 import api from "../../server/api"
 import errorMessage from "../feedbacks/errormessage"
+import getClasses from "./getClass"
 
-const addClasse = async (title, tytpes, data, setAttendances, setLoading) => {
+const addClasse = async (title, tytpes, data, setClasses, setLoading) => {
     
     setLoading(true)
 
@@ -13,7 +14,7 @@ const addClasse = async (title, tytpes, data, setAttendances, setLoading) => {
         })
 
         if (new_classe.status === 200) {
-            //await getClasses(setAttendances, setLoading)
+            await getClasses(setClasses, setLoading)
         }
 
     } catch (error) {

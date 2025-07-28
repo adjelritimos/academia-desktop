@@ -3,8 +3,8 @@ import remClasse from "../../functions/classes/remclass"
 const RemClasse = (props) => {
 
     const remmove = async () => {
-        await remClasse(props.classeId, props.setClasses, props.setLoading)
         props.setMessage("Removendo aula...")
+        await remClasse(props.classeId, props.setClasses, props.setLoading)
     }
 
     return (
